@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Primitives: protocol primitives & payloads | Arisma Network</title>
-  <meta name="description" content="Readable, composable building blocks for agentic infrastructure: identity and delegation, the M2M clearinghouse, and the human in the loop gate, as JSON and Rust.">
+  <meta name="description" content="Readable building blocks for machines that spend: the mandate, the settlement, and evidence with a release gate, as JSON and Rust.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
@@ -17,14 +17,14 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Arisma Network">
   <meta property="og:title" content="Primitives: protocol primitives &amp; payloads | Arisma Network">
-  <meta property="og:description" content="Readable, composable building blocks for agentic infrastructure: identity and delegation, the M2M clearinghouse, and the human in the loop gate, as JSON and Rust.">
+  <meta property="og:description" content="Readable building blocks for machines that spend: the mandate, the settlement, and evidence with a release gate, as JSON and Rust.">
   <meta property="og:url" content="https://arisma.network/primitives">
   <meta property="og:image" content="https://arisma.network/assets/arisma-hero.jpg">
   <meta property="og:image:width" content="1800">
   <meta property="og:image:height" content="1324">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Primitives: protocol primitives &amp; payloads | Arisma Network">
-  <meta name="twitter:description" content="Readable, composable building blocks for agentic infrastructure: identity and delegation, the M2M clearinghouse, and the human in the loop gate, as JSON and Rust.">
+  <meta name="twitter:description" content="Readable building blocks for machines that spend: the mandate, the settlement, and evidence with a release gate, as JSON and Rust.">
   <meta name="twitter:image" content="https://arisma.network/assets/arisma-hero.jpg">
   <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},2500)</script>
   <script src="/site.js" defer></script>
@@ -58,38 +58,42 @@
     </section>
     <section class="section">
       <div class="container">
-        <div class="prose"><p>Every layer of Arisma is expressed as a clean, verifiable payload. Toggle between JSON protocol envelopes and Rust enclave calls to integrate directly into your agent runtime.</p></div>
+        <div class="prose"><p>Every layer of Arisma is expressed as a clean, verifiable payload. Toggle between JSON envelopes and Rust calls to see what your agent runtime sends and receives.</p></div>
         <h2 class="h-sub mt-2xl">Three primitives.</h2>
         <div class="pillars mt-lg">
           <article class="pillar">
-            <h3>Identity &amp; delegation</h3>
-            <p>A scoped session key, signed in the enclave, bounded by policy.</p>
+            <h3>Mandate</h3>
+            <p>A scoped, expiring permission to spend, signed by a key held in hardware.</p>
             <div class="pillar__spec">
-              <div class="toggle" role="group" aria-label="Identity &amp; delegation payload format">
+              <div class="toggle" role="group" aria-label="Mandate payload format">
                 <input class="t-json" type="radio" name="p1" id="p1json" checked><label for="p1json">JSON</label>
                 <input class="t-rust" type="radio" name="p1" id="p1rust"><label for="p1rust">Rust</label>
               </div>
-              <pre class="pay-json"><code><span class="m">// delegation envelope</span>
+              <pre class="pay-json"><code><span class="m">// mandate</span>
 {
-  <span class="c">"standard"</span>: <span class="s">"erc-7702"</span>,
-  <span class="c">"session"</span>: <span class="s">"0x7a&hellip;c4"</span>,
-  <span class="c">"enclave"</span>: <span class="s">"tee:sev-snp"</span>,
-  <span class="c">"scope"</span>: [<span class="s">"settle"</span>, <span class="s">"attest"</span>],
-  <span class="c">"expires"</span>: <span class="s">900</span>
+  <span class="c">"mandate"</span>: <span class="s">"0x7a&hellip;c4"</span>,
+  <span class="c">"account"</span>: <span class="s">"erc-7702"</span>,
+  <span class="c">"permission"</span>: <span class="s">"session"</span>,
+  <span class="c">"signer"</span>: { <span class="c">"curve"</span>: <span class="s">"p-256"</span>, <span class="c">"held_in"</span>: <span class="s">"tpm"</span> },
+  <span class="c">"scope"</span>: [<span class="s">"pay"</span>],
+  <span class="c">"cap_usdc"</span>: <span class="s">"21.00"</span>,
+  <span class="c">"rate_per_min"</span>: <span class="s">10</span>,
+  <span class="c">"expires_s"</span>: <span class="s">900</span>
 }</code></pre>
               <pre class="pay-rust"><code><span class="c">let</span> key = enclave
   .<span class="s">delegate</span>(Erc7702Session {
-    scope: <span class="s">Scope::Settle</span>,
+    scope: <span class="s">Scope::Pay</span>,
     ttl: <span class="s">900</span>,
   })?
   .<span class="s">attest</span>()?;</code></pre>
             </div>
           </article>
+
           <article class="pillar">
-            <h3>M2M clearinghouse</h3>
-            <p>Atomic stablecoin settlement between dispatch agents and hardware fleets.</p>
+            <h3>Settlement</h3>
+            <p>A payment between two machines, settled in USDC under a mandate.</p>
             <div class="pillar__spec">
-              <div class="toggle" role="group" aria-label="M2M clearinghouse payload format">
+              <div class="toggle" role="group" aria-label="Settlement payload format">
                 <input class="t-json" type="radio" name="p2" id="p2json" checked><label for="p2json">JSON</label>
                 <input class="t-rust" type="radio" name="p2" id="p2rust"><label for="p2rust">Rust</label>
               </div>
@@ -99,34 +103,38 @@
   <span class="c">"to"</span>: <span class="s">"drone:fleet-04"</span>,
   <span class="c">"asset"</span>: <span class="s">"usdc"</span>,
   <span class="c">"amount"</span>: <span class="s">"0.14"</span>,
-  <span class="c">"finality_ms"</span>: <span class="s">1400</span>
+  <span class="c">"chain"</span>: <span class="s">"base-sepolia"</span>,
+  <span class="c">"mode"</span>: <span class="s">"single"</span>,
+  <span class="c">"confirmed_ms"</span>: <span class="s">1400</span>
 }</code></pre>
-              <pre class="pay-rust"><code><span class="c">let</span> rcpt = clearing
+              <pre class="pay-rust"><code><span class="c">let</span> rcpt = settlement
   .<span class="s">settle</span>(Transfer {
     asset: <span class="s">Asset::Usdc</span>,
     amount: <span class="s">cents(14)</span>,
   })
-  .<span class="s">await</span>?;  <span class="m">// 1.4s</span></code></pre>
+  .<span class="s">await</span>?;  <span class="m">// ~1.4s confirmation, Base Sepolia</span></code></pre>
             </div>
           </article>
+
           <article class="pillar">
-            <h3>Human in the loop gate</h3>
-            <p>A zk:field-inspect policy with a C2PA verification checkpoint.</p>
+            <h3>Evidence and release</h3>
+            <p>Signed evidence for the event, and a release a person can hold.</p>
             <div class="pillar__spec">
-              <div class="toggle" role="group" aria-label="Human in the loop gate payload format">
+              <div class="toggle" role="group" aria-label="Evidence and release payload format">
                 <input class="t-json" type="radio" name="p3" id="p3json" checked><label for="p3json">JSON</label>
                 <input class="t-rust" type="radio" name="p3" id="p3rust"><label for="p3rust">Rust</label>
               </div>
-              <pre class="pay-json"><code><span class="m">// verification gate</span>
+              <pre class="pay-json"><code><span class="m">// release gate, drone capture</span>
 {
-  <span class="c">"policy"</span>: <span class="s">"zk:field-inspect"</span>,
-  <span class="c">"c2pa"</span>: <span class="s">"0x9f&hellip;a1c"</span>,
+  <span class="c">"policy"</span>: <span class="s">"field-inspect"</span>,
+  <span class="c">"evidence"</span>: <span class="s">"sha256:9f&hellip;a1c"</span>,
+  <span class="c">"media_manifest"</span>: <span class="s">"c2pa"</span>,
   <span class="c">"review"</span>: <span class="s">"human"</span>,
   <span class="c">"on_hold"</span>: <span class="s">false</span>
 }</code></pre>
               <pre class="pay-rust"><code><span class="c">let</span> gate = verify
-  .<span class="s">attest_zk</span>(policy)?
-  .<span class="s">checkpoint</span>(C2pa::hash(frame))
+  .<span class="s">prove</span>(policy)?
+  .<span class="s">checkpoint</span>(Evidence::hash(frame))
   .<span class="s">require_human</span>(high_stakes);</code></pre>
             </div>
           </article>
@@ -141,7 +149,7 @@
         <div>
           <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
           <div class="foot__mast">arisma<i>.</i>network</div>
-          <p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p>
+          <p class="foot__tag">Mandates and settlement for AI agents, robots, and physical machines.</p>
         </div>
         <nav aria-label="Footer">
           <ul class="foot__nav">
@@ -151,7 +159,7 @@
             <li><a href="/developers">Developers</a></li>
             <li><a href="/whitepaper">Whitepaper</a></li>
             <li><a href="/security">Security</a></li>
-            <li><a href="/status">Status</a></li>
+            <li><a href="/status">Status (coming)</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
         </nav>

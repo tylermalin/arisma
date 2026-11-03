@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hardware: EnclaveEdge X1 security gateway | Arisma Network</title>
-  <meta name="description" content="EnclaveEdge X1: an industrial security gateway with a discrete TPM 2.0 enclave that gives legacy and edge machines a hardware identity, with no changes to the machines.">
+  <meta name="description" content="EnclaveEdge X1: an industrial security gateway with a discrete TPM 2.0 that gives legacy and edge machines a hardware identity, with no changes to the machines.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
@@ -17,14 +17,14 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Arisma Network">
   <meta property="og:title" content="Hardware: EnclaveEdge X1 security gateway | Arisma Network">
-  <meta property="og:description" content="EnclaveEdge X1: an industrial security gateway with a discrete TPM 2.0 enclave that gives legacy and edge machines a hardware identity, with no changes to the machines.">
+  <meta property="og:description" content="EnclaveEdge X1: an industrial security gateway with a discrete TPM 2.0 that gives legacy and edge machines a hardware identity, with no changes to the machines.">
   <meta property="og:url" content="https://arisma.network/hardware">
   <meta property="og:image" content="https://arisma.network/assets/enclaveedge-x1-exploded.jpg">
   <meta property="og:image:width" content="1376">
   <meta property="og:image:height" content="768">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Hardware: EnclaveEdge X1 security gateway | Arisma Network">
-  <meta name="twitter:description" content="EnclaveEdge X1: an industrial security gateway with a discrete TPM 2.0 enclave that gives legacy and edge machines a hardware identity, with no changes to the machines.">
+  <meta name="twitter:description" content="EnclaveEdge X1: an industrial security gateway with a discrete TPM 2.0 that gives legacy and edge machines a hardware identity, with no changes to the machines.">
   <meta name="twitter:image" content="https://arisma.network/assets/enclaveedge-x1-exploded.jpg">
   <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},2500)</script>
   <script src="/site.js" defer></script>
@@ -70,11 +70,11 @@
       <div class="container">
         <div class="section__head">
           <h2>Insecure on one side. Zero trust on the other.</h2>
-          <p>The X1 sits between a site's machines and the network. It takes in their unauthenticated local traffic, signs it inside a discrete TPM 2.0 enclave, and sends it on over mutual TLS. The private key never leaves the chip.</p>
+          <p>The X1 sits between a site's machines and the network. It takes in their unauthenticated local traffic and signs it with a key held in a discrete TPM 2.0 chip, then sends it on over mutual TLS. The private key never leaves the chip.</p>
         </div>
 
         <div class="hwdiagram" data-live>
-          <svg class="hw" viewBox="0 0 960 400" role="img" aria-label="Machines on the insecure local OT network send telemetry into the EnclaveEdge X1. Inside the gateway, the Linux host passes it over an encrypted SPI bus to the OPTIGA TPM 2.0 enclave, which signs it. Signed data leaves over mutual TLS to the zero trust WAN and the Arisma network.">
+          <svg class="hw" viewBox="0 0 960 400" role="img" aria-label="Machines on the insecure local OT network send telemetry into the EnclaveEdge X1. Inside the gateway, the Linux host passes it over an encrypted SPI bus to the OPTIGA TPM 2.0, which holds the signing key. Signed data leaves over mutual TLS to the zero trust WAN and the Arisma network.">
             <rect class="hw-zone" x="10" y="40" width="270" height="320" rx="12"/>
             <text class="hw-cap" x="30" y="70">Local OT zone, insecure</text>
             <g class="hw-devs">
@@ -106,9 +106,10 @@
             <rect class="hw-box hw-box--tpm" x="566" y="100" width="146" height="200" rx="8"/>
             <text class="hw-title hw-title--acc" x="582" y="128">OPTIGA TPM 2.0</text>
             <text class="hw-small" x="582" y="148">SLB 9670</text>
-            <text class="hw-item" x="582" y="190">signing engine</text>
-            <text class="hw-item" x="582" y="216">PCR registers</text>
-            <text class="hw-item" x="582" y="242">endorsement key</text>
+            <text class="hw-item" x="582" y="186">signing key</text>
+            <text class="hw-small" x="582" y="202">sealed to boot state</text>
+            <text class="hw-item" x="582" y="228">PCR registers</text>
+            <text class="hw-item" x="582" y="254">attestation key</text>
             <circle class="hw-seal" cx="690" cy="278" r="8"/>
 
             <path class="hw-wire hw-wire--out" d="M732 200 H790"/>
@@ -124,7 +125,7 @@
         </div>
 
         <dl class="hwfacts mt-xl">
-          <div><dt>Enclave</dt><dd>Discrete TPM 2.0 on its own SPI bus</dd></div>
+          <div><dt>TPM</dt><dd>Discrete TPM 2.0 on its own SPI bus</dd></div>
           <div><dt>Operating range</dt><dd>&minus;40 to 105 &deg;C with the NXP option</dd></div>
           <div><dt>Field buses</dt><dd>2&times; CAN FD, RS-485, USB 2.0</dd></div>
           <div><dt>Uplink</dt><dd>Ethernet with LTE Cat-M1 failover</dd></div>
@@ -136,19 +137,20 @@
     <section class="section">
       <div class="container">
         <div class="section__head">
-          <h2>Seven industries, one enclave interface.</h2>
+          <h2>Seven industries, one TPM interface.</h2>
           <p>Each vertical runs as its own container with its own ingest driver. All of them hand their data to the same TPM interface, so one gateway design covers every site.</p>
+          <p>The gateway proves custody from the moment it receives a reading. It cannot prove the device upstream was honest.</p>
         </div>
         <div class="tablewrap">
           <table class="apitable hwmap">
-            <thead><tr><th scope="col">Vertical</th><th scope="col">Local ingest</th><th scope="col">Enclave routine</th><th scope="col">What it proves upstream</th></tr></thead>
+            <thead><tr><th scope="col">Vertical</th><th scope="col">Local ingest</th><th scope="col">Gateway routine</th><th scope="col">What it proves</th></tr></thead>
             <tbody>
-              <tr><th scope="row"><a href="/use-cases#agents">AI agents &amp; compute</a></th><td><code>PCIe, shared memory, USB</code></td><td>Hashes the input and signs the inference output</td><td>The model ran on genuine, untampered edge hardware</td></tr>
-              <tr><th scope="row"><a href="/use-cases#logistics">Logistics robots</a></th><td><code>ROS2 (DDS), CAN FD</code></td><td>Checks commands against an enclave key allowlist</td><td>Navigation strings carry a sequence counter, so replays fail</td></tr>
-              <tr><th scope="row"><a href="/use-cases#energy">EV charging</a></th><td><code>OCPP 2.0.1, ISO 15118</code></td><td>Holds charger PKI and runs vehicle handshakes</td><td>Billing and state of charge tokens are signed at the source</td></tr>
-              <tr><th scope="row"><a href="/use-cases#inspection">Drone inspection</a></th><td><code>MAVLink, RTSP, WebRTC</code></td><td>Encrypts video with ephemeral keys, signs GPS</td><td>Captures are private and flight tracks cannot be spoofed</td></tr>
+              <tr><th scope="row"><a href="/use-cases#environment">Environmental data</a></th><td><code>LoRaWAN, Modbus RTU</code></td><td>Batches readings into one signed digest per interval</td><td>Reports cannot drop or alter readings after receipt</td></tr>
               <tr><th scope="row"><a href="/use-cases#coldchain">Cold chain</a></th><td><code>BLE 5.2, 1-Wire</code></td><td>Chains each reading to a secure timestamp</td><td>Editing any past value breaks the signature chain</td></tr>
-              <tr><th scope="row"><a href="/use-cases#environment">Environmental data</a></th><td><code>LoRaWAN, Modbus RTU</code></td><td>Batches readings into one signed digest per interval</td><td>Reports cannot quietly drop or alter readings</td></tr>
+              <tr><th scope="row"><a href="/use-cases#agents">AI agents &amp; compute</a></th><td><code>USB, Ethernet</code></td><td>Hashes the input and signs the inference output</td><td>What the model received and returned, as seen by the gateway</td></tr>
+              <tr><th scope="row"><a href="/use-cases#logistics">Logistics robots</a></th><td><code>ROS2 (DDS), CAN FD</code></td><td>Checks commands against an allowlist of keys held in the TPM</td><td>Navigation strings carry a sequence counter, so replays fail</td></tr>
+              <tr><th scope="row"><a href="/use-cases#energy">EV charging</a></th><td><code>OCPP 2.0.1</code></td><td>Signs OCPP metering and session records</td><td>Metering and session records cannot change after the gateway signs them</td></tr>
+              <tr><th scope="row"><a href="/use-cases#inspection">Drone inspection</a></th><td><code>MAVLink, RTSP, WebRTC</code></td><td>Encrypts video with ephemeral keys, signs GPS</td><td>Captures and tracks cannot be altered or swapped after receipt; captures carry a C2PA manifest</td></tr>
               <tr><th scope="row"><a href="/use-cases#industrial">Industrial machinery</a></th><td><code>OPC UA, Modbus TCP, EtherCAT</code></td><td>Terminates the legacy link inside the gateway</td><td>Old PLCs are reachable only through an authenticated tunnel</td></tr>
             </tbody>
           </table>
@@ -162,19 +164,19 @@
           <div>
             <div class="section__head">
               <h2>It refuses to start if anything changed.</h2>
-              <p>The boot ROM checks the bootloader. The bootloader hashes the kernel and its extensions into the TPM's PCR registers. If a measurement does not match, the gateway halts before any container runs, so it never signs data on a modified system.</p>
+              <p>Boot is both verified and measured. The SoC boot ROM checks the bootloader's signature (NXP HAB on the i.MX option). Each later stage is hashed into the TPM's PCR registers. The gateway's signing key is sealed to those measurements, so a modified system cannot sign anything, and the root filesystem is checked block by block with dm-verity. A system that fails verification halts before any container runs.</p>
             </div>
-            <div class="docrow"><button class="btn btn--primary" type="button" data-boot="run">Run measured boot</button><button class="textlink" type="button" data-boot="tamper">Tamper with the kernel</button></div>
+            <div class="docrow"><button class="btn btn--primary" type="button" data-boot="run">Run verified boot</button><button class="textlink" type="button" data-boot="tamper">Tamper with the kernel</button></div>
           </div>
           <div class="lab boot" data-bootlab>
             <ol class="bootchain">
-              <li data-stage="rom"><span class="bootchain__dot"></span><div><b>SoC boot ROM</b><span>Verifies the second stage bootloader</span></div><code>root of trust</code></li>
-              <li data-stage="uboot"><span class="bootchain__dot"></span><div><b>U-Boot</b><span>Hashes the kernel and extensions</span></div><code>PCR 0</code></li>
-              <li data-stage="kernel"><span class="bootchain__dot"></span><div><b>Linux kernel</b><span>Measured into the TPM</span></div><code>PCR 4</code></li>
-              <li data-stage="ext"><span class="bootchain__dot"></span><div><b>Extensions</b><span>Measured into the TPM</span></div><code>PCR 10</code></li>
-              <li data-stage="ctr"><span class="bootchain__dot"></span><div><b>Containers start</b><span>Namespaces, cgroups, seccomp</span></div><code>signing on</code></li>
+              <li data-stage="rom"><span class="bootchain__dot"></span><div><b>SoC boot ROM</b><span>Checks the bootloader signature</span></div><code>verified</code></li>
+              <li data-stage="uboot"><span class="bootchain__dot"></span><div><b>U-Boot</b><span>Hashes the next stages into the PCRs</span></div><code>measured</code></li>
+              <li data-stage="kernel"><span class="bootchain__dot"></span><div><b>Linux kernel</b><span>Measured into the TPM</span></div><code>measured</code></li>
+              <li data-stage="ext"><span class="bootchain__dot"></span><div><b>Root filesystem</b><span>Checked block by block with dm-verity</span></div><code>dm-verity</code></li>
+              <li data-stage="ctr"><span class="bootchain__dot"></span><div><b>Signing key unseals</b><span>Containers start with namespaces, cgroups, seccomp</span></div><code>signing on</code></li>
             </ol>
-            <p class="result" data-boot-out aria-live="polite">Run the boot sequence to watch each stage get measured.</p>
+            <p class="result" data-boot-out aria-live="polite">Run the boot sequence to watch each stage get verified and measured.</p>
           </div>
         </div>
       </div>
@@ -187,9 +189,9 @@
           <p>The gateway's identity is created inside the chip at manufacture and proven again every time it connects or updates.</p>
         </div>
         <ol class="fit fit--3">
-          <li><span class="fit__n">01</span><h3>Identity made at the factory</h3><p>A unique endorsement key pair is generated inside the TPM during production. The factory certificate authority signs the public half, which becomes the gateway's permanent birth certificate.</p></li>
-          <li><span class="fit__n">02</span><h3>Zero touch provisioning</h3><p>Plugged into a WAN, the gateway calls out to the orchestration layer and presents a TPM signed attestation quote proving its firmware is intact. No one configures it by hand.</p></li>
-          <li><span class="fit__n">03</span><h3>Signed updates with rollback</h3><p>The root filesystem is atomic and read only. Updates arrive as signed images on an A/B pair. If a new image fails measured boot, the gateway falls back to the last good one.</p></li>
+          <li><span class="fit__n">01</span><h3>Identity made at the factory</h3><p>Each TPM ships with an endorsement key and a certificate from Infineon. At our factory, we create a device identity key and an attestation key inside the TPM, and our certificate authority signs them, tied to that endorsement key. That certificate is the gateway's permanent identity.</p></li>
+          <li><span class="fit__n">02</span><h3>Zero touch provisioning</h3><p>Plugged into a WAN, the gateway calls out to the orchestration layer and presents a TPM quote of its boot measurements, which the backend checks. No one configures it by hand.</p></li>
+          <li><span class="fit__n">03</span><h3>Signed updates with rollback</h3><p>The root filesystem is atomic and read only. Updates arrive as signed images on an A/B pair. If a new image fails verified boot, the gateway falls back to the last good one.</p></li>
         </ol>
       </div>
     </section>
@@ -205,19 +207,19 @@
 {
   <span class="c">"gateway_identity"</span>: {
     <span class="c">"hardware_uuid"</span>: <span class="s">"ee-x1-7c9b-4a2f-bc81-11d84f93a900"</span>,
-    <span class="c">"endorsement_key_pub_thumbprint"</span>: <span class="s">"sha256:e3b0c442&hellip;7852b855"</span>,
-    <span class="c">"firmware_version"</span>: <span class="s">"v2026.11.03-hardened"</span>,
+    <span class="c">"device_identity_cert_thumbprint"</span>: <span class="s">"sha256:e3b0c442&hellip;7852b855"</span>,
+    <span class="c">"firmware_version"</span>: <span class="s">"v2026.11.03"</span>,
     <span class="c">"active_profile"</span>: <span class="s">"industrial_machinery"</span>
   },
   <span class="c">"trust_telemetry"</span>: {
-    <span class="c">"measured_boot_status"</span>: <span class="s">"verified"</span>,
+    <span class="c">"attestation"</span>: { <span class="c">"quote"</span>: <span class="s">"&hellip;"</span>, <span class="c">"nonce"</span>: <span class="s">"&hellip;"</span> },
     <span class="c">"pcr_bank"</span>: {
       <span class="c">"pcr_00"</span>: <span class="s">"f4b238ad&hellip;"</span>,
       <span class="c">"pcr_04"</span>: <span class="s">"8c91d842&hellip;"</span>,
       <span class="c">"pcr_10"</span>: <span class="s">"3fa91283&hellip;"</span>
     },
     <span class="c">"hardware_tamper_tripped"</span>: <span class="s">false</span>,
-    <span class="c">"internal_enclave_timestamp"</span>: <span class="s">"2026-11-03T18:25:34.012Z"</span>,
+    <span class="c">"tpm_timestamp"</span>: <span class="s">"2026-11-03T18:25:34.012Z"</span>,
     <span class="c">"packet_sequence_counter"</span>: <span class="s">1048576</span>
   },
   <span class="c">"payload"</span>: {
@@ -233,17 +235,16 @@
   },
   <span class="c">"cryptographic_proof"</span>: {
     <span class="c">"signature_algorithm"</span>: <span class="s">"ECDSA_SHA_256"</span>,
-    <span class="c">"key_slot_reference"</span>: <span class="s">"0x81010002"</span>,
     <span class="c">"signed_digest"</span>: <span class="s">"sha256:<span data-pv="signed">&hellip;</span>"</span>,
     <span class="c">"signature"</span>: <span class="s">"MEQCID3k8v5Xw9XJz3eF4/Jb2V8a5&hellip;"</span>
   }
 }</code></pre>
           <div class="hwpayload__side">
             <dl class="hwfields">
-              <div><dt><code>gateway_identity</code></dt><dd>Who is talking. The endorsement key thumbprint is the hardware birth certificate the backend checks against its fleet.</dd></div>
-              <div><dt><code>trust_telemetry</code></dt><dd>What state the hardware is in. Modified boot code changes the PCR values, and the sequence counter stops replays.</dd></div>
+              <div><dt><code>gateway_identity</code></dt><dd>Who is talking. The device identity certificate thumbprint is the gateway's permanent identity, which the backend checks against its fleet.</dd></div>
+              <div><dt><code>trust_telemetry</code></dt><dd>What state the hardware is in. The attestation quote covers the boot measurements, so the backend checks them itself instead of trusting a status string. The sequence counter stops replays.</dd></div>
               <div><dt><code>payload</code></dt><dd>The readings themselves, with the vertical and the local machine they came from.</dd></div>
-              <div><dt><code>cryptographic_proof</code></dt><dd>The seal. The TPM signs a digest of the payload and trust telemetry with a key that never crosses the SPI lines.</dd></div>
+              <div><dt><code>cryptographic_proof</code></dt><dd>The seal. The TPM signs a digest of the payload and trust telemetry. The private key never leaves the chip, and traffic on the SPI bus is encrypted with a TPM session, so a probe on the bus sees nothing useful.</dd></div>
             </dl>
             <div class="lab">
               <div class="lab__head"><h3>Tamper with a reading</h3><span class="lab__tag">try it</span></div>
@@ -267,13 +268,14 @@
       <div class="container">
         <div class="section__head">
           <h2>Specifications.</h2>
-          <p>Two compute options share one enclave design, board layout, and software image.</p>
+          <p>Two compute options share one TPM design, board layout, and software image.</p>
         </div>
         <div class="specs">
           <dl>
-            <dt>Compute</dt><dd>NXP i.MX8M Nano QuadLite, industrial range &minus;40 to 105 &deg;C, or Raspberry Pi Compute Module 4, industrial variant</dd>
-            <dt>Hardware enclave</dt><dd>Infineon OPTIGA&trade; TPM SLB 9670, discrete, on a dedicated SPI bus</dd>
-            <dt>Enclave certification</dt><dd>The SLB 9670 is certified to Common Criteria EAL4+ and FIPS 140-2 Level 2</dd>
+            <dt>Compute</dt><dd>NXP i.MX8M Nano QuadLite, industrial range &minus;40 to 105 &deg;C, or Raspberry Pi Compute Module 4, industrial variant, &minus;20 to 85 &deg;C</dd>
+            <dt>TPM</dt><dd>Infineon OPTIGA&trade; TPM SLB 9670, discrete, on a dedicated SPI bus</dd>
+            <dt>TPM bus</dt><dd>SPI with encrypted TPM sessions (parameter encryption)</dd>
+            <dt>TPM certification</dt><dd>The SLB 9670 is certified to Common Criteria EAL4+</dd>
             <dt>Memory</dt><dd>2 GB LPDDR4</dd>
             <dt>Storage</dt><dd>16 GB eMMC 5.1 in SLC mode, for write endurance and resistance to corruption</dd>
           </dl>
@@ -282,7 +284,8 @@
             <dt>WAN</dt><dd>1&times; RJ45 10/100 Ethernet, or a Nano SIM slot for LTE Cat-M1 failover</dd>
             <dt>Expansion</dt><dd>2&times; isolated CAN FD, 1&times; RS-485 (Modbus), 1&times; USB 2.0 host</dd>
             <dt>Operating system</dt><dd>Hardened, read only root filesystem on Yocto Project Linux or Ubuntu Core</dd>
-            <dt>Boot</dt><dd>Hardware enforced measured boot into TPM PCRs; halts on any mismatch</dd>
+            <dt>Boot</dt><dd>Verified boot, measured into TPM PCRs; signing key sealed to those measurements</dd>
+            <dt>Tamper</dt><dd>Case switch loop wired to the SoC's secure tamper input; a trip wipes session keys and is logged</dd>
             <dt>Containers</dt><dd>LXC or Docker with namespace, cgroup, and seccomp isolation</dd>
           </dl>
         </div>
@@ -293,25 +296,24 @@
       <div class="container">
         <details class="pinref">
           <summary><span><b>SPI interconnect reference</b><span>Pin mapping between the host and the TPM, for hardware engineers</span></span></summary>
-          <p class="pinref__intro">Standard four wire SPI, plus an interrupt for asynchronous alerts, a reset line so the host can power cycle the enclave, and a presence trace that halts the system if the board is tampered with.</p>
+          <p class="pinref__intro">Standard four wire SPI, plus an interrupt for asynchronous alerts and a reset line so the host can power cycle the TPM. Package pin numbers are in the Infineon SLB 9670 datasheet. The tamper loop is wired to the SoC's secure tamper input, not to the TPM. Header pin numbers in the CM4 column apply to the CM4 IO board; on a custom carrier, map by GPIO number.</p>
           <div class="tablewrap">
             <table class="apitable pintable">
-              <thead><tr><th scope="col">Signal</th><th scope="col">TPM pin</th><th scope="col">i.MX8M Nano</th><th scope="col">Raspberry Pi CM4</th><th scope="col">Purpose</th></tr></thead>
+              <thead><tr><th scope="col">Signal</th><th scope="col">i.MX8M Nano</th><th scope="col">Raspberry Pi CM4</th><th scope="col">Purpose</th></tr></thead>
               <tbody>
-                <tr><th scope="row"><code>VCC</code></th><td>1</td><td>3.3V system rail</td><td>Pin 1 or 17 (3.3V)</td><td>Main power, 3.3V DC</td></tr>
-                <tr><th scope="row"><code>GND</code></th><td>2</td><td>System ground plane</td><td>Pin 9, 25, or 39</td><td>Shared ground reference</td></tr>
-                <tr><th scope="row"><code>SPI_MISO</code></th><td>3</td><td>ECSPI1_MISO (C24)</td><td>Pin 21 (GPIO 9)</td><td>Data to host</td></tr>
-                <tr><th scope="row"><code>SPI_MOSI</code></th><td>4</td><td>ECSPI1_MOSI (B24)</td><td>Pin 19 (GPIO 10)</td><td>Data to TPM</td></tr>
-                <tr><th scope="row"><code>SPI_SCLK</code></th><td>5</td><td>ECSPI1_SCLK (A25)</td><td>Pin 23 (GPIO 11)</td><td>Bus clock, host driven, up to 33 MHz</td></tr>
-                <tr><th scope="row"><code>SPI_CS#</code></th><td>6</td><td>ECSPI1_SS0 (B25)</td><td>Pin 24 (GPIO 8)</td><td>Chip select, active low</td></tr>
-                <tr><th scope="row"><code>TPM_INT</code></th><td>7</td><td>GPIO1_IO05 (AJ5)</td><td>Pin 18 (GPIO 24)</td><td>Interrupt when data is ready</td></tr>
-                <tr><th scope="row"><code>TPM_RST#</code></th><td>8</td><td>GPIO1_IO10 (AD11)</td><td>Pin 22 (GPIO 25)</td><td>Hardware reset, active low</td></tr>
-                <tr><th scope="row"><code>PEX_TAMPER</code></th><td>9</td><td>GPIO1_IO12 (AD12)</td><td>Pin 26 (GPIO 7)</td><td>Tamper loop; a broken trace halts the system</td></tr>
+                <tr><th scope="row"><code>VCC</code></th><td>3.3V system rail</td><td>Pin 1 or 17 (3.3V)</td><td>Main power, 3.3V DC</td></tr>
+                <tr><th scope="row"><code>GND</code></th><td>System ground plane</td><td>Pin 9, 25, or 39</td><td>Shared ground reference</td></tr>
+                <tr><th scope="row"><code>SPI_MISO</code></th><td>ECSPI1_MISO (C24)</td><td>Pin 21 (GPIO 9)</td><td>Data to host</td></tr>
+                <tr><th scope="row"><code>SPI_MOSI</code></th><td>ECSPI1_MOSI (B24)</td><td>Pin 19 (GPIO 10)</td><td>Data to TPM</td></tr>
+                <tr><th scope="row"><code>SPI_SCLK</code></th><td>ECSPI1_SCLK (A25)</td><td>Pin 23 (GPIO 11)</td><td>Bus clock, host driven, 32 MHz</td></tr>
+                <tr><th scope="row"><code>SPI_CS#</code></th><td>ECSPI1_SS0 (B25)</td><td>Pin 24 (GPIO 8)</td><td>Chip select, active low</td></tr>
+                <tr><th scope="row"><code>TPM_INT</code></th><td>GPIO1_IO05 (AJ5)</td><td>Pin 18 (GPIO 24)</td><td>Interrupt when data is ready</td></tr>
+                <tr><th scope="row"><code>TPM_RST#</code></th><td>GPIO1_IO10 (AD11)</td><td>Pin 22 (GPIO 25)</td><td>Hardware reset, active low</td></tr>
               </tbody>
             </table>
           </div>
           <h3 class="pinref__h">Device tree overlay, Raspberry Pi CM4</h3>
-          <p class="pinref__intro">Binds the SLB 9670 to SPI0 chip select 0 through the kernel's TPM TIS SPI driver, with reset on GPIO 25 and the interrupt on GPIO 24. Saved as <code>tpm-slb9670-overlay.dts</code>.</p>
+          <p class="pinref__intro">Reference only. Validate against your carrier board and the upstream Raspberry Pi SLB 9670 overlay before use. Binds the SLB 9670 to SPI0 chip select 0 through the kernel's TPM TIS SPI driver, with reset on GPIO 25 and the interrupt on GPIO 24. Saved as <code>tpm-slb9670-overlay.dts</code>.</p>
           <div class="cmd cmd--file"><code>dtc -@ -I dts -O dtb -o tpm-slb9670.dtbo tpm-slb9670-overlay.dts</code><button class="copy" type="button" aria-live="polite" data-copy="dtc -@ -I dts -O dtb -o tpm-slb9670.dtbo tpm-slb9670-overlay.dts">copy</button></div>
           <pre class="codeblock"><code><span class="m">/dts-v1/;</span>
 <span class="m">/plugin/;</span>
@@ -343,12 +345,12 @@
         <div class="devmore mt-2xl">
           <div>
             <h2 class="h-sub">Where it fits in Arisma.</h2>
-            <p>The X1 is the root of trust for machines that cannot run an enclave of their own. Its signed telemetry is what the attest and verify steps check before anything settles.</p>
+            <p>The X1 holds the hardware key for machines that cannot run a confidential VM of their own. Its signed telemetry is the evidence the release gate checks before anything settles.</p>
             <a class="textlink" href="/whitepaper#ch4">Read about attestation</a>
           </div>
           <div>
             <h2 class="h-sub">See it on a site.</h2>
-            <p>Each use case shows which ingest driver and enclave routine the gateway runs for that industry.</p>
+            <p>Each use case shows which ingest driver and routine the gateway runs for that industry.</p>
             <a class="textlink" href="/use-cases">Browse use cases</a>
           </div>
           <div>
@@ -366,7 +368,7 @@
         <div>
           <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
           <div class="foot__mast">arisma<i>.</i>network</div>
-          <p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p>
+          <p class="foot__tag">Mandates and settlement for AI agents, robots, and physical machines.</p>
         </div>
         <nav aria-label="Footer">
           <ul class="foot__nav">
@@ -376,7 +378,7 @@
             <li><a href="/developers">Developers</a></li>
             <li><a href="/whitepaper">Whitepaper</a></li>
             <li><a href="/security">Security</a></li>
-            <li><a href="/status">Status</a></li>
+            <li><a href="/status">Status (coming)</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
         </nav>

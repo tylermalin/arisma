@@ -19,12 +19,13 @@
 
   const rail = $('.wp-rail');
   const reset = $('.wp-reset');
+  const TOTAL = document.querySelectorAll('.check').length;
   const paint = () => {
     const n = state.done.length;
     $$('a[data-ch]', rail).forEach((a) => a.classList.toggle('is-done', state.done.includes(Number(a.dataset.ch))));
     const score = $('[data-score]', rail); if (score) score.textContent = n;
     const sum = out(document, 'summary');
-    if (sum) sum.textContent = n === 5 ? 'All five checks passed. You have the core of the protocol.' : `You have passed ${n} of 5 checks.`;
+    if (sum) sum.textContent = n === TOTAL ? 'All checks passed. You have the core of the protocol.' : `You have passed ${n} of ${TOTAL} checks.`;
     if (reset) reset.hidden = n === 0;
   };
 
@@ -107,13 +108,13 @@
       const sc = scope();
       out(sess, 'ttl').textContent = mins(Number(ttl.value));
       out(sess, 'envelope').innerHTML = [
-        '<span class="m">// delegation envelope</span>',
+        '<span class="m">// mandate</span>',
         '{',
-        `  <span class="c">"standard"</span>: <span class="s">"erc-7702"</span>,`,
-        `  <span class="c">"session"</span>: <span class="s">"0x7a…c4"</span>,`,
-        `  <span class="c">"enclave"</span>: <span class="s">"tee:sev-snp"</span>,`,
+        `  <span class="c">"mandate"</span>: <span class="s">"0x7a…c4"</span>,`,
+        `  <span class="c">"account"</span>: <span class="s">"erc-7702"</span>,`,
+        `  <span class="c">"signer"</span>: { <span class="c">"curve"</span>: <span class="s">"p-256"</span>, <span class="c">"held_in"</span>: <span class="s">"sev-snp"</span> },`,
         `  <span class="c">"scope"</span>: [${sc.map((s) => `<span class="s">"${esc(s)}"</span>`).join(', ')}],`,
-        `  <span class="c">"expires"</span>: <span class="s">${Number(ttl.value)}</span>`,
+        `  <span class="c">"expires_s"</span>: <span class="s">${Number(ttl.value)}</span>`,
         '}',
       ].join('\n');
     };
@@ -124,16 +125,17 @@
       const t = mins(Number(ttl.value));
       const list = sc.length ? sc.join(' and ') : 'nothing';
       if (scn === 'leak') {
-        if (!sc.length) return say('ok', '<b>Nothing to steal.</b> A key with no scope cannot do anything.');
+        if (!sc.length) return say('ok', '<b>Nothing to steal.</b> A mandate with no scope cannot do anything.');
         if (sc.includes('withdraw')) return say('bad', `<b>Contained, but too wide.</b> The attacker can ${list} for up to ${t}. Withdraw is in scope, so funds could leave the account. Remove it.`);
-        return say('ok', `<b>Contained.</b> The attacker can only ${list}, and only for up to ${t}. The master key never left the enclave.`);
+        return say('ok', `<b>Contained.</b> The attacker can only ${list}, within the cap, and only for up to ${t}. The owner key was never on the machine.`);
       }
       if (scn === 'withdraw') {
-        if (sc.includes('withdraw')) return say('bad', '<b>Allowed.</b> Withdraw is in this key’s scope, so the request goes through. The grant works as written, which is why scope deserves the most care.');
-        return say('ok', '<b>Blocked.</b> Withdraw is not in scope, so the request fails before it reaches the clearinghouse.');
+        if (sc.includes('withdraw')) return say('bad', '<b>Allowed.</b> Withdraw is in this mandate’s scope, so the request goes through. The grant works as written, which is why scope deserves the most care.');
+        return say('ok', '<b>Blocked.</b> Withdraw is not in scope, so the chain rejects the request.');
       }
-      if (scn === 'replay') return say('ok', `<b>Rejected.</b> The key expired after ${t}, so the clearinghouse refuses it. A shorter expiry means a smaller window.`);
-      if (scn === 'binary') return say('ok', '<b>Rejected.</b> Remote attestation reports a different code measurement, so the enclave issues no session key to the modified agent.');
+      if (scn === 'replay') return say('ok', `<b>Rejected.</b> The mandate expired after ${t}, so the chain refuses it. A shorter expiry means a smaller window.`);
+      if (scn === 'binary') return say('ok', '<b>Rejected.</b> The attestation report shows a different code measurement, so Arisma issues no mandate to the modified agent.');
+      if (scn === 'owner') return say('bad', '<b>The attacker controls the account.</b> Mandates limit what agents can lose; they do not protect the owner key. Keep it in a hardware wallet.');
     };
     sess.addEventListener('change', render);
     ttl.addEventListener('input', () => {
@@ -152,11 +154,11 @@
   const path = $('[data-lab="path"]');
   if (path) {
     const steps = [
-      '<b>Delegate.</b> The owner grants a session key with scope settle and a 900 second expiry, signed in the enclave.',
-      '<b>Attest.</b> The enclave proves its code measurement. Code nobody trusts never reaches this point.',
-      '<b>Settle.</b> The clearinghouse moves 0.14 USDC from agent:dispatch to drone:fleet-04.',
-      '<b>Verify.</b> The gate checks the policy proof and the C2PA hash of the charging event before release.',
-      '<b>Anchor receipt.</b> A deterministic receipt is anchored for audit. Finality on this path: 1.4 seconds.',
+      '<b>Mandate.</b> The owner grants a mandate: pay only, a $21 cap, a 15 minute expiry, signed by a key held in hardware.',
+      '<b>Evidence.</b> The charging pad\u2019s reading is signed by a known gateway, tying the payment to the event.',
+      '<b>Settle.</b> 0.14 USDC moves from agent:dispatch to drone:fleet-04 on Base, confirming in about 1.4 seconds.',
+      '<b>Release.</b> The gate checks the evidence. A drone charge is low stakes, so no person needs to approve it.',
+      '<b>Receipt.</b> A deterministic receipt is recorded. The payment is final once its batch finalizes on Ethereum.',
     ];
     const items = $$('.path li', path);
     const detail = out(path, 'step');
@@ -224,9 +226,9 @@
       const v = out(gate, 'gate');
       const why = out(gate, 'gate-why');
       const set = (verdict, reason, kind) => { v.textContent = verdict; why.textContent = reason; v.className = 'verdict is-' + kind; };
-      if (!on('enclave')) return set('Held.', 'The enclave attestation does not verify, so nothing it signed is trusted.', 'bad');
-      if (!on('zk')) return set('Held.', 'The policy proof does not verify. Value stays where it is.', 'bad');
-      if (!on('c2pa')) return set('Held.', 'The telemetry does not match its C2PA hash, so the event may have been altered.', 'bad');
+      if (!on('enclave')) return set('Held.', 'The hardware attestation does not verify, so nothing that key signed is trusted.', 'bad');
+      if (!on('zk')) return set('Held.', 'The signed readings do not satisfy the policy. Value stays where it is.', 'bad');
+      if (!on('c2pa')) return set('Held.', 'The reading has no valid signature from a known gateway, so it may have been altered.', 'bad');
       if (stakes && op === 'pending') return set('Waiting on a person.', 'Every automated check passed. This action needs a human decision.', 'wait');
       if (stakes && op === 'hold') return set('Held by the operator.', 'Automated checks passed, and the operator chose to hold. The operator always has the final say.', 'bad');
       if (stakes) return set('Released.', 'Checks passed and the operator approved.', 'ok');

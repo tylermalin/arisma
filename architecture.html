@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Architecture: the Arisma trust & settlement stack | Arisma Network</title>
-  <meta name="description" content="Three unified layers bridging cryptographic intent with physical execution: identity and delegation, the M2M clearinghouse, and human in the loop verification.">
+  <title>Architecture: the Arisma mandate stack | Arisma Network</title>
+  <meta name="description" content="The Arisma mandate stack: who a machine acts for, how it pays, and what evidence it leaves. Mandates, settlement in USDC on Base, and evidence with a human release gate.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
@@ -16,15 +16,15 @@
   <meta name="theme-color" content="#000000">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Arisma Network">
-  <meta property="og:title" content="Architecture: the Arisma trust &amp; settlement stack | Arisma Network">
-  <meta property="og:description" content="Three unified layers bridging cryptographic intent with physical execution: identity and delegation, the M2M clearinghouse, and human in the loop verification.">
+  <meta property="og:title" content="Architecture: the Arisma mandate stack | Arisma Network">
+  <meta property="og:description" content="The Arisma mandate stack: who a machine acts for, how it pays, and what evidence it leaves. Mandates, settlement in USDC on Base, and evidence with a human release gate.">
   <meta property="og:url" content="https://arisma.network/architecture">
   <meta property="og:image" content="https://arisma.network/assets/arisma-hero.jpg">
   <meta property="og:image:width" content="1800">
   <meta property="og:image:height" content="1324">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Architecture: the Arisma trust &amp; settlement stack | Arisma Network">
-  <meta name="twitter:description" content="Three unified layers bridging cryptographic intent with physical execution: identity and delegation, the M2M clearinghouse, and human in the loop verification.">
+  <meta name="twitter:title" content="Architecture: the Arisma mandate stack | Arisma Network">
+  <meta name="twitter:description" content="The Arisma mandate stack: who a machine acts for, how it pays, and what evidence it leaves. Mandates, settlement in USDC on Base, and evidence with a human release gate.">
   <meta name="twitter:image" content="https://arisma.network/assets/arisma-hero.jpg">
   <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},2500)</script>
   <script src="/site.js" defer></script>
@@ -51,35 +51,59 @@
   <main id="main">
     <section class="subhero">
       <div class="container">
-        <h1>The Arisma trust &amp; settlement stack.</h1>
-        <p class="subhero__sub">Three unified layers bridging cryptographic intent with physical execution.</p>
+        <h1>The Arisma mandate stack.</h1>
+        <p class="subhero__sub">Three layers: who a machine acts for, how it pays, and what evidence it leaves.</p>
         <span class="subhero__tag">platform / architecture</span>
       </div>
     </section>
     <section class="section">
       <div class="container">
-        <div class="prose"><p>Traditional payment rails are built for human speed and credit risk. Autonomous agents and physical machinery require cryptographic determinism, subsecond finality, and provable safety bounds. Arisma unifies this into three modular layers.</p></div>
+        <div class="prose"><p>Machines need three things card rails were never built for: authority they can prove with no person present, payments small enough to price a single action, and a worst case set before they start.</p></div>
         <h2 class="h-sub mt-2xl">Three layers.</h2>
-        <div class="arch ruled mt-lg" role="list" aria-label="Settlement stack">
+        <div class="arch ruled mt-lg" role="list" aria-label="Mandate stack">
           <article class="arch__node" role="listitem">
-            <h3>Verifiable agent identity &amp; delegation</h3>
-            <p>Session keys scoped by ERC-7702 and bound directly to a hardware enclave (AMD SEV-SNP / Intel TDX). Agents carry provable authorization without exposing master private keys.</p>
-            <div class="prims"><span class="prim">ERC-7702</span><span class="prim">TEE</span><span class="prim">session keys</span></div>
+            <h3>Mandates</h3>
+            <p>A mandate is a scoped, expiring permission on a smart account. The account uses ERC-7702 to point at Arisma's permission module. The mandate sets a spend cap, a rate, an expiry, and allowed counterparties. The machine signs with a P-256 key held in hardware, and the chain checks that signature through the RIP-7212 precompile.</p>
+            <div class="prims"><span class="prim">ERC-7702</span><span class="prim">P-256</span><span class="prim">RIP-7212</span></div>
             <span class="arch__n" aria-hidden="true">1</span>
           </article>
           <article class="arch__node" role="listitem">
-            <h3>Autonomous M2M clearinghouse</h3>
-            <p>Deterministic stablecoin settlement operating at subsecond speeds. Meters energy, compute, and physical actions down to the fraction of a cent.</p>
-            <div class="prims"><span class="prim">USDC</span><span class="prim">subsecond</span><span class="prim">metered</span></div>
+            <h3>Settlement</h3>
+            <p>Payments settle in USDC on Base. A single payment confirms in about 1.4 seconds and becomes final when its batch finalizes on Ethereum. High-frequency payments, per pick or per reading, are netted under the mandate's limits and settled in batches. Receipts are deterministic, so anyone holding the inputs can recompute them.</p>
+            <div class="prims"><span class="prim">USDC</span><span class="prim">Base</span><span class="prim">netting</span></div>
             <span class="arch__n" aria-hidden="true">2</span>
           </article>
           <article class="arch__node" role="listitem">
-            <h3>Hybrid verification with a human in the loop</h3>
-            <p>Policies attested in zero knowledge with a C2PA checkpoint. Human operators maintain an absolute final policy gate before critical asset release or heavy machinery activation.</p>
-            <div class="prims"><span class="prim">zk-attestation</span><span class="prim">C2PA</span><span class="prim">policy gate</span></div>
+            <h3>Evidence and release</h3>
+            <p>Each payment can carry evidence: a signed reading from an Arisma gateway, a C2PA manifest on a drone capture, or a policy proof. High-stakes physical actions, releasing a payload or starting heavy machinery, wait for a person to approve. Payments do not.</p>
+            <div class="prims"><span class="prim">signed readings</span><span class="prim">C2PA media</span><span class="prim">release gate</span></div>
             <span class="arch__n" aria-hidden="true">3</span>
           </article>
-          <div class="arch__flow"><span class="seg">delegate</span> <span class="arrow">&rsaquo;</span> <span class="seg">attest</span> <span class="arrow">&rsaquo;</span> <span class="seg">settle</span> <span class="arrow">&rsaquo;</span> <span class="seg">verify</span> <span class="arrow">&rsaquo;</span> <span class="seg">anchor receipt</span></div>
+          <div class="arch__flow"><span class="seg">mandate</span> <span class="arrow">&rsaquo;</span> <span class="seg">evidence</span> <span class="arrow">&rsaquo;</span> <span class="seg">settle</span> <span class="arrow">&rsaquo;</span> <span class="seg">release</span> <span class="arrow">&rsaquo;</span> <span class="seg">receipt</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Which key signs what.</h2>
+          <p>Data center agents and physical machines get different hardware, and the chain checks both the same way.</p>
+        </div>
+        <div class="tablewrap">
+          <table class="apitable trustmodel">
+            <thead><tr><th scope="col">Actor</th><th scope="col">Runs on</th><th scope="col">Key held in</th><th scope="col">Signs</th><th scope="col">Checked by</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Cloud agent</th><td>AMD SEV-SNP or Intel TDX confidential VM</td><td>Session key generated inside the VM</td><td>Payments under its mandate</td><td>Arisma verifies the VM's attestation report before issuing the mandate; the chain verifies each signature</td></tr>
+              <tr><th scope="row">Edge gateway (<a href="/hardware">EnclaveEdge X1</a>)</th><td>Infineon SLB 9670 TPM</td><td>P-256 device identity key and attestation key</td><td>Telemetry envelopes, and the site's payments under its mandate</td><td>Arisma verifies a TPM quote on connect; the chain verifies P-256 via RIP-7212</td></tr>
+              <tr><th scope="row">Owner</th><td>Hardware wallet or passkey</td><td>Owner key</td><td>Creating, changing, and revoking mandates</td><td>The chain</td></tr>
+              <tr><th scope="row">Human approver</th><td>Passkey</td><td>Approval key</td><td>Release of high-stakes physical actions</td><td>The release gate contract</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="prose mt-xl">
+          <p>SEV-SNP and TDX are data center technologies. Devices that cannot run them sit behind an EnclaveEdge X1, whose TPM holds the key.</p>
+          <p>Under ERC-7702 the account's original key keeps full authority and can change delegation at any time. Keep it in a hardware wallet. A leaked mandate is bounded; a leaked owner key is not.</p>
         </div>
         <div class="docrow"><a class="btn btn--primary" href="/access">Request API &amp; enclave access</a><a class="textlink" href="/primitives">See the primitives</a></div>
       </div>
@@ -91,7 +115,7 @@
         <div>
           <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
           <div class="foot__mast">arisma<i>.</i>network</div>
-          <p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p>
+          <p class="foot__tag">Mandates and settlement for AI agents, robots, and physical machines.</p>
         </div>
         <nav aria-label="Footer">
           <ul class="foot__nav">
@@ -101,7 +125,7 @@
             <li><a href="/developers">Developers</a></li>
             <li><a href="/whitepaper">Whitepaper</a></li>
             <li><a href="/security">Security</a></li>
-            <li><a href="/status">Status</a></li>
+            <li><a href="/status">Status (coming)</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
         </nav>
