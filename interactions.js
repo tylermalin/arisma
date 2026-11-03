@@ -14,7 +14,9 @@
   const pauseBtn = $('[data-pause]');
 
   const events = new Map();  // id -> event
-  let filter = '';
+  let filter = new URLSearchParams(location.search).get('twin') || '';
+  const preset = document.querySelector(`input[name="twin"][value="${CSS.escape(filter)}"]`);
+  if (preset) preset.checked = true; else filter = '';
   let paused = false;
   let timer = null;
   let polls = 0;
