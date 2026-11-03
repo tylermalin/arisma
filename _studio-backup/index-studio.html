@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arisma Network: trust &amp; settlement for the agentic economy</title>
+  <meta name="description" content="Hardware-secured session delegation (ERC-7702 / TEEs), zero-knowledge policy attestation, and sub-second stablecoin settlement for autonomous AI agents and physical machines.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+  <link rel="stylesheet" href="./page.css">
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <div class="container nav__in">
+      <a class="wordmark" href="/"><img class="wordmark__mark" src="./assets/arisma-mark.png" alt="" width="30" height="24"><span>Arisma<i>.</i>network</span></a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#architecture">Architecture</a>
+        <a href="#primitives">Primitives</a>
+        <a href="#build">Developers</a>
+        <a href="/whitepaper.pdf">Whitepaper</a>
+      </nav>
+      <div class="nav__cta">
+        <a class="linklike" href="/docs" style="font-size:var(--text-sm);color:var(--color-ink-2)">Docs</a>
+        <a class="btn btn--primary" href="#access">Request access</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO (Stage) ============ -->
+    <section class="hero proof proof--fade" id="top">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <h1>The settlement layer for autonomous agents.</h1>
+          <p class="lead">Hardware-secured delegation, zero-knowledge attestation, sub-second stablecoin clearing.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#access">Request API &amp; enclave access</a>
+            <a class="btn" href="/whitepaper.pdf">Read the technical whitepaper</a>
+          </div>
+          <p class="hero__credit">Approved requests provision a <b>$100</b> testnet credit.</p>
+        </div>
+
+        <div class="hero__screen">
+          <div class="screen-wrap crop">
+            <div class="term" role="img" aria-label="Live telemetry: an AI agent authorizing an ERC-7702 session key, clearing a $0.14 drone charge in 1.4 seconds, and verifying a C2PA field-inspection hash.">
+              <div class="term__bar">
+                <span class="term__title">agent-escrow / mainnet-beta</span>
+                <span class="term__state">settling</span>
+              </div>
+              <div class="term__body" aria-hidden="true">
+                <div class="term__row"><span class="term__t">00:00.0</span><span class="term__fn">agent.<b>delegate</b>(session_key) <span class="term__k">&rsaquo;</span> <span class="term__v">ERC-7702 authorized</span></span><span class="term__ok">ok</span></div>
+                <div class="term__row"><span class="term__t">00:00.3</span><span class="term__fn">enclave.<b>attest</b>(policy) <span class="term__k">&rsaquo;</span> <span class="term__v">TEE zk-proof</span></span><span class="term__ok">verified</span></div>
+                <div class="term__row"><span class="term__t">00:00.9</span><span class="term__fn">clearing.<b>settle</b>(usdc) <span class="term__k">&rsaquo;</span> <span class="term__v">drone charge $0.14</span></span><span class="term__ok">+1.4s</span></div>
+                <div class="term__row"><span class="term__t">00:01.4</span><span class="term__fn">inspect.<b>verify</b>(c2pa) <span class="term__k">&rsaquo;</span> <span class="term__v">field hash 0x9f&hellip;a1c</span></span><span class="term__ok">match</span></div>
+                <div class="term__row"><span class="term__t">00:01.4</span><span class="term__fn">receipt.<b>anchor</b>() <span class="term__k">&rsaquo;</span> <span class="term__v">deterministic</span></span><span class="term__ok">final</span></div>
+                <div class="term__row"><span class="term__t">00:01.4</span><span class="term__fn">await next_delegation<span class="term__cursor" aria-hidden="true"></span></span><span class="term__ok"></span></div>
+              </div>
+            </div>
+            <div class="rail" aria-hidden="true">
+              <span class="rail__tick"><span class="guide-v"></span><span class="readout">latency <b>1.4s</b></span></span>
+              <span class="rail__tick"><span class="guide-v"></span><span class="readout">fee <b>$0.14</b></span></span>
+              <span class="rail__tick"><span class="guide-v"></span><span class="readout">proof <b>zk-TEE</b></span></span>
+              <span class="rail__tick"><span class="guide-v"></span><span class="readout">finality <b>sub-second</b></span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MOONSHOT ============ -->
+    <section class="section moonshot" id="moonshot">
+      <div class="container">
+        <h2>Settlement for every intelligent actor that transacts.</h2>
+        <p class="moonshot__lead">Not just AI agents, but robots, machines, and the software that speaks for them, settling value with no human in the loop.</p>
+        <ul class="actors">
+          <li><span class="actors__n">01</span> AI agents</li>
+          <li><span class="actors__n">02</span> Robots</li>
+          <li><span class="actors__n">03</span> Autonomous machines</li>
+          <li><span class="actors__n">04</span> Intelligent actors</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ ARCHITECTURE DIAGRAM (Map / Diagram) ============ -->
+    <section class="section" id="architecture">
+      <div class="container">
+        <div class="section__head">
+          <h2>One signed path from intent to settled receipt.</h2>
+          <p>An agent proves its authority, the clearinghouse settles the charge, and a human holds the final gate.</p>
+          <span class="section__num">01 / architecture</span>
+        </div>
+
+        <div class="arch rule-top" role="list" aria-label="Settlement path">
+          <article class="arch__node" role="listitem">
+            <h3>Verifiable agent identity &amp; delegation</h3>
+            <p>Session keys scoped by ERC-7702, bound to a hardware enclave, carrying provable consent.</p>
+            <div class="prims"><span class="prim">ERC-7702</span><span class="prim">TEE</span><span class="prim">session keys</span></div>
+            <span class="arch__n" aria-hidden="true">1</span>
+          </article>
+          <article class="arch__node" role="listitem">
+            <h3>Autonomous M2M clearinghouse</h3>
+            <p>Deterministic stablecoin settlement, sub-second, metered to the fraction of a cent.</p>
+            <div class="prims"><span class="prim">USDC</span><span class="prim">sub-second</span><span class="prim">deterministic</span></div>
+            <span class="arch__n" aria-hidden="true">2</span>
+          </article>
+          <article class="arch__node" role="listitem">
+            <h3>Hybrid human-in-the-loop verification</h3>
+            <p>Policy attested in zero knowledge; a C2PA checkpoint a person can hold before release.</p>
+            <div class="prims"><span class="prim">zk-attestation</span><span class="prim">C2PA</span><span class="prim">policy gate</span></div>
+            <span class="arch__n" aria-hidden="true">3</span>
+          </article>
+          <div class="arch__flow"><span class="seg">delegate</span> <span class="arrow">&rsaquo;</span> <span class="seg">attest</span> <span class="arrow">&rsaquo;</span> <span class="seg">settle</span> <span class="arrow">&rsaquo;</span> <span class="seg">verify</span> <span class="arrow">&rsaquo;</span> <span class="seg">anchor receipt</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PILLAR / SPECIMEN CARDS ============ -->
+    <section class="section" id="primitives">
+      <div class="container">
+        <div class="section__head">
+          <h2>Each layer is a payload you can read.</h2>
+          <p>Toggle any card between its JSON envelope and the Rust enclave call.</p>
+          <span class="section__num">02 / primitives</span>
+        </div>
+
+        <div class="pillars">
+          <!-- Pillar 1 -->
+          <article class="pillar crop">
+            <h3>Identity &amp; delegation</h3>
+            <p>A scoped session key, signed in the enclave, bounded by policy.</p>
+            <div class="pillar__spec">
+              <div class="toggle" role="group" aria-label="Identity payload format">
+                <input class="t-json" type="radio" name="p1" id="p1json" checked><label for="p1json">JSON</label>
+                <input class="t-rust" type="radio" name="p1" id="p1rust"><label for="p1rust">Rust</label>
+              </div>
+              <pre class="pay-json"><code><span class="m">// delegation envelope</span>
+{
+  <span class="c">"standard"</span>: <span class="s">"erc-7702"</span>,
+  <span class="c">"session"</span>: <span class="s">"0x7a&hellip;c4"</span>,
+  <span class="c">"enclave"</span>: <span class="s">"tee:sev-snp"</span>,
+  <span class="c">"scope"</span>: [<span class="s">"settle"</span>, <span class="s">"attest"</span>],
+  <span class="c">"expires"</span>: <span class="s">900</span>
+}</code></pre>
+              <pre class="pay-rust"><code><span class="c">let</span> key = enclave
+  .<span class="s">delegate</span>(Erc7702Session {
+    scope: <span class="s">Scope::Settle</span>,
+    ttl: <span class="s">900</span>,
+  })?
+  .<span class="s">attest</span>()?;</code></pre>
+            </div>
+          </article>
+
+          <!-- Pillar 2 -->
+          <article class="pillar crop">
+            <h3>M2M clearinghouse</h3>
+            <p>A settlement request between two machines, cleared deterministically in stablecoin.</p>
+            <div class="pillar__spec">
+              <div class="toggle" role="group" aria-label="Settlement payload format">
+                <input class="t-json" type="radio" name="p2" id="p2json" checked><label for="p2json">JSON</label>
+                <input class="t-rust" type="radio" name="p2" id="p2rust"><label for="p2rust">Rust</label>
+              </div>
+              <pre class="pay-json"><code><span class="m">// settlement</span>
+{
+  <span class="c">"from"</span>: <span class="s">"agent:dispatch"</span>,
+  <span class="c">"to"</span>: <span class="s">"drone:fleet-04"</span>,
+  <span class="c">"asset"</span>: <span class="s">"usdc"</span>,
+  <span class="c">"amount"</span>: <span class="s">"0.14"</span>,
+  <span class="c">"finality_ms"</span>: <span class="s">1400</span>
+}</code></pre>
+              <pre class="pay-rust"><code><span class="c">let</span> rcpt = clearing
+  .<span class="s">settle</span>(Transfer {
+    asset: <span class="s">Asset::Usdc</span>,
+    amount: <span class="s">cents(14)</span>,
+  })
+  .<span class="s">await</span>?;  <span class="m">// 1.4s</span></code></pre>
+            </div>
+          </article>
+
+          <!-- Pillar 3 -->
+          <article class="pillar crop">
+            <h3>Human-in-the-loop</h3>
+            <p>A zk policy proof with a C2PA checkpoint a reviewer can hold.</p>
+            <div class="pillar__spec">
+              <div class="toggle" role="group" aria-label="Verification payload format">
+                <input class="t-json" type="radio" name="p3" id="p3json" checked><label for="p3json">JSON</label>
+                <input class="t-rust" type="radio" name="p3" id="p3rust"><label for="p3rust">Rust</label>
+              </div>
+              <pre class="pay-json"><code><span class="m">// verification gate</span>
+{
+  <span class="c">"policy"</span>: <span class="s">"zk:field-inspect"</span>,
+  <span class="c">"c2pa"</span>: <span class="s">"0x9f&hellip;a1c"</span>,
+  <span class="c">"review"</span>: <span class="s">"human"</span>,
+  <span class="c">"on_hold"</span>: <span class="s">false</span>
+}</code></pre>
+              <pre class="pay-rust"><code><span class="c">let</span> gate = verify
+  .<span class="s">attest_zk</span>(policy)?
+  .<span class="s">checkpoint</span>(C2pa::hash(frame))
+  .<span class="s">require_human</span>(high_stakes);</code></pre>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DEVELOPER & ECOSYSTEM BAR ============ -->
+    <section class="eco" id="build">
+      <div class="container section">
+        <div class="eco__grid">
+          <div>
+            <h2 style="font-size:var(--text-xl);margin-bottom:var(--space-lg)">Start from your terminal.</h2>
+            <div class="cmd">
+              <code><span class="p">npx</span> @arisma-network/agent-escrow-mcp</code>
+              <button class="copy" type="button" aria-live="polite" data-copy="npx @arisma-network/agent-escrow-mcp">copy</button>
+            </div>
+            <div class="cmd">
+              <code><span class="p">cargo</span> add arisma-edge-enclave</code>
+              <button class="copy" type="button" aria-live="polite" data-copy="cargo add arisma-edge-enclave">copy</button>
+            </div>
+          </div>
+
+          <div>
+            <p class="foot__h" style="margin-bottom:var(--space-sm)">Published to</p>
+            <div class="registries" aria-label="Package registries">
+              <a class="reg" href="/registries/npm">npm</a>
+              <a class="reg" href="/registries/pypi">PyPI</a>
+              <a class="reg" href="/registries/crates">crates.io</a>
+              <a class="reg" href="/registries/github">GitHub</a>
+              <a class="reg" href="/registries/langchain">LangChain</a>
+            </div>
+            <p class="readout" style="margin-top:var(--space-md)">The MCP server, Rust edge enclave, and LangChain bindings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REQUEST ACCESS (the close / sign up) ============ -->
+    <section class="section request" id="access">
+      <div class="container">
+        <div class="request__grid">
+          <div class="request__aside">
+            <div class="request__amt">$100</div>
+            <h2>Request API &amp; enclave access.</h2>
+            <p>Approval provisions your testnet credit and a scoped enclave key within a business day.</p>
+            <ul class="request__points">
+              <li><span class="tick">01</span> $100 testnet credit</li>
+              <li><span class="tick">02</span> A hardware-scoped enclave key</li>
+              <li><span class="tick">03</span> The agent-escrow MCP and edge-enclave SDK</li>
+            </ul>
+          </div>
+
+          <form class="access crop" id="request-form" novalidate>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-name">Name</label>
+                <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Ada Lovelace">
+              </div>
+              <div class="field">
+                <label for="f-email">Work email</label>
+                <input id="f-email" name="email" type="email" autocomplete="email" required placeholder="ada@company.com">
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-org">Organization</label>
+              <input id="f-org" name="org" type="text" autocomplete="organization" placeholder="Company or team">
+            </div>
+            <div class="field">
+              <label for="f-use">Primary use</label>
+              <select id="f-use" name="use">
+                <option>Autonomous AI agents</option>
+                <option>Robotics &amp; drone fleets</option>
+                <option>Machine-to-machine payments</option>
+                <option>Research or evaluation</option>
+              </select>
+            </div>
+            <button class="btn btn--primary" type="submit">Request API &amp; enclave access</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite" data-endpoint="POST /v1/access-requests">Not yet wired: point this form at <b>POST /v1/access-requests</b> to provision.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER (index columns) ============ -->
+  <footer class="site-footer proof">
+    <div class="container">
+      <img class="foot__mark" src="./assets/arisma-mark.png" alt="" width="55" height="44">
+      <div class="foot__mast">Arisma<i>.</i>network</div>
+      <div class="foot__cols">
+        <div>
+          <p class="foot__tag">Settlement for AI agents and physical machines.</p>
+          <a class="btn" href="/whitepaper.pdf" style="margin-top:var(--space-md)">Read the whitepaper (v1.0)</a>
+        </div>
+        <div>
+          <p class="foot__h">Platform</p>
+          <ul>
+            <li><a href="#architecture">Architecture</a></li>
+            <li><a href="#primitives">Primitives</a></li>
+            <li><a href="/clearinghouse">Clearinghouse</a></li>
+            <li><a href="/enclaves">Enclaves</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="foot__h">Developers</p>
+          <ul>
+            <li><a href="/docs/quickstart">Quickstart</a></li>
+            <li><a href="/docs/agent-escrow-mcp">agent-escrow-mcp</a></li>
+            <li><a href="/docs/edge-enclave">edge-enclave</a></li>
+            <li><a href="/whitepaper.pdf">Whitepaper</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="foot__h">Company</p>
+          <ul>
+            <li><a href="#access">Request access</a></li>
+            <li><a href="/security">Security</a></li>
+            <li><a href="/status">Status</a></li>
+            <li><a href="mailto:hello@arisma.network">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot__meta">
+        <span>&copy; 2026 Arisma Network</span>
+        <span class="readout">ERC-7702, TEE, zk-attestation, C2PA, USDC</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // progressive enhancement: copy-to-clipboard; no-JS leaves the command selectable
+    document.querySelectorAll('.copy').forEach((b) => {
+      b.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(b.dataset.copy);
+          const prev = b.textContent; b.textContent = 'copied';
+          setTimeout(() => { b.textContent = prev; }, 1400);
+        } catch (e) { /* clipboard unavailable; command stays selectable */ }
+      });
+    });
+
+    // access request: no backend yet, so report honestly rather than fake a success
+    const form = document.getElementById('request-form');
+    if (form) form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const status = document.getElementById('form-status');
+      const email = document.getElementById('f-email');
+      if (!email.value || !email.checkValidity()) { email.focus(); return; }
+      status.innerHTML = 'Captured locally. Wire <b>' + status.dataset.endpoint + '</b> to deliver this request.';
+    });
+
+    // :has() fallback for the JSON/Rust payload toggle on older engines
+    if (!CSS.supports || !CSS.supports('selector(:has(*))')) {
+      document.querySelectorAll('.pillar').forEach((card) => {
+        card.querySelectorAll('.toggle input').forEach((r) => r.addEventListener('change', () => {
+          const rust = card.querySelector('.t-rust').checked;
+          card.querySelector('.pay-json').style.display = rust ? 'none' : 'block';
+          card.querySelector('.pay-rust').style.display = rust ? 'block' : 'none';
+        }));
+      });
+    }
+  </script>
+</body>
+</html>
