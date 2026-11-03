@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactions: live machine to machine settlements | Arisma Network</title>
-  <meta name="description" content="A simulated testnet stream of machine payments under mandates: drone charges, robot picks, and metered energy.">
+  <title>Interactions: digital twins, streaming live | Arisma Network</title>
+  <meta name="description" content="Three digital twins, a drone dock, a warehouse robot cell, and an autonomous EV depot, streaming simulated mandate payments around the clock.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
@@ -16,18 +16,19 @@
   <meta name="theme-color" content="#000000">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Arisma Network">
-  <meta property="og:title" content="Interactions: live machine to machine settlements | Arisma Network">
-  <meta property="og:description" content="A simulated testnet stream of machine payments under mandates: drone charges, robot picks, and metered energy.">
+  <meta property="og:title" content="Interactions: digital twins, streaming live | Arisma Network">
+  <meta property="og:description" content="Three digital twins, a drone dock, a warehouse robot cell, and an autonomous EV depot, streaming simulated mandate payments around the clock.">
   <meta property="og:url" content="https://arisma.network/interactions">
   <meta property="og:image" content="https://arisma.network/assets/arisma-hero.jpg">
   <meta property="og:image:width" content="1800">
   <meta property="og:image:height" content="1324">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Interactions: live machine to machine settlements | Arisma Network">
-  <meta name="twitter:description" content="A simulated testnet stream of machine payments under mandates: drone charges, robot picks, and metered energy.">
+  <meta name="twitter:title" content="Interactions: digital twins, streaming live | Arisma Network">
+  <meta name="twitter:description" content="Three digital twins, a drone dock, a warehouse robot cell, and an autonomous EV depot, streaming simulated mandate payments around the clock.">
   <meta name="twitter:image" content="https://arisma.network/assets/arisma-hero.jpg">
   <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},2500)</script>
   <script src="/site.js" defer></script>
+  <script src="/interactions.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -51,38 +52,85 @@
   <main id="main">
     <section class="subhero">
       <div class="container">
-        <h1>Machine to machine settlements, simulated.</h1>
-        <p class="subhero__sub">Realtime observability into autonomous asset transactions.</p>
+        <h1>Three digital twins, running around the clock.</h1>
+        <p class="subhero__sub">Simulated projects that behave like live deployments. Every event follows the same path: mandate, evidence, settle, release, receipt.</p>
         <span class="subhero__tag">platform / interactions</span>
       </div>
     </section>
+
     <section class="section">
       <div class="container">
-        <div class="prose"><p>The Arisma settlement engine processes frequent, low latency payments between machines, each under its own mandate, with no person in the payment loop. Below is a simulated testnet stream showing how municipal, logistics, and robotic fleets would settle.</p></div>
-
-        <div class="feed__head mt-2xl">
-          <h2 class="h-sub">Simulated testnet stream</h2>
+        <div class="twinnote">
           <span class="chip chip--live">Simulated</span>
+          <p>These are digital twins, not real machines or payments. Each twin runs on a seeded clock, so the stream never stops and every visitor sees the same events. Amounts are illustrative. Receipts are real SHA-256 digests of each payment's inputs, so you can recompute them.</p>
         </div>
-        <div class="metrics">
-          <div class="metric"><div class="metric__v">1,420</div><div class="metric__k">Active machines paying concurrently</div></div>
-          <div class="metric"><div class="metric__v">1.4s</div><div class="metric__k">Average confirmation, Base Sepolia</div></div>
-          <div class="metric"><div class="metric__v">$482,910.12</div><div class="metric__k">Total volume, 24h (USDC equivalent)</div></div>
+
+        <div class="twins mt-xl" data-twins>
+          <article class="twin" data-twin="drone-dock">
+            <header class="twin__head"><span class="twin__n">DD-01</span><h2>Drone dock</h2><p>Utility corridor inspection. 3 drones, 3 pads.</p></header>
+            <ul class="twin__units" data-units></ul>
+            <dl class="twin__stats"><div><dt>Settled, last hour</dt><dd data-usdc>&mdash;</dd></div><div><dt>Events, last hour</dt><dd data-events>&mdash;</dd></div></dl>
+            <p class="twin__how">Paid per verified capture on release. Each pad charge is a single $0.14 payment.</p>
+          </article>
+          <article class="twin" data-twin="warehouse">
+            <header class="twin__head"><span class="twin__n">WH-07</span><h2>Warehouse cell</h2><p>Robot picking, regional fulfillment. 6 arms.</p></header>
+            <ul class="twin__units" data-units></ul>
+            <dl class="twin__stats"><div><dt>Settled, last hour</dt><dd data-usdc>&mdash;</dd></div><div><dt>Events, last hour</dt><dd data-events>&mdash;</dd></div></dl>
+            <p class="twin__how">$0.002 per pick, netted under the mandate and settled in a batch every five minutes.</p>
+          </article>
+          <article class="twin" data-twin="ev-depot">
+            <header class="twin__head"><span class="twin__n">EVD-03</span><h2>EV depot</h2><p>Autonomous fleet charging. 6 chargers, 14 vehicles.</p></header>
+            <ul class="twin__units" data-units></ul>
+            <dl class="twin__stats"><div><dt>Settled, last hour</dt><dd data-usdc>&mdash;</dd></div><div><dt>Events, last hour</dt><dd data-events>&mdash;</dd></div></dl>
+            <p class="twin__how">$0.31 per metered kWh, netted per session under a $30 cap. A session stops when it reaches the cap.</p>
+          </article>
+        </div>
+
+        <div class="metrics mt-2xl" data-metrics>
+          <div class="metric"><div class="metric__v" data-m="usdc">&mdash;</div><div class="metric__k">USDC settled across all twins, last hour</div></div>
+          <div class="metric"><div class="metric__v" data-m="actions">&mdash;</div><div class="metric__k">Netted actions, last hour</div></div>
+          <div class="metric"><div class="metric__v" data-m="confirmed">&mdash;</div><div class="metric__k">Average confirmation, simulated Base Sepolia</div></div>
         </div>
 
         <div class="feed__head mt-3xl">
-          <h2 class="h-sub">Ledger feed</h2>
-          <span class="mono note">testnet, illustrative</span>
+          <h2 class="h-sub">Stream</h2>
+          <div class="streambar">
+            <div class="opts" role="radiogroup" aria-label="Filter by twin">
+              <label class="opt"><input type="radio" name="twin" value="" checked><span>All</span></label>
+              <label class="opt"><input type="radio" name="twin" value="drone-dock"><span>Drone dock</span></label>
+              <label class="opt"><input type="radio" name="twin" value="warehouse"><span>Warehouse</span></label>
+              <label class="opt"><input type="radio" name="twin" value="ev-depot"><span>EV depot</span></label>
+            </div>
+            <button class="opt-btn" type="button" data-pause aria-pressed="false">Pause</button>
+          </div>
         </div>
-        <div class="ruled" role="table" aria-label="Simulated settlement ledger">
-          <div class="feed__row"><span class="t">14:02:11</span><span class="what">Drone charge, fleet-04 pad-02</span><span class="amt">$0.14</span><span class="proof asset">USDC</span><span class="proof">sig 0x9f&hellip;a1c</span></div>
-          <div class="feed__row"><span class="t">14:02:09</span><span class="what">Robot pick, cell-7 handoff</span><span class="amt">$0.002</span><span class="proof asset">USDC</span><span class="proof">netted 0x4b&hellip;77e</span></div>
-          <div class="feed__row"><span class="t">14:02:06</span><span class="what">EV energy, metered 2.1 kWh</span><span class="amt">$0.651</span><span class="proof asset">USDC</span><span class="proof">sig 0xd3&hellip;0a2</span></div>
-          <div class="feed__row"><span class="t">14:02:02</span><span class="what">Sensor reading, field-inspect</span><span class="amt">$0.0004</span><span class="proof asset">USDC</span><span class="proof">netted 0x1e&hellip;5c9</span></div>
-          <div class="feed__row"><span class="t">14:01:58</span><span class="what">Drone charge, fleet-01 pad-05</span><span class="amt">$0.14</span><span class="proof asset">USDC</span><span class="proof">sig 0x7a&hellip;b14</span></div>
-          <div class="feed__row"><span class="t">14:01:54</span><span class="what">Robot pick, cell-3 handoff</span><span class="amt">$0.002</span><span class="proof asset">USDC</span><span class="proof">netted 0xc0&hellip;9f1</span></div>
-        </div>
+        <p class="streamstatus" data-status aria-live="polite">Connecting to the stream.</p>
+        <ol class="stream" data-stream aria-label="Digital twin event stream"></ol>
+        <noscript><p class="note">The live stream needs JavaScript. You can read it directly at <a href="/api/stream">/api/stream</a>.</p></noscript>
+      </div>
+    </section>
 
+    <section class="section">
+      <div class="container">
+        <div class="hwsplit" id="api">
+          <div class="section__head">
+            <h2>Read the stream yourself.</h2>
+            <p>The same feed is a public JSON endpoint. Ask for any moment in the past and you get the same events every time, which is what makes each receipt checkable.</p>
+          </div>
+          <div>
+            <pre class="codeblock"><code><span class="m"># the last 60 seconds</span>
+curl https://www.arisma.network/api/stream
+
+<span class="m"># 5 minutes of the warehouse, ending at a fixed time</span>
+curl <span class="s">"https://www.arisma.network/api/stream?twin=warehouse&amp;window=300&amp;at=1793736000000"</span></code></pre>
+            <dl class="hwfields mt-lg">
+              <div><dt><code>at</code></dt><dd>End of the window in milliseconds. Past windows never change and are cached for a day.</dd></div>
+              <div><dt><code>window</code></dt><dd>Seconds to return, 1 to 900. Defaults to 60.</dd></div>
+              <div><dt><code>twin</code></dt><dd><code>drone-dock</code>, <code>warehouse</code>, or <code>ev-depot</code>.</dd></div>
+              <div><dt><code>events[]</code></dt><dd>Each event has a type (telemetry, evidence, payment, settlement, release, hold, rejected), the actor, its mandate, and for settlements a receipt and confirmation time.</dd></div>
+            </dl>
+          </div>
+        </div>
         <div class="docrow"><a class="btn btn--primary" href="/access">Request API &amp; enclave access</a><a class="textlink" href="/architecture">See the architecture</a></div>
       </div>
     </section>
