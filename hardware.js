@@ -17,20 +17,20 @@
     const say = (kind, html) => { out.className = 'result is-' + kind; out.innerHTML = html; };
     const boot = () => {
       clearTimeout(timer); clear();
-      say('wait', '<b>Booting.</b> Each stage is measured before the next one runs.');
+      say('wait', '<b>Booting.</b> Each stage is verified or measured before the next one runs.');
       let i = 0;
       const step = () => {
         const s = stages[i];
         if (tampered && s.dataset.stage === 'kernel') {
           s.classList.add('is-fail');
           stages.slice(i + 1).forEach((x) => x.classList.add('is-halt'));
-          say('bad', '<b>Boot halted.</b> The kernel measurement in PCR 4 does not match. No container starts, so the gateway never signs anything on the modified system.');
+          say('bad', '<b>Boot halted.</b> The kernel measurement does not match, so the TPM will not unseal the signing key. No container starts, and the modified system cannot sign anything.');
           return;
         }
         s.classList.add('is-ok');
         i += 1;
         if (i < stages.length) timer = setTimeout(step, reduced ? 0 : 450);
-        else say('ok', '<b>Verified.</b> Every measurement matched. Containers are running and the TPM will sign telemetry.');
+        else say('ok', '<b>Verified.</b> Every measurement matched, the TPM unsealed the signing key, and containers are running.');
       };
       step();
     };
@@ -48,7 +48,7 @@
   if (box && window.crypto && crypto.subtle) {
     const pv = (k) => $(`[data-pv="${k}"]`, box);
     const base = {
-      trust_telemetry: { measured_boot_status: 'verified', hardware_tamper_tripped: false, internal_enclave_timestamp: '2026-11-03T18:25:34.012Z', packet_sequence_counter: 1048576 },
+      trust_telemetry: { attestation: { quote: '\u2026', nonce: '\u2026' }, hardware_tamper_tripped: false, internal_enclave_timestamp: '2026-11-03T18:25:34.012Z', packet_sequence_counter: 1048576 },
       payload: { vertical: 'industrial_machinery', local_ingest_protocol: 'modbus_tcp', source_actor_id: 'cnc_milling_floor_03' },
     };
     const digest = async (rpm, psi) => {

@@ -691,3 +691,17 @@ button.textlink { border: 0; background: none; cursor: pointer; font-family: inh
 .hwfig { margin: 0; }
 .hwfig img { display: block; width: 100%; height: auto; border-radius: var(--radius-card); }
 .hwfig figcaption { margin-top: var(--space-sm); max-width: 72ch; font-size: var(--text-sm); line-height: var(--lh-sm); color: var(--color-muted); }
+
+/* homepage: terminal block without commands until packages publish */
+.eco__text { color: var(--color-ink-2); max-width: 52ch; margin: 0; }
+.eco__cta { display: flex; flex-wrap: wrap; gap: var(--space-sm) var(--space-lg); align-items: center; align-self: end; }
+
+/* whitepaper: limits box and threat table */
+.caveat { border: var(--rule-hair) solid var(--color-rule); border-radius: var(--radius-card); background: var(--color-paper-2); padding: var(--space-lg); margin: var(--space-xl) 0; }
+.caveat__tag { font-family: var(--font-mono); font-size: var(--text-xs); line-height: var(--lh-xs); color: var(--color-ink-2); }
+.caveat p { margin: var(--space-xs) 0 0; color: var(--color-ink-2); font-size: var(--text-md); line-height: var(--lh-md); text-wrap: pretty; }
+.threats { min-width: 40rem; }
+.threats tbody th { width: 28%; }
+.trustmodel { min-width: 60rem; }
+.trustmodel a { color: var(--color-accent); }
+.statusline--muted { display: flex; width: fit-content; color: var(--color-muted); margin-top: calc(-1 * var(--space-sm)); }

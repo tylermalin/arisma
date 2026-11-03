@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Whitepaper: the Arisma protocol, interactive edition | Arisma Network</title>
-  <meta name="description" content="Economic security models for autonomous machine economies: enclaves secured in hardware, zero knowledge attestation for physical telemetry, and deterministic stablecoin microclearing.">
+  <meta name="description" content="Mandates, evidence, and settlement for autonomous machines.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
@@ -17,14 +17,14 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Arisma Network">
   <meta property="og:title" content="Whitepaper: the Arisma protocol, interactive edition | Arisma Network">
-  <meta property="og:description" content="Economic security models for autonomous machine economies: enclaves secured in hardware, zero knowledge attestation for physical telemetry, and deterministic stablecoin microclearing.">
+  <meta property="og:description" content="Mandates, evidence, and settlement for autonomous machines.">
   <meta property="og:url" content="https://arisma.network/whitepaper">
   <meta property="og:image" content="https://arisma.network/assets/arisma-hero.jpg">
   <meta property="og:image:width" content="1800">
   <meta property="og:image:height" content="1324">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Whitepaper: the Arisma protocol, interactive edition | Arisma Network">
-  <meta name="twitter:description" content="Economic security models for autonomous machine economies: enclaves secured in hardware, zero knowledge attestation for physical telemetry, and deterministic stablecoin microclearing.">
+  <meta name="twitter:description" content="Mandates, evidence, and settlement for autonomous machines.">
   <meta name="twitter:image" content="https://arisma.network/assets/arisma-hero.jpg">
   <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},2500)</script>
   <script src="/site.js" defer></script>
@@ -54,7 +54,7 @@
     <section class="subhero">
       <div class="container">
         <h1>The Arisma protocol, explained by running it.</h1>
-        <p class="subhero__sub">Five short chapters on economic security for autonomous machine economies. Each one gives you a working model to try and a question to check it landed.</p>
+        <p class="subhero__sub">Six short chapters on mandates, evidence, and settlement for autonomous machines. Each one gives you a working model to try and a question to check it landed.</p>
         <span class="subhero__tag">resources / whitepaper v1.0</span>
       </div>
     </section>
@@ -63,16 +63,17 @@
       <div class="container">
         <div class="wp">
           <nav class="wp-rail" aria-label="Chapters">
-            <p class="wp-rail__meta">5 chapters &middot; about 12 minutes</p>
+            <p class="wp-rail__meta">6 chapters &middot; about 15 minutes</p>
             <ol>
               <li><a href="#ch1" data-ch="1"><span class="wp-rail__n">01</span><span>Why machines need new rails</span></a></li>
               <li><a href="#ch2" data-ch="2"><span class="wp-rail__n">02</span><span>Trust model</span></a></li>
               <li><a href="#ch3" data-ch="3"><span class="wp-rail__n">03</span><span>Settlement topology</span></a></li>
               <li><a href="#ch4" data-ch="4"><span class="wp-rail__n">04</span><span>Attestation</span></a></li>
               <li><a href="#ch5" data-ch="5"><span class="wp-rail__n">05</span><span>Economic security</span></a></li>
+              <li><a href="#ch6" data-ch="6"><span class="wp-rail__n">06</span><span>Threat model</span></a></li>
               <li><a href="#glossary"><span class="wp-rail__n">&rsaquo;</span><span>Glossary</span></a></li>
             </ol>
-            <p class="wp-rail__score" aria-live="polite"><span data-score>0</span> of 5 checks passed</p>
+            <p class="wp-rail__score" aria-live="polite"><span data-score>0</span> of 6 checks passed</p>
             <button class="wp-reset" type="button" hidden>Reset progress</button>
           </nav>
 
@@ -83,7 +84,6 @@
             </div>
             <div class="docrow">
               <a class="btn btn--primary" href="#ch1">Start chapter 01</a>
-              <span class="textlink is-disabled" aria-disabled="true">PDF coming soon</span>
             </div>
 
             <!-- ============ 01 ============ -->
@@ -92,7 +92,7 @@
               <h2 id="ch1-title">Why machines need new rails.</h2>
               <div class="prose">
                 <p>Card networks were designed around a person at a checkout. They price in credit risk, settle in batches, and charge a fixed fee per transaction that makes sense on a $40 purchase. A drone buying $0.14 of charge, a robot paid per pick, or a sensor selling a single reading breaks every one of those assumptions.</p>
-                <p>Machines need three things instead: authority they can prove with no person present, settlement that reaches <a class="term" href="#g-finality">finality</a> in seconds, and behavior that is bounded and checkable. The rest of this paper builds those three properties, one layer at a time.</p>
+                <p>Machines need three things instead: authority they can prove with no person present, payments that confirm in seconds and reach <a class="term" href="#g-finality">finality</a> soon after, and behavior that is bounded and checkable. The rest of this paper builds those three properties, one layer at a time.</p>
               </div>
 
               <div class="lab" data-lab="rails">
@@ -113,16 +113,16 @@
                   <table class="wp-table">
                     <thead><tr><th scope="col"></th><th scope="col">Card rails</th><th scope="col">Arisma</th></tr></thead>
                     <tbody>
-                      <tr><th scope="row">Who authorizes</th><td>A cardholder</td><td>A scoped <a class="term" href="#g-session">session key</a></td></tr>
-                      <tr><th scope="row">When it settles</th><td>In batches, typically one to two business days</td><td>1.4s finality on the drone charge path</td></tr>
-                      <tr><th scope="row">Smallest practical payment</th><td>Dollars, because of the fixed fee</td><td>Fractions of a cent</td></tr>
+                      <tr><th scope="row">Who authorizes</th><td>A cardholder</td><td>A scoped <a class="term" href="#g-mandate">mandate</a></td></tr>
+                      <tr><th scope="row">When it settles</th><td>In batches, typically one to two business days</td><td>About 1.4s confirmation on Base; final once the batch finalizes on Ethereum</td></tr>
+                      <tr><th scope="row">Smallest practical payment</th><td>Dollars, because of the fixed fee</td><td>Fractions of a cent, through <a class="term" href="#g-netting">netting</a>. A single on-chain transfer still costs more than a $0.0004 reading, so small payments are aggregated under the mandate.</td></tr>
                     </tbody>
                   </table>
                 </div>
                 <p class="note">Card pricing uses a commonly published online rate of 2.9% + $0.30. Illustrative, not a quote.</p>
               </div>
 
-              <aside class="keyidea"><span class="keyidea__tag">Key idea</span><p>When the fixed cost of a payment is larger than the payment, the rail decides what machines can buy. Arisma removes the fixed cost and the person from the loop, not the accountability.</p></aside>
+              <aside class="keyidea"><span class="keyidea__tag">Key idea</span><p>When the fixed cost of a payment is larger than the payment, the rail decides what machines can buy. Arisma spreads the fixed cost across many actions and takes the person out of the payment, not the accountability.</p></aside>
 
               <form class="check" data-check="1" data-answer="b">
                 <fieldset>
@@ -140,43 +140,44 @@
               <p class="wp-ch__n">Chapter 02</p>
               <h2 id="ch2-title">Trust model: authority without exposing keys.</h2>
               <div class="prose">
-                <p>An agent needs to act on its owner's behalf without holding the owner's master key. Arisma issues it a <a class="term" href="#g-session">session key</a>: a narrow, expiring grant of authority, defined with <a class="term" href="#g-erc7702">ERC-7702</a> and signed inside a <a class="term" href="#g-enclave">hardware enclave</a> such as <a class="term" href="#g-sevsnp">AMD SEV-SNP</a> or <a class="term" href="#g-tdx">Intel TDX</a>.</p>
-                <p>The enclave proves what code it runs through <a class="term" href="#g-attestation">remote attestation</a> before any session is trusted. The master key never leaves it. What leaves is a key that can do a few named things, for a few minutes, and nothing else.</p>
+                <p>An agent needs to act on its owner's behalf without holding the owner's master key. Arisma issues it a <a class="term" href="#g-mandate">mandate</a>: a narrow, expiring grant of authority on a smart account. The account uses <a class="term" href="#g-erc7702">ERC-7702</a> to point at Arisma's permission module, and the mandate's key lives in hardware. For agents in a data center, that is an <a class="term" href="#g-sevsnp">AMD SEV-SNP</a> or <a class="term" href="#g-tdx">Intel TDX</a> confidential VM. For physical machines, it is the <a class="term" href="#g-tpm">TPM</a> in an <a href="/hardware">EnclaveEdge X1</a> gateway.</p>
+                <p>Before a mandate is issued, Arisma checks the hardware through <a class="term" href="#g-attestation">remote attestation</a>: a confidential VM's attestation report, or the X1's TPM quote. The owner key stays with the owner. What the machine holds is a key that can do a few named things, for a few minutes, and nothing else.</p>
               </div>
 
               <div class="lab" data-lab="session">
-                <div class="lab__head"><h3>Issue a session key, then attack it</h3><span class="lab__tag">try it</span></div>
+                <div class="lab__head"><h3>Issue a mandate, then attack it</h3><span class="lab__tag">try it</span></div>
                 <div class="lab__grid">
                   <div>
                     <span class="lab__label" id="scope-l">Scope</span>
                     <div class="opts" role="group" aria-labelledby="scope-l">
-                      <label class="opt"><input type="checkbox" name="scope" value="settle" checked><span>settle</span></label>
+                      <label class="opt"><input type="checkbox" name="scope" value="pay" checked><span>pay</span></label>
                       <label class="opt"><input type="checkbox" name="scope" value="attest" checked><span>attest</span></label>
                       <label class="opt"><input type="checkbox" name="scope" value="withdraw"><span>withdraw</span></label>
                     </div>
                     <label class="lab__label mt-lg" for="ttl">Expires after <b class="lab__val" data-out="ttl">15 min</b></label>
                     <input type="range" id="ttl" min="60" max="3600" step="60" value="900">
                   </div>
-                  <pre class="codeblock lab__code" aria-label="Delegation envelope"><code data-out="envelope"></code></pre>
+                  <pre class="codeblock lab__code" aria-label="Mandate"><code data-out="envelope"></code></pre>
                 </div>
                 <span class="lab__label mt-lg" id="scn-l">Run a scenario</span>
                 <div class="opts" role="group" aria-labelledby="scn-l">
-                  <button class="opt-btn" type="button" data-scn="leak">The session key leaks</button>
+                  <button class="opt-btn" type="button" data-scn="leak">The mandate key leaks</button>
                   <button class="opt-btn" type="button" data-scn="withdraw">The agent tries to withdraw</button>
                   <button class="opt-btn" type="button" data-scn="replay">Someone replays it after expiry</button>
-                  <button class="opt-btn" type="button" data-scn="binary">A modified agent asks for a key</button>
+                  <button class="opt-btn" type="button" data-scn="binary">A modified agent asks for a mandate</button>
+                  <button class="opt-btn" type="button" data-scn="owner">The owner key leaks</button>
                 </div>
                 <p class="result" data-out="scenario" aria-live="polite">Pick a scenario to see what the protocol does.</p>
-                <p class="note">Illustrative envelope. Field names follow the primitives page.</p>
+                <p class="note">Illustrative mandate. Field names follow the primitives page.</p>
               </div>
 
               <aside class="keyidea"><span class="keyidea__tag">Key idea</span><p>Security comes from the shape of the grant. A narrow scope and a short expiry turn a stolen key from a disaster into a small, short incident.</p></aside>
 
               <form class="check" data-check="2" data-answer="b">
                 <fieldset>
-                  <legend><span class="check__tag">Check yourself</span>A session key leaks from a compromised agent host. What limits the damage?</legend>
+                  <legend><span class="check__tag">Check yourself</span>A mandate key leaks from a compromised agent host. What limits the damage?</legend>
                   <label class="check__opt" data-fb="Only a key issued with unlimited scope and no expiry would allow that, which is exactly what the protocol avoids."><input type="radio" name="q2" value="a"><span>Nothing. The attacker now controls the account</span></label>
-                  <label class="check__opt" data-fb="Right. It can only perform the named actions until it expires, and the master key stays in the enclave."><input type="radio" name="q2" value="b"><span>The key's scope and expiry</span></label>
+                  <label class="check__opt" data-fb="Right. It can only perform the named actions, within its cap, until it expires. The owner key was never on the machine."><input type="radio" name="q2" value="b"><span>The mandate's scope, cap, and expiry</span></label>
                   <label class="check__opt" data-fb="At machine speed there is no time to call anyone. The bound has to live in the key itself."><input type="radio" name="q2" value="c"><span>The owner noticing and calling support</span></label>
                 </fieldset>
                 <p class="check__fb" aria-live="polite"></p>
@@ -186,20 +187,20 @@
             <!-- ============ 03 ============ -->
             <section class="wp-ch" id="ch3" aria-labelledby="ch3-title">
               <p class="wp-ch__n">Chapter 03</p>
-              <h2 id="ch3-title">Settlement topology: deterministic, subsecond, metered.</h2>
+              <h2 id="ch3-title">Settlement topology: netted, deterministic, checkable.</h2>
               <div class="prose">
-                <p>Every interaction follows the same path: delegate, attest, settle, verify, anchor receipt. The actor changes, a drone, a robot arm, a vehicle, a sensor, but the path does not.</p>
-                <p>Microsettlements clear on <a class="term" href="#g-l2">Layer 2</a> stablecoin rails in <a class="term" href="#g-usdc">USDC</a> with subsecond finality, metered to the fraction of a cent so a single charge, pick, or reading can carry its own payment. Clearing is <a class="term" href="#g-determinism">deterministic</a>: the same inputs always produce the same receipt, so anyone can check a receipt later.</p>
+                <p>Every interaction follows the same path: mandate, evidence, settle, release, receipt. The actor changes, a drone, a robot arm, a vehicle, a sensor, but the path does not.</p>
+                <p>Payments settle in <a class="term" href="#g-usdc">USDC</a> on Base, a <a class="term" href="#g-l2">Layer 2</a>. A single payment, like a drone charge, confirms in about 1.4 seconds. Per-action payments, like a pick or a reading, are <a class="term" href="#g-netting">netted</a> under the mandate and settled in batches, so each action still carries its own price and its own receipt. Receipts are <a class="term" href="#g-determinism">deterministic</a>: the same inputs always produce the same receipt, so anyone can check one later.</p>
               </div>
 
               <div class="lab" data-lab="path">
                 <div class="lab__head"><h3>Walk one settlement</h3><span class="lab__tag">try it</span></div>
                 <ol class="path">
-                  <li><button type="button" data-step="0"><span class="path__dot">1</span>delegate</button></li>
-                  <li><button type="button" data-step="1"><span class="path__dot">2</span>attest</button></li>
+                  <li><button type="button" data-step="0"><span class="path__dot">1</span>mandate</button></li>
+                  <li><button type="button" data-step="1"><span class="path__dot">2</span>evidence</button></li>
                   <li><button type="button" data-step="2"><span class="path__dot">3</span>settle</button></li>
-                  <li><button type="button" data-step="3"><span class="path__dot">4</span>verify</button></li>
-                  <li><button type="button" data-step="4"><span class="path__dot">5</span>anchor</button></li>
+                  <li><button type="button" data-step="3"><span class="path__dot">4</span>release</button></li>
+                  <li><button type="button" data-step="4"><span class="path__dot">5</span>receipt</button></li>
                 </ol>
                 <p class="path__detail" data-out="step" aria-live="polite">Press play, or pick a step.</p>
                 <div class="docrow mt-lg"><button class="btn btn--primary" type="button" data-play>Play the settlement</button></div>
@@ -223,6 +224,10 @@
                 <p class="note">Illustrative. Real receipts follow the encoding in the full specification.</p>
               </div>
 
+              <div class="prose">
+                <p>A receipt being deterministic makes it checkable. <a class="term" href="#g-finality">Finality</a> is a separate question: it is the point after which the chain cannot reverse the payment. On Base that point is Ethereum finalization, not the first confirmation.</p>
+              </div>
+
               <aside class="keyidea"><span class="keyidea__tag">Key idea</span><p>Determinism turns a receipt into evidence. Anyone holding the inputs can recompute it and get the same answer.</p></aside>
 
               <form class="check" data-check="3" data-answer="a">
@@ -241,7 +246,8 @@
               <p class="wp-ch__n">Chapter 04</p>
               <h2 id="ch4-title">Attestation: proving what happened in the physical world.</h2>
               <div class="prose">
-                <p>Paying a machine is only safe if you can trust what it reports. Before value or machinery is released, Arisma checks three things: the enclave runs the expected code, the policy holds as shown by a <a class="term" href="#g-zk">zero knowledge proof</a>, and the physical telemetry matches its <a class="term" href="#g-c2pa">C2PA</a> provenance hash.</p>
+                <p>Paying a machine is only safe if you can trust what it reports. Before value or machinery is released, Arisma checks three things: the key that signed is held in attested hardware, the policy holds, and the physical telemetry carries a valid signature from a known gateway, and media captures carry a <a class="term" href="#g-c2pa">C2PA</a> manifest.</p>
+                <p>Policy proofs, which would let the gate check a rule without seeing the readings behind it, are on the roadmap. On testnet today, the gate checks signed readings against the policy directly.</p>
                 <p>For high stakes actions, a person holds the final gate. Releasing a payload or starting heavy machinery waits for a human decision, however many automated checks have passed.</p>
               </div>
 
@@ -249,9 +255,9 @@
                 <div class="lab__head"><h3>Run the verification gate</h3><span class="lab__tag">try it</span></div>
                 <div class="lab__grid">
                   <div class="switches">
-                    <label class="sw"><span>Enclave attestation verifies</span><input type="checkbox" role="switch" name="enclave" checked></label>
-                    <label class="sw"><span>Zero knowledge policy proof verifies</span><input type="checkbox" role="switch" name="zk" checked></label>
-                    <label class="sw"><span>Telemetry matches its C2PA hash</span><input type="checkbox" role="switch" name="c2pa" checked></label>
+                    <label class="sw"><span>Hardware attestation verifies</span><input type="checkbox" role="switch" name="enclave" checked></label>
+                    <label class="sw"><span>Policy check passes</span><input type="checkbox" role="switch" name="zk" checked></label>
+                    <label class="sw"><span>Reading carries a valid gateway signature</span><input type="checkbox" role="switch" name="c2pa" checked></label>
                     <label class="sw"><span>High stakes action</span><input type="checkbox" role="switch" name="stakes"></label>
                     <div class="human" data-human hidden>
                       <span class="lab__label" id="op-l">Operator decision</span>
@@ -264,9 +270,9 @@
                   </div>
                   <div class="lab__out">
                     <ul class="lights">
-                      <li data-light="enclave"><i class="l"></i>Enclave</li>
-                      <li data-light="zk"><i class="l"></i>Policy proof</li>
-                      <li data-light="c2pa"><i class="l"></i>C2PA checkpoint</li>
+                      <li data-light="enclave"><i class="l"></i>Hardware attestation</li>
+                      <li data-light="zk"><i class="l"></i>Policy</li>
+                      <li data-light="c2pa"><i class="l"></i>Signed reading</li>
                       <li data-light="human"><i class="l"></i>Human gate</li>
                     </ul>
                     <p class="verdict" data-out="gate" aria-live="polite">Released.</p>
@@ -274,19 +280,21 @@
                   </div>
                 </div>
                 <div class="zk mt-lg">
-                  <div><span class="lab__label">Policy: cold chain stays between 2 and 8 &deg;C. The gate learns</span><ul><li>The policy holds: yes or no</li><li>Which policy was checked</li><li>That the proof is valid</li></ul></div>
+                  <div><span class="lab__label">With a policy proof (planned), for cold chain between 2 and 8 &deg;C, the gate learns</span><ul><li>The policy holds: yes or no</li><li>Which policy was checked</li><li>That the proof is valid</li></ul></div>
                   <div><span class="lab__label">What stays private</span><ul><li>Every individual temperature reading</li><li>The route and timing of the shipment</li><li>Anything else on the device</li></ul></div>
                 </div>
               </div>
 
-              <aside class="keyidea"><span class="keyidea__tag">Key idea</span><p>Zero knowledge lets a gate enforce a rule without seeing the data behind it. C2PA ties the payment to a specific recorded event.</p></aside>
+              <aside class="caveat"><span class="caveat__tag">What a proof cannot do</span><p>A proof is only as good as its inputs. If a sensor upstream of the gateway is spoofed, the gateway signs spoofed data. Arisma proves custody from the gateway onward and makes any later change detectable. For readings that move money, pair the gateway with sealed wiring, cross-sensor checks, or a secure element on the sensor.</p></aside>
+
+              <aside class="keyidea"><span class="keyidea__tag">Key idea</span><p>A gateway signature proves custody from the gateway onward. C2PA ties a media capture to the device that recorded it.</p></aside>
 
               <form class="check" data-check="4" data-answer="b">
                 <fieldset>
-                  <legend><span class="check__tag">Check yourself</span>What does a zero knowledge policy proof give the gate?</legend>
-                  <label class="check__opt" data-fb="The gate never receives the readings, encrypted or not."><input type="radio" name="q4" value="a"><span>An encrypted copy of the readings</span></label>
-                  <label class="check__opt" data-fb="Right. The gate learns the policy holds and nothing about the inputs behind it."><input type="radio" name="q4" value="b"><span>Proof the policy holds, without the inputs</span></label>
-                  <label class="check__opt" data-fb="No proof skips the human gate on a high stakes action."><input type="radio" name="q4" value="c"><span>Permission to skip human review</span></label>
+                  <legend><span class="check__tag">Check yourself</span>A sensor upstream of the gateway is spoofed. What does the gateway's signature still prove?</legend>
+                  <label class="check__opt" data-fb="No. The gateway signs what it receives, so a spoofed sensor produces a signed, spoofed reading."><input type="radio" name="q4" value="a"><span>That the reading was true</span></label>
+                  <label class="check__opt" data-fb="Right. Custody runs from the gateway onward, so any later change is detectable."><input type="radio" name="q4" value="b"><span>That the reading has not changed since the gateway received it</span></label>
+                  <label class="check__opt" data-fb="It still proves custody from the gateway onward, which is what makes later edits detectable."><input type="radio" name="q4" value="c"><span>Nothing at all</span></label>
                 </fieldset>
                 <p class="check__fb" aria-live="polite"></p>
               </form>
@@ -297,7 +305,7 @@
               <p class="wp-ch__n">Chapter 05</p>
               <h2 id="ch5-title">Economic security: bounding the cost of misbehavior.</h2>
               <div class="prose">
-                <p>No system can promise a key will never leak or a machine will never misreport. What it can do is make the worst case small and known in advance. A session key's worst case comes from numbers you choose when you issue it: what each action costs, how fast actions can happen, how long the key lives, and an optional spending cap.</p>
+                <p>No system can promise a key will never leak or a machine will never misreport. What it can do is make the worst case small and known in advance. A mandate's worst case comes from numbers you choose when you issue it: what each action costs, how fast actions can happen, how long the key lives, and an optional spending cap.</p>
                 <p>The full specification adds incentive and penalty parameters for machine actors. This chapter covers the part you control directly: the bound.</p>
               </div>
 
@@ -326,6 +334,7 @@
                   </div>
                 </div>
                 <p class="note">The lifetime starts from the expiry you chose in chapter 02.</p>
+                <p class="note">The bound assumes the price per action is fixed. Set a maximum price per action in the mandate, or a counterparty can raise the price and raise your worst case with it.</p>
               </div>
 
               <aside class="keyidea"><span class="keyidea__tag">Key idea</span><p>Choose the grant by working back from the worst case. If the number is uncomfortable, shorten the lifetime, lower the rate, or add a cap until it is not.</p></aside>
@@ -341,18 +350,54 @@
               </form>
             </section>
 
+            <!-- ============ 06 ============ -->
+            <section class="wp-ch" id="ch6" aria-labelledby="ch6-title">
+              <p class="wp-ch__n">Chapter 06</p>
+              <h2 id="ch6-title">Threat model.</h2>
+              <div class="prose">
+                <p>No mandate removes risk. Each threat below has a named limit and a named residual.</p>
+              </div>
+              <div class="tablewrap">
+                <table class="wp-table threats">
+                  <thead><tr><th scope="col">Threat</th><th scope="col">What limits it</th><th scope="col">What remains</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">A mandate key leaks</th><td>Scope, cap, rate, expiry, max price per action</td><td>Loss up to the <a href="#ch5">Chapter 5</a> bound</td></tr>
+                    <tr><th scope="row">The owner key leaks</th><td>Hardware wallet; delay on mandate changes</td><td>Full account. This is the owner's key to protect.</td></tr>
+                    <tr><th scope="row">A sensor upstream of the gateway is spoofed</th><td>Sealed wiring, cross-sensor plausibility checks, per-sensor secure elements for high-value readings</td><td>The gateway signs what it receives</td></tr>
+                    <tr><th scope="row">A gateway is physically attacked</th><td>Tamper loop, signing key sealed to boot measurements, TPM quote on every connect, remote revocation</td><td>An attacker with lab equipment and time</td></tr>
+                    <tr><th scope="row">A payment is reversed before finality</th><td>High-value releases wait for Ethereum finalization</td><td>Short window between confirmation and finality</td></tr>
+                    <tr><th scope="row">A message is replayed</th><td>Sequence counter, nonce, expiry</td><td>None known</td></tr>
+                    <tr><th scope="row">Arisma's verifier is wrong or compromised</th><td>Receipts and quotes are recomputable by anyone; verifier code published</td><td>Operator trust until verification is independent</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <aside class="keyidea"><span class="keyidea__tag">Key idea</span><p>A mandate bounds what an agent can lose. It does not protect the owner key, and a signature does not make an upstream sensor honest. Name the residual, then decide who carries it.</p></aside>
+
+              <form class="check" data-check="6" data-answer="c">
+                <fieldset>
+                  <legend><span class="check__tag">Check yourself</span>An attacker gets the owner key. What limits the damage?</legend>
+                  <label class="check__opt" data-fb="Mandates limit what agents can lose. The owner key can change or revoke every mandate."><input type="radio" name="q6" value="a"><span>The mandate's cap and expiry</span></label>
+                  <label class="check__opt" data-fb="Arisma cannot move or freeze funds outside a mandate, and it cannot override the owner key."><input type="radio" name="q6" value="b"><span>Arisma freezing the account</span></label>
+                  <label class="check__opt" data-fb="Right. The owner key controls the account, so it belongs in a hardware wallet, with a delay on mandate changes."><input type="radio" name="q6" value="c"><span>Only how the owner key was protected</span></label>
+                </fieldset>
+                <p class="check__fb" aria-live="polite"></p>
+              </form>
+            </section>
+
             <!-- ============ summary ============ -->
             <section class="wp-ch wp-sum" aria-labelledby="sum-title">
               <p class="wp-ch__n">Summary</p>
               <h2 id="sum-title">What you covered.</h2>
               <ul class="feature">
                 <li><span class="tick">01</span><span><b>New rails.</b> Fixed fees and a cardholder make small machine payments impossible on card networks.</span></li>
-                <li><span class="tick">02</span><span><b>Trust.</b> Session keys bound to an enclave carry narrow, expiring authority. The master key never leaves.</span></li>
-                <li><span class="tick">03</span><span><b>Settlement.</b> One path for every actor, subsecond and deterministic, so receipts are evidence.</span></li>
-                <li><span class="tick">04</span><span><b>Attestation.</b> Enclave, zero knowledge policy, and C2PA checks run before release, with a person on high stakes actions.</span></li>
+                <li><span class="tick">02</span><span><b>Trust.</b> Mandates carry narrow, expiring authority, signed by a key held in hardware. The owner key stays with the owner.</span></li>
+                <li><span class="tick">03</span><span><b>Settlement.</b> One path for every actor. Single payments confirm in about 1.4s on Base, small ones are netted, and deterministic receipts are evidence.</span></li>
+                <li><span class="tick">04</span><span><b>Attestation.</b> Hardware, policy, and signed reading checks run before release, with a person on high stakes actions. Signatures prove custody, not honest sensors.</span></li>
                 <li><span class="tick">05</span><span><b>Bounds.</b> Price, rate, lifetime, and cap set the worst case before a key ever leaves.</span></li>
+                <li><span class="tick">06</span><span><b>Threats.</b> Every threat has a named limit and a named residual. The owner key is the one a mandate cannot protect.</span></li>
               </ul>
-              <p class="verdict" data-out="summary" aria-live="polite">You have passed 0 of 5 checks.</p>
+              <p class="verdict" data-out="summary" aria-live="polite">You have passed 0 of 6 checks.</p>
               <div class="docrow"><a class="btn btn--primary" href="/access">Request API &amp; enclave access</a><a class="textlink" href="/use-cases">See it in your industry</a></div>
             </section>
 
@@ -361,18 +406,23 @@
               <p class="wp-ch__n">Reference</p>
               <h2 id="gl-title">Glossary.</h2>
               <dl class="glossary">
+                <dt id="g-mandate">Mandate</dt><dd>A scoped, expiring permission to spend.</dd>
                 <dt id="g-session">Session key</dt><dd>A narrow, expiring key an agent uses instead of its owner's master key. It can perform only the actions in its scope, until it expires.</dd>
-                <dt id="g-erc7702">ERC-7702</dt><dd>An Ethereum standard that lets an ordinary account delegate to contract code. Arisma uses it to define scoped session keys.</dd>
+                <dt id="g-erc7702">ERC-7702</dt><dd>An Ethereum standard that lets an ordinary account point to smart contract code. Arisma uses it to give an account a permission module, which issues mandates.</dd>
                 <dt id="g-enclave">Hardware enclave</dt><dd>An isolated region of a processor, also called a trusted execution environment, whose memory the host operating system cannot read. Keys created inside stay inside.</dd>
                 <dt id="g-sevsnp">AMD SEV-SNP</dt><dd>AMD's confidential computing technology. It encrypts a virtual machine's memory and protects it from the host.</dd>
                 <dt id="g-tdx">Intel TDX</dt><dd>Intel Trust Domain Extensions, which isolate a virtual machine from the host and the hypervisor.</dd>
+                <dt id="g-tpm">TPM</dt><dd>A chip that stores keys and records what software booted.</dd>
+                <dt id="g-p256">P-256</dt><dd>The signature curve TPMs and passkeys use.</dd>
+                <dt id="g-rip7212">RIP-7212</dt><dd>A precompile that lets L2 contracts verify P-256 signatures cheaply.</dd>
                 <dt id="g-attestation">Remote attestation</dt><dd>A signed report from the hardware stating exactly what code is running, so a remote party can decide whether to trust it.</dd>
                 <dt id="g-zk">Zero knowledge proof</dt><dd>A proof that a statement is true which reveals nothing beyond the fact that it is true.</dd>
-                <dt id="g-c2pa">C2PA</dt><dd>An open standard from the Coalition for Content Provenance and Authenticity for attaching tamper evident provenance to media and data.</dd>
+                <dt id="g-c2pa">C2PA</dt><dd>An open standard for attaching tamper-evident provenance to images, video, audio, and documents. Arisma uses it for media captures, such as drone inspection footage.</dd>
                 <dt id="g-finality">Finality</dt><dd>The point after which a settlement cannot be reversed.</dd>
                 <dt id="g-usdc">USDC</dt><dd>A dollar stablecoin issued by Circle, redeemable one for one in US dollars.</dd>
                 <dt id="g-l2">Layer 2</dt><dd>A network that executes transactions away from a base blockchain and settles them back to it, for lower cost and faster confirmation.</dd>
-                <dt id="g-determinism">Deterministic clearing</dt><dd>The same inputs always produce the same output, so anyone can recompute and check a receipt.</dd>
+                <dt id="g-netting">Netting</dt><dd>Combining many small payments into one settlement.</dd>
+                <dt id="g-determinism">Deterministic receipts</dt><dd>The same inputs always produce the same output, so anyone can recompute and check a receipt.</dd>
               </dl>
             </section>
           </div>
@@ -386,7 +436,7 @@
         <div>
           <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
           <div class="foot__mast">arisma<i>.</i>network</div>
-          <p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p>
+          <p class="foot__tag">Mandates and settlement for AI agents, robots, and physical machines.</p>
         </div>
         <nav aria-label="Footer">
           <ul class="foot__nav">
@@ -396,7 +446,7 @@
             <li><a href="/developers">Developers</a></li>
             <li><a href="/whitepaper">Whitepaper</a></li>
             <li><a href="/security">Security</a></li>
-            <li><a href="/status">Status</a></li>
+            <li><a href="/status">Status (coming)</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
         </nav>

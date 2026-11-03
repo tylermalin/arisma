@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Developers: documentation, SDKs & MCP | Arisma Network</title>
-  <meta name="description" content="Equip your autonomous agents to hold funds, negotiate rates, and settle tasks. Quickstart, the Agent Escrow MCP, and the Edge Enclave SDK.">
+  <meta name="description" content="Let your agents and machines spend from bounded mandates. Quickstart, the Arisma Agent MCP, and the Edge Enclave SDK.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
@@ -17,14 +17,14 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Arisma Network">
   <meta property="og:title" content="Developers: documentation, SDKs &amp; MCP | Arisma Network">
-  <meta property="og:description" content="Equip your autonomous agents to hold funds, negotiate rates, and settle tasks. Quickstart, the Agent Escrow MCP, and the Edge Enclave SDK.">
+  <meta property="og:description" content="Let your agents and machines spend from bounded mandates. Quickstart, the Arisma Agent MCP, and the Edge Enclave SDK.">
   <meta property="og:url" content="https://arisma.network/developers">
   <meta property="og:image" content="https://arisma.network/assets/arisma-hero.jpg">
   <meta property="og:image:width" content="1800">
   <meta property="og:image:height" content="1324">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Developers: documentation, SDKs &amp; MCP | Arisma Network">
-  <meta name="twitter:description" content="Equip your autonomous agents to hold funds, negotiate rates, and settle tasks. Quickstart, the Agent Escrow MCP, and the Edge Enclave SDK.">
+  <meta name="twitter:description" content="Let your agents and machines spend from bounded mandates. Quickstart, the Arisma Agent MCP, and the Edge Enclave SDK.">
   <meta name="twitter:image" content="https://arisma.network/assets/arisma-hero.jpg">
   <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},2500)</script>
   <script src="/site.js" defer></script>
@@ -62,12 +62,13 @@
         <div class="devhero">
           <div class="devhero__copy">
             <p class="statusline"><span class="statusline__dot" aria-hidden="true"></span>Testnet. Access by request, with $100 in testnet credit.</p>
+            <p class="statusline statusline--muted">Packages are not on public registries yet. Approved teams get early builds.</p>
             <h2 class="h-sub">Your first settlement in four steps.</h2>
             <ol class="steps">
-              <li><span class="steps__n">01</span><div><h3>Request access</h3><p>Approved requests get an enclave key scoped to hardware, usually within a business day.</p></div></li>
+              <li><span class="steps__n">01</span><div><h3>Request access</h3><p>We review requests within two business days. Approved teams get $100 in testnet credit and a scoped testnet key.</p></div></li>
               <li><span class="steps__n">02</span><div><h3>Install a client</h3><p>The MCP server for agent runtimes, or the Rust SDK for devices and edge services.</p></div></li>
-              <li><span class="steps__n">03</span><div><h3>Delegate and settle</h3><p>Mint a session key with a scope and expiry, then clear a payment with it.</p></div></li>
-              <li><span class="steps__n">04</span><div><h3>Verify the receipt</h3><p>Check the attestation and, for physical actions, the C2PA checkpoint before release.</p></div></li>
+              <li><span class="steps__n">03</span><div><h3>Delegate and settle</h3><p>Create a mandate with a scope, a cap, and an expiry, then pay under it.</p></div></li>
+              <li><span class="steps__n">04</span><div><h3>Verify the receipt</h3><p>Check the signed evidence and, for physical actions, any human approval before release.</p></div></li>
             </ol>
             <div class="docrow"><a class="btn btn--primary" href="/access">Request access</a><a class="textlink" href="/developers/quickstart">Read the quickstart</a></div>
           </div>
@@ -78,18 +79,18 @@
               <button role="tab" type="button" id="tab-rs" aria-controls="panel-rs" aria-selected="false" tabindex="-1">Rust</button>
               <button role="tab" type="button" id="tab-mcp" aria-controls="panel-mcp" aria-selected="false" tabindex="-1">MCP config</button>
             </div>
-            <pre class="codeblock codetabs__panel" role="tabpanel" id="panel-ts" aria-labelledby="tab-ts" tabindex="0"><code><span class="c">import</span> { AgentEscrow } <span class="c">from</span> <span class="s">"@arisma-network/agent-escrow-mcp"</span>;
+            <pre class="codeblock codetabs__panel" role="tabpanel" id="panel-ts" aria-labelledby="tab-ts" tabindex="0"><code><span class="c">import</span> { Arisma } <span class="c">from</span> <span class="s">"@arisma-network/agent-mcp"</span>;
 
-<span class="c">const</span> escrow = <span class="c">await</span> AgentEscrow.connect({ enclave: <span class="s">"tee:sev-snp"</span> });
-<span class="c">const</span> session = <span class="c">await</span> escrow.delegate({ scope: [<span class="s">"settle"</span>], ttl: <span class="s">900</span> });
+<span class="c">const</span> arisma = <span class="c">await</span> Arisma.connect({ runtime: <span class="s">"sev-snp"</span> });
+<span class="c">const</span> session = <span class="c">await</span> arisma.delegate({ scope: [<span class="s">"settle"</span>], ttl: <span class="s">900</span> });
 
 <span class="c">const</span> receipt = <span class="c">await</span> session.settle({
   to: <span class="s">"drone:fleet-04"</span>, asset: <span class="s">"usdc"</span>, amount: <span class="s">"0.14"</span>,
 });
-<span class="m">// receipt.finalityMs -&gt; 1400</span></code></pre>
+<span class="m">// receipt.confirmedMs -&gt; ~1400</span></code></pre>
             <pre class="codeblock codetabs__panel" role="tabpanel" id="panel-rs" aria-labelledby="tab-rs" tabindex="0" hidden><code><span class="c">use</span> arisma_edge_enclave::{Enclave, Erc7702Session, Scope, Asset};
 
-<span class="c">let</span> enclave = Enclave::attach(<span class="s">"tee:sev-snp"</span>)?;
+<span class="c">let</span> enclave = Enclave::attach(<span class="s">"sev-snp"</span>)?;
 <span class="c">let</span> session = enclave.delegate(Erc7702Session {
     scope: Scope::Settle, ttl: <span class="s">900</span>,
 })?.attest()?;
@@ -99,14 +100,13 @@
     .<span class="c">await</span>?;</code></pre>
             <pre class="codeblock codetabs__panel" role="tabpanel" id="panel-mcp" aria-labelledby="tab-mcp" tabindex="0" hidden><code>{
   <span class="c">"mcpServers"</span>: {
-    <span class="c">"arisma-escrow"</span>: {
+    <span class="c">"arisma"</span>: {
       <span class="c">"command"</span>: <span class="s">"npx"</span>,
-      <span class="c">"args"</span>: [<span class="s">"@arisma-network/agent-escrow-mcp"</span>],
+      <span class="c">"args"</span>: [<span class="s">"@arisma-network/agent-mcp"</span>],
       <span class="c">"env"</span>: { <span class="c">"ARISMA_ENCLAVE"</span>: <span class="s">"tee:sev-snp"</span> }
     }
   }
 }</code></pre>
-            <p class="codetabs__note">Packages are not on public registries yet. They publish to npm and crates.io soon.</p>
           </div>
         </div>
       </div>
@@ -121,20 +121,20 @@
         <div class="devgrid">
           <div class="devcard">
             <span class="devcard__tag">For LLM agents</span>
-            <h3>Agent Escrow MCP</h3>
-            <p>A Model Context Protocol server that gives any MCP client four tools: delegate, settle, attest, and verify. Agents hold funds in escrow, negotiate rates, and pay for finished tasks without custom plumbing.</p>
+            <h3>Arisma Agent MCP</h3>
+            <p>A Model Context Protocol server that gives any MCP client four tools: delegate, settle, attest, and verify. Agents spend from bounded mandates, agree on rates, and pay for finished tasks without custom plumbing.</p>
             <a href="/developers/mcp">MCP docs</a>
           </div>
           <div class="devcard">
             <span class="devcard__tag">For devices and edge services</span>
             <h3>Edge Enclave SDK</h3>
-            <p>The Rust foundation under everything else. Keys stay inside SEV-SNP or TDX, and every session is attested before it is trusted.</p>
+            <p>The Rust foundation under everything else. Keys stay in hardware: SEV-SNP or TDX for cloud services, the X1's TPM for devices.</p>
             <a href="/developers/sdk">SDK reference</a>
           </div>
           <div class="devcard">
             <span class="devcard__tag">New here</span>
             <h3>Quickstart</h3>
-            <p>Install, delegate a session key, and clear your first testnet settlement end to end.</p>
+            <p>Create a mandate and make your first testnet payment end to end.</p>
             <a href="/developers/quickstart">Start building</a>
           </div>
         </div>
@@ -151,10 +151,10 @@
           <table class="apitable">
             <thead><tr><th scope="col">Call</th><th scope="col">What it does</th><th scope="col">You get back</th><th scope="col">Learn it</th></tr></thead>
             <tbody>
-              <tr><th scope="row"><code>delegate</code></th><td>Mints a scoped ERC-7702 session key inside the enclave, with an expiry.</td><td>A session handle bound to hardware</td><td><a href="/whitepaper#ch2">Trust model</a></td></tr>
-              <tr><th scope="row"><code>settle</code></th><td>Clears a stablecoin microsettlement between two actors.</td><td>A deterministic receipt with finality time</td><td><a href="/whitepaper#ch3">Settlement</a></td></tr>
-              <tr><th scope="row"><code>attest</code></th><td>Produces a zero knowledge proof that a policy holds.</td><td>A proof a gate can check without the inputs</td><td><a href="/whitepaper#ch4">Attestation</a></td></tr>
-              <tr><th scope="row"><code>verify</code></th><td>Checks a C2PA checkpoint and any human gate before release.</td><td>Release, or a hold with the reason</td><td><a href="/whitepaper#ch4">Attestation</a></td></tr>
+              <tr><th scope="row"><code>delegate</code></th><td>Creates a mandate: a scoped, expiring permission on an ERC-7702 account, signed by a hardware-held key</td><td>A mandate handle</td><td><a href="/whitepaper#ch2">Trust model</a></td></tr>
+              <tr><th scope="row"><code>settle</code></th><td>Pays under a mandate, singly or netted into a batch</td><td>A deterministic receipt with confirmation time</td><td><a href="/whitepaper#ch3">Settlement</a></td></tr>
+              <tr><th scope="row"><code>attest</code></th><td>Attaches signed evidence to a payment; policy proofs when they ship</td><td>Evidence the gate can check</td><td><a href="/whitepaper#ch4">Attestation</a></td></tr>
+              <tr><th scope="row"><code>verify</code></th><td>Checks evidence, and any human approval, before release</td><td>Release, or a hold with the reason</td><td><a href="/whitepaper#ch4">Attestation</a></td></tr>
             </tbody>
           </table>
         </div>
@@ -176,8 +176,8 @@
           </div>
           <div>
             <h2 class="h-sub">Get help.</h2>
-            <p>Check network status, report a vulnerability privately, or talk to the team about your integration.</p>
-            <span class="devmore__links"><a class="textlink" href="/status">Status</a><a class="textlink" href="/security">Security</a><a class="textlink" href="/contact">Contact</a></span>
+            <p>Report a vulnerability privately or talk to the team about your integration. A status page is coming.</p>
+            <span class="devmore__links"><a class="textlink" href="/status">Status (coming)</a><a class="textlink" href="/security">Security</a><a class="textlink" href="/contact">Contact</a></span>
           </div>
         </div>
       </div>
@@ -189,7 +189,7 @@
         <div>
           <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
           <div class="foot__mast">arisma<i>.</i>network</div>
-          <p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p>
+          <p class="foot__tag">Mandates and settlement for AI agents, robots, and physical machines.</p>
         </div>
         <nav aria-label="Footer">
           <ul class="foot__nav">
@@ -199,7 +199,7 @@
             <li><a href="/developers">Developers</a></li>
             <li><a href="/whitepaper">Whitepaper</a></li>
             <li><a href="/security">Security</a></li>
-            <li><a href="/status">Status</a></li>
+            <li><a href="/status">Status (coming)</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
         </nav>

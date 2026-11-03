@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quickstart: clear your first testnet settlement | Arisma Network</title>
-  <meta name="description" content="Install the MCP server and Edge Enclave SDK, provision access, and clear your first testnet settlement in minutes.">
+  <meta name="description" content="Request access, create a mandate, and make your first testnet payment with the Arisma Agent MCP or the Edge Enclave SDK.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
@@ -17,14 +17,14 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Arisma Network">
   <meta property="og:title" content="Quickstart: clear your first testnet settlement | Arisma Network">
-  <meta property="og:description" content="Install the MCP server and Edge Enclave SDK, provision access, and clear your first testnet settlement in minutes.">
+  <meta property="og:description" content="Request access, create a mandate, and make your first testnet payment with the Arisma Agent MCP or the Edge Enclave SDK.">
   <meta property="og:url" content="https://arisma.network/developers/quickstart">
   <meta property="og:image" content="https://arisma.network/assets/arisma-hero.jpg">
   <meta property="og:image:width" content="1800">
   <meta property="og:image:height" content="1324">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Quickstart: clear your first testnet settlement | Arisma Network">
-  <meta name="twitter:description" content="Install the MCP server and Edge Enclave SDK, provision access, and clear your first testnet settlement in minutes.">
+  <meta name="twitter:description" content="Request access, create a mandate, and make your first testnet payment with the Arisma Agent MCP or the Edge Enclave SDK.">
   <meta name="twitter:image" content="https://arisma.network/assets/arisma-hero.jpg">
   <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},2500)</script>
   <script src="/site.js" defer></script>
@@ -53,34 +53,33 @@
       <div class="container">
         <a class="back" href="/developers">Developers</a>
         <h1>Quickstart.</h1>
-        <p class="subhero__sub">Install, delegate a session key, and clear your first testnet settlement.</p>
+        <p class="subhero__sub">Create a mandate and make your first testnet payment.</p>
         <span class="subhero__tag">developers / quickstart</span>
       </div>
     </section>
     <section class="section">
       <div class="container doc">
         <h2>Install</h2>
-        <div class="cmd"><code><span class="p">npx</span> @arisma-network/agent-escrow-mcp</code><button class="copy" type="button" aria-live="polite" data-copy="npx @arisma-network/agent-escrow-mcp">copy</button></div>
-        <div class="cmd"><code><span class="p">cargo</span> add arisma-edge-enclave</code><button class="copy" type="button" aria-live="polite" data-copy="cargo add arisma-edge-enclave">copy</button></div>
+        <p class="note">Install commands appear here the day the packages publish to npm and crates.io. Approved teams get early builds now through <a href="/access">testnet access</a>.</p>
 
         <h2>Provision access</h2>
-        <div class="prose"><p>Request an enclave key and your $100 testnet credit. Approved requests provision a key scoped to hardware, usually within a business day.</p></div>
+        <div class="prose"><p>Request access. We review requests within two business days. Approved teams get $100 in testnet credit and a scoped testnet key.</p></div>
         <a class="textlink" href="/access">Request API &amp; enclave access</a>
 
-        <h2>Delegate and settle</h2>
-        <div class="prose"><p>Connect to the enclave, delegate a scoped session key, and clear a settlement. The receipt returns deterministic finality.</p></div>
-        <pre class="codeblock"><code><span class="c">import</span> { AgentEscrow } <span class="c">from</span> <span class="s">"@arisma-network/agent-escrow-mcp"</span>;
+        <h2>Create a mandate and pay</h2>
+        <div class="prose"><p>Connect, create a mandate with a scope and an expiry, and pay under it. The receipt is deterministic and reports its confirmation time.</p></div>
+        <pre class="codeblock"><code><span class="c">import</span> { Arisma } <span class="c">from</span> <span class="s">"@arisma-network/agent-mcp"</span>;
 
-<span class="c">const</span> escrow = <span class="c">await</span> AgentEscrow.connect({ enclave: <span class="s">"tee:sev-snp"</span> });
-<span class="c">const</span> session = <span class="c">await</span> escrow.delegate({ scope: [<span class="s">"settle"</span>], ttl: <span class="s">900</span> });
+<span class="c">const</span> arisma = <span class="c">await</span> Arisma.connect({ runtime: <span class="s">"sev-snp"</span> });
+<span class="c">const</span> session = <span class="c">await</span> arisma.delegate({ scope: [<span class="s">"settle"</span>], ttl: <span class="s">900</span> });
 <span class="c">const</span> receipt = <span class="c">await</span> session.settle({
   to: <span class="s">"drone:fleet-04"</span>, asset: <span class="s">"usdc"</span>, amount: <span class="s">"0.14"</span>,
 });
-<span class="m">// receipt.finalityMs -> 1400</span></code></pre>
+<span class="m">// receipt.confirmedMs -> ~1400</span></code></pre>
 
         <h2>Verify the receipt</h2>
-        <div class="prose"><p>Every receipt carries its proof. Check the zk-TEE attestation and, for physical actions, the C2PA checkpoint before releasing value or machinery.</p></div>
-        <div class="docrow"><a class="btn btn--primary" href="/developers/mcp">Agent Escrow MCP docs</a><a class="textlink" href="/developers/sdk">Edge Enclave SDK</a></div>
+        <div class="prose"><p>Every receipt carries its evidence. Check the signatures and, for high-stakes physical actions, the human approval before releasing value or machinery.</p></div>
+        <div class="docrow"><a class="btn btn--primary" href="/developers/mcp">Arisma Agent MCP docs</a><a class="textlink" href="/developers/sdk">Edge Enclave SDK</a></div>
       </div>
     </section>
   </main>
@@ -90,7 +89,7 @@
         <div>
           <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
           <div class="foot__mast">arisma<i>.</i>network</div>
-          <p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p>
+          <p class="foot__tag">Mandates and settlement for AI agents, robots, and physical machines.</p>
         </div>
         <nav aria-label="Footer">
           <ul class="foot__nav">
@@ -100,7 +99,7 @@
             <li><a href="/developers">Developers</a></li>
             <li><a href="/whitepaper">Whitepaper</a></li>
             <li><a href="/security">Security</a></li>
-            <li><a href="/status">Status</a></li>
+            <li><a href="/status">Status (coming)</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
         </nav>
