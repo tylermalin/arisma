@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardware: EnclaveEdge X1 security gateway | Arisma Network</title>
+  <meta name="description" content="EnclaveEdge X1: an industrial security gateway with a discrete TPM 2.0 enclave that gives legacy and edge machines a hardware identity, with no changes to the machines.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"></noscript>
+  <link rel="stylesheet" href="/page.css">
+  <link rel="canonical" href="https://arisma.network/hardware">
+  <link rel="icon" type="image/png" href="/assets/arisma-mark.png">
+  <link rel="apple-touch-icon" href="/assets/arisma-mark.png">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Arisma Network">
+  <meta property="og:title" content="Hardware: EnclaveEdge X1 security gateway | Arisma Network">
+  <meta property="og:description" content="EnclaveEdge X1: an industrial security gateway with a discrete TPM 2.0 enclave that gives legacy and edge machines a hardware identity, with no changes to the machines.">
+  <meta property="og:url" content="https://arisma.network/hardware">
+  <meta property="og:image" content="https://arisma.network/assets/enclaveedge-x1-exploded.jpg">
+  <meta property="og:image:width" content="1376">
+  <meta property="og:image:height" content="768">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hardware: EnclaveEdge X1 security gateway | Arisma Network">
+  <meta name="twitter:description" content="EnclaveEdge X1: an industrial security gateway with a discrete TPM 2.0 enclave that gives legacy and edge machines a hardware identity, with no changes to the machines.">
+  <meta name="twitter:image" content="https://arisma.network/assets/enclaveedge-x1-exploded.jpg">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},2500)</script>
+  <script src="/site.js" defer></script>
+  <script src="/hardware.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <div class="nav__in">
+      <a class="wordmark" href="/"><img class="wordmark__mark" src="/assets/arisma-mark.png" alt="" width="28" height="22"><span>arisma<i>.</i>network</span></a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="/use-cases">Use cases</a>
+        <a href="/hardware" aria-current="page">Hardware</a>
+        <a href="/interactions">Interactions</a>
+        <a href="/architecture">Architecture</a>
+        <a href="/primitives">Primitives</a>
+        <a href="/developers">Developers</a>
+      </nav>
+      <div class="nav__cta">
+        <a class="linklike" href="/whitepaper">Whitepaper</a>
+        <a class="btn btn--primary" href="/access">Request access</a>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="subhero">
+      <div class="container">
+        <h1>EnclaveEdge X1.</h1>
+        <p class="subhero__sub">A security gateway that gives every machine behind it a hardware identity, with no changes to the machines themselves.</p>
+        <span class="subhero__tag">platform / hardware</span>
+      </div>
+    </section>
+
+    <section class="hwhero">
+      <div class="container">
+        <figure class="hwfig">
+          <img src="/assets/enclaveedge-x1-exploded.jpg" width="1376" height="768" alt="Exploded view of the EnclaveEdge X1 on a dark background. From top to bottom: a finned black heatsink lid, the main compute board with its compute module, the TPM 2.0 security element, and the aluminum chassis. The front panel has two RJ45 ports labeled Local OT and WAN, a Nano SIM slot, and SYS, Enclave, and Tamper status lights, with SYS lit white and Enclave lit cyan.">
+          <figcaption>The TPM 2.0 security element sits on its own board under the compute module. The front panel keeps the two networks on separate ports, with status lights for the system, the enclave, and tamper.</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Insecure on one side. Zero trust on the other.</h2>
+          <p>The X1 sits between a site's machines and the network. It takes in their unauthenticated local traffic, signs it inside a discrete TPM 2.0 enclave, and sends it on over mutual TLS. The private key never leaves the chip.</p>
+        </div>
+
+        <div class="hwdiagram" data-live>
+          <svg class="hw" viewBox="0 0 960 400" role="img" aria-label="Machines on the insecure local OT network send telemetry into the EnclaveEdge X1. Inside the gateway, the Linux host passes it over an encrypted SPI bus to the OPTIGA TPM 2.0 enclave, which signs it. Signed data leaves over mutual TLS to the zero trust WAN and the Arisma network.">
+            <rect class="hw-zone" x="10" y="40" width="270" height="320" rx="12"/>
+            <text class="hw-cap" x="30" y="70">Local OT zone, insecure</text>
+            <g class="hw-devs">
+              <g class="hw-dev"><rect x="30" y="92" width="110" height="56" rx="8"/><text x="85" y="125" text-anchor="middle">AI compute</text></g>
+              <g class="hw-dev"><rect x="152" y="92" width="110" height="56" rx="8"/><text x="207" y="125" text-anchor="middle">Robots</text></g>
+              <g class="hw-dev"><rect x="30" y="172" width="110" height="56" rx="8"/><text x="85" y="205" text-anchor="middle">EV chargers</text></g>
+              <g class="hw-dev"><rect x="152" y="172" width="110" height="56" rx="8"/><text x="207" y="205" text-anchor="middle">Drones</text></g>
+              <g class="hw-dev"><rect x="30" y="252" width="110" height="56" rx="8"/><text x="85" y="285" text-anchor="middle">Cold chain</text></g>
+              <g class="hw-dev"><rect x="152" y="252" width="110" height="56" rx="8"/><text x="207" y="285" text-anchor="middle">PLCs</text></g>
+            </g>
+
+            <path class="hw-wire" d="M280 200 H352"/>
+            <text class="hw-small" x="316" y="186" text-anchor="middle">NIC 1</text>
+            <circle class="hw-raw" cx="280" cy="200" r="4"/>
+
+            <rect class="hw-box hw-box--x1" x="352" y="40" width="380" height="320" rx="16"/>
+            <text class="hw-cap hw-cap--acc" x="372" y="70">EnclaveEdge X1 boundary</text>
+            <rect class="hw-box" x="372" y="100" width="150" height="200" rx="8"/>
+            <text class="hw-title" x="388" y="128">Linux host OS</text>
+            <text class="hw-small" x="388" y="148">read only root fs</text>
+            <rect class="hw-ctr" x="388" y="168" width="118" height="26" rx="4"/><text class="hw-small" x="398" y="185">ingest driver</text>
+            <rect class="hw-ctr" x="388" y="202" width="118" height="26" rx="4"/><text class="hw-small" x="398" y="219">gateway daemon</text>
+            <rect class="hw-ctr" x="388" y="236" width="118" height="26" rx="4"/><text class="hw-small" x="398" y="253">mTLS proxy</text>
+
+            <path class="hw-bus" d="M522 200 H566"/>
+            <text class="hw-small" x="544" y="186" text-anchor="middle">SPI</text>
+            <circle class="hw-spi" cx="522" cy="200" r="3"/>
+
+            <rect class="hw-box hw-box--tpm" x="566" y="100" width="146" height="200" rx="8"/>
+            <text class="hw-title hw-title--acc" x="582" y="128">OPTIGA TPM 2.0</text>
+            <text class="hw-small" x="582" y="148">SLB 9670</text>
+            <text class="hw-item" x="582" y="190">signing engine</text>
+            <text class="hw-item" x="582" y="216">PCR registers</text>
+            <text class="hw-item" x="582" y="242">endorsement key</text>
+            <circle class="hw-seal" cx="690" cy="278" r="8"/>
+
+            <path class="hw-wire hw-wire--out" d="M732 200 H790"/>
+            <text class="hw-small" x="761" y="186" text-anchor="middle">mTLS</text>
+            <circle class="hw-signed" cx="732" cy="200" r="4"/>
+
+            <rect class="hw-zone hw-zone--wan" x="790" y="40" width="160" height="320" rx="12"/>
+            <text class="hw-cap" x="806" y="70">WAN, zero trust</text>
+            <rect class="hw-box hw-box--net" x="806" y="166" width="128" height="68" rx="8"/>
+            <text class="hw-title" x="870" y="196" text-anchor="middle">Arisma</text>
+            <text class="hw-small" x="870" y="216" text-anchor="middle">attest, settle</text>
+          </svg>
+        </div>
+
+        <dl class="hwfacts mt-xl">
+          <div><dt>Enclave</dt><dd>Discrete TPM 2.0 on its own SPI bus</dd></div>
+          <div><dt>Operating range</dt><dd>&minus;40 to 105 &deg;C with the NXP option</dd></div>
+          <div><dt>Field buses</dt><dd>2&times; CAN FD, RS-485, USB 2.0</dd></div>
+          <div><dt>Uplink</dt><dd>Ethernet with LTE Cat-M1 failover</dd></div>
+          <div><dt>Updates</dt><dd>Signed A/B images with automatic rollback</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Seven industries, one enclave interface.</h2>
+          <p>Each vertical runs as its own container with its own ingest driver. All of them hand their data to the same TPM interface, so one gateway design covers every site.</p>
+        </div>
+        <div class="tablewrap">
+          <table class="apitable hwmap">
+            <thead><tr><th scope="col">Vertical</th><th scope="col">Local ingest</th><th scope="col">Enclave routine</th><th scope="col">What it proves upstream</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><a href="/use-cases#agents">AI agents &amp; compute</a></th><td><code>PCIe, shared memory, USB</code></td><td>Hashes the input and signs the inference output</td><td>The model ran on genuine, untampered edge hardware</td></tr>
+              <tr><th scope="row"><a href="/use-cases#logistics">Logistics robots</a></th><td><code>ROS2 (DDS), CAN FD</code></td><td>Checks commands against an enclave key allowlist</td><td>Navigation strings carry a sequence counter, so replays fail</td></tr>
+              <tr><th scope="row"><a href="/use-cases#energy">EV charging</a></th><td><code>OCPP 2.0.1, ISO 15118</code></td><td>Holds charger PKI and runs vehicle handshakes</td><td>Billing and state of charge tokens are signed at the source</td></tr>
+              <tr><th scope="row"><a href="/use-cases#inspection">Drone inspection</a></th><td><code>MAVLink, RTSP, WebRTC</code></td><td>Encrypts video with ephemeral keys, signs GPS</td><td>Captures are private and flight tracks cannot be spoofed</td></tr>
+              <tr><th scope="row"><a href="/use-cases#coldchain">Cold chain</a></th><td><code>BLE 5.2, 1-Wire</code></td><td>Chains each reading to a secure timestamp</td><td>Editing any past value breaks the signature chain</td></tr>
+              <tr><th scope="row"><a href="/use-cases#environment">Environmental data</a></th><td><code>LoRaWAN, Modbus RTU</code></td><td>Batches readings into one signed digest per interval</td><td>Reports cannot quietly drop or alter readings</td></tr>
+              <tr><th scope="row"><a href="/use-cases#industrial">Industrial machinery</a></th><td><code>OPC UA, Modbus TCP, EtherCAT</code></td><td>Terminates the legacy link inside the gateway</td><td>Old PLCs are reachable only through an authenticated tunnel</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="hwsplit">
+          <div>
+            <div class="section__head">
+              <h2>It refuses to start if anything changed.</h2>
+              <p>The boot ROM checks the bootloader. The bootloader hashes the kernel and its extensions into the TPM's PCR registers. If a measurement does not match, the gateway halts before any container runs, so it never signs data on a modified system.</p>
+            </div>
+            <div class="docrow"><button class="btn btn--primary" type="button" data-boot="run">Run measured boot</button><button class="textlink" type="button" data-boot="tamper">Tamper with the kernel</button></div>
+          </div>
+          <div class="lab boot" data-bootlab>
+            <ol class="bootchain">
+              <li data-stage="rom"><span class="bootchain__dot"></span><div><b>SoC boot ROM</b><span>Verifies the second stage bootloader</span></div><code>root of trust</code></li>
+              <li data-stage="uboot"><span class="bootchain__dot"></span><div><b>U-Boot</b><span>Hashes the kernel and extensions</span></div><code>PCR 0</code></li>
+              <li data-stage="kernel"><span class="bootchain__dot"></span><div><b>Linux kernel</b><span>Measured into the TPM</span></div><code>PCR 4</code></li>
+              <li data-stage="ext"><span class="bootchain__dot"></span><div><b>Extensions</b><span>Measured into the TPM</span></div><code>PCR 10</code></li>
+              <li data-stage="ctr"><span class="bootchain__dot"></span><div><b>Containers start</b><span>Namespaces, cgroups, seccomp</span></div><code>signing on</code></li>
+            </ol>
+            <p class="result" data-boot-out aria-live="polite">Run the boot sequence to watch each stage get measured.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Trusted from the factory to the last update.</h2>
+          <p>The gateway's identity is created inside the chip at manufacture and proven again every time it connects or updates.</p>
+        </div>
+        <ol class="fit fit--3">
+          <li><span class="fit__n">01</span><h3>Identity made at the factory</h3><p>A unique endorsement key pair is generated inside the TPM during production. The factory certificate authority signs the public half, which becomes the gateway's permanent birth certificate.</p></li>
+          <li><span class="fit__n">02</span><h3>Zero touch provisioning</h3><p>Plugged into a WAN, the gateway calls out to the orchestration layer and presents a TPM signed attestation quote proving its firmware is intact. No one configures it by hand.</p></li>
+          <li><span class="fit__n">03</span><h3>Signed updates with rollback</h3><p>The root filesystem is atomic and read only. Updates arrive as signed images on an A/B pair. If a new image fails measured boot, the gateway falls back to the last good one.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Every message carries its own proof.</h2>
+          <p>The gateway packages the raw readings, the state of the hardware, and a signature made inside the TPM into one envelope. Change any reading and the digest no longer matches the signature.</p>
+        </div>
+        <div class="hwpayload" data-payload>
+          <pre class="codeblock hwpayload__code" tabindex="0"><code><span class="m">// X1 payload, industrial machinery profile</span>
+{
+  <span class="c">"gateway_identity"</span>: {
+    <span class="c">"hardware_uuid"</span>: <span class="s">"ee-x1-7c9b-4a2f-bc81-11d84f93a900"</span>,
+    <span class="c">"endorsement_key_pub_thumbprint"</span>: <span class="s">"sha256:e3b0c442&hellip;7852b855"</span>,
+    <span class="c">"firmware_version"</span>: <span class="s">"v2026.11.03-hardened"</span>,
+    <span class="c">"active_profile"</span>: <span class="s">"industrial_machinery"</span>
+  },
+  <span class="c">"trust_telemetry"</span>: {
+    <span class="c">"measured_boot_status"</span>: <span class="s">"verified"</span>,
+    <span class="c">"pcr_bank"</span>: {
+      <span class="c">"pcr_00"</span>: <span class="s">"f4b238ad&hellip;"</span>,
+      <span class="c">"pcr_04"</span>: <span class="s">"8c91d842&hellip;"</span>,
+      <span class="c">"pcr_10"</span>: <span class="s">"3fa91283&hellip;"</span>
+    },
+    <span class="c">"hardware_tamper_tripped"</span>: <span class="s">false</span>,
+    <span class="c">"internal_enclave_timestamp"</span>: <span class="s">"2026-11-03T18:25:34.012Z"</span>,
+    <span class="c">"packet_sequence_counter"</span>: <span class="s">1048576</span>
+  },
+  <span class="c">"payload"</span>: {
+    <span class="c">"vertical"</span>: <span class="s">"industrial_machinery"</span>,
+    <span class="c">"local_ingest_protocol"</span>: <span class="s">"modbus_tcp"</span>,
+    <span class="c">"source_actor_id"</span>: <span class="s">"cnc_milling_floor_03"</span>,
+    <span class="c">"data"</span>: {
+      <span class="c">"spindle_rpm"</span>: <span class="s" data-pv="rpm">12000</span>,
+      <span class="c">"coolant_pressure_psi"</span>: <span class="s" data-pv="psi">85.3</span>,
+      <span class="c">"vibration_amplitude_g"</span>: <span class="s">0.12</span>,
+      <span class="c">"emergency_stop_tripped"</span>: <span class="s">false</span>
+    }
+  },
+  <span class="c">"cryptographic_proof"</span>: {
+    <span class="c">"signature_algorithm"</span>: <span class="s">"ECDSA_SHA_256"</span>,
+    <span class="c">"key_slot_reference"</span>: <span class="s">"0x81010002"</span>,
+    <span class="c">"signed_digest"</span>: <span class="s">"sha256:<span data-pv="signed">&hellip;</span>"</span>,
+    <span class="c">"signature"</span>: <span class="s">"MEQCID3k8v5Xw9XJz3eF4/Jb2V8a5&hellip;"</span>
+  }
+}</code></pre>
+          <div class="hwpayload__side">
+            <dl class="hwfields">
+              <div><dt><code>gateway_identity</code></dt><dd>Who is talking. The endorsement key thumbprint is the hardware birth certificate the backend checks against its fleet.</dd></div>
+              <div><dt><code>trust_telemetry</code></dt><dd>What state the hardware is in. Modified boot code changes the PCR values, and the sequence counter stops replays.</dd></div>
+              <div><dt><code>payload</code></dt><dd>The readings themselves, with the vertical and the local machine they came from.</dd></div>
+              <div><dt><code>cryptographic_proof</code></dt><dd>The seal. The TPM signs a digest of the payload and trust telemetry with a key that never crosses the SPI lines.</dd></div>
+            </dl>
+            <div class="lab">
+              <div class="lab__head"><h3>Tamper with a reading</h3><span class="lab__tag">try it</span></div>
+              <div class="fields">
+                <label class="mini"><span>spindle_rpm</span><input data-pin="rpm" value="12000" inputmode="decimal" autocomplete="off"></label>
+                <label class="mini"><span>coolant_pressure_psi</span><input data-pin="psi" value="85.3" inputmode="decimal" autocomplete="off"></label>
+              </div>
+              <div class="lab__out mt-lg">
+                <span class="lab__label">Digest of payload and trust telemetry now</span>
+                <p class="hash" data-pv="now">computing</p>
+              </div>
+              <p class="result is-ok" data-pv="status" aria-live="polite"><b>Signature verifies.</b> The digest matches what the TPM signed.</p>
+              <p class="note">Illustrative. The digest here is SHA-256 over this page's sample values.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Specifications.</h2>
+          <p>Two compute options share one enclave design, board layout, and software image.</p>
+        </div>
+        <div class="specs">
+          <dl>
+            <dt>Compute</dt><dd>NXP i.MX8M Nano QuadLite, industrial range &minus;40 to 105 &deg;C, or Raspberry Pi Compute Module 4, industrial variant</dd>
+            <dt>Hardware enclave</dt><dd>Infineon OPTIGA&trade; TPM SLB 9670, discrete, on a dedicated SPI bus</dd>
+            <dt>Enclave certification</dt><dd>The SLB 9670 is certified to Common Criteria EAL4+ and FIPS 140-2 Level 2</dd>
+            <dt>Memory</dt><dd>2 GB LPDDR4</dd>
+            <dt>Storage</dt><dd>16 GB eMMC 5.1 in SLC mode, for write endurance and resistance to corruption</dd>
+          </dl>
+          <dl>
+            <dt>Local OT network</dt><dd>1&times; RJ45 Gigabit Ethernet, isolated, with routing and forwarding disabled</dd>
+            <dt>WAN</dt><dd>1&times; RJ45 10/100 Ethernet, or a Nano SIM slot for LTE Cat-M1 failover</dd>
+            <dt>Expansion</dt><dd>2&times; isolated CAN FD, 1&times; RS-485 (Modbus), 1&times; USB 2.0 host</dd>
+            <dt>Operating system</dt><dd>Hardened, read only root filesystem on Yocto Project Linux or Ubuntu Core</dd>
+            <dt>Boot</dt><dd>Hardware enforced measured boot into TPM PCRs; halts on any mismatch</dd>
+            <dt>Containers</dt><dd>LXC or Docker with namespace, cgroup, and seccomp isolation</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <details class="pinref">
+          <summary><span><b>SPI interconnect reference</b><span>Pin mapping between the host and the TPM, for hardware engineers</span></span></summary>
+          <p class="pinref__intro">Standard four wire SPI, plus an interrupt for asynchronous alerts, a reset line so the host can power cycle the enclave, and a presence trace that halts the system if the board is tampered with.</p>
+          <div class="tablewrap">
+            <table class="apitable pintable">
+              <thead><tr><th scope="col">Signal</th><th scope="col">TPM pin</th><th scope="col">i.MX8M Nano</th><th scope="col">Raspberry Pi CM4</th><th scope="col">Purpose</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><code>VCC</code></th><td>1</td><td>3.3V system rail</td><td>Pin 1 or 17 (3.3V)</td><td>Main power, 3.3V DC</td></tr>
+                <tr><th scope="row"><code>GND</code></th><td>2</td><td>System ground plane</td><td>Pin 9, 25, or 39</td><td>Shared ground reference</td></tr>
+                <tr><th scope="row"><code>SPI_MISO</code></th><td>3</td><td>ECSPI1_MISO (C24)</td><td>Pin 21 (GPIO 9)</td><td>Data to host</td></tr>
+                <tr><th scope="row"><code>SPI_MOSI</code></th><td>4</td><td>ECSPI1_MOSI (B24)</td><td>Pin 19 (GPIO 10)</td><td>Data to TPM</td></tr>
+                <tr><th scope="row"><code>SPI_SCLK</code></th><td>5</td><td>ECSPI1_SCLK (A25)</td><td>Pin 23 (GPIO 11)</td><td>Bus clock, host driven, up to 33 MHz</td></tr>
+                <tr><th scope="row"><code>SPI_CS#</code></th><td>6</td><td>ECSPI1_SS0 (B25)</td><td>Pin 24 (GPIO 8)</td><td>Chip select, active low</td></tr>
+                <tr><th scope="row"><code>TPM_INT</code></th><td>7</td><td>GPIO1_IO05 (AJ5)</td><td>Pin 18 (GPIO 24)</td><td>Interrupt when data is ready</td></tr>
+                <tr><th scope="row"><code>TPM_RST#</code></th><td>8</td><td>GPIO1_IO10 (AD11)</td><td>Pin 22 (GPIO 25)</td><td>Hardware reset, active low</td></tr>
+                <tr><th scope="row"><code>PEX_TAMPER</code></th><td>9</td><td>GPIO1_IO12 (AD12)</td><td>Pin 26 (GPIO 7)</td><td>Tamper loop; a broken trace halts the system</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 class="pinref__h">Device tree overlay, Raspberry Pi CM4</h3>
+          <p class="pinref__intro">Binds the SLB 9670 to SPI0 chip select 0 through the kernel's TPM TIS SPI driver, with reset on GPIO 25 and the interrupt on GPIO 24. Saved as <code>tpm-slb9670-overlay.dts</code>.</p>
+          <div class="cmd cmd--file"><code>dtc -@ -I dts -O dtb -o tpm-slb9670.dtbo tpm-slb9670-overlay.dts</code><button class="copy" type="button" aria-live="polite" data-copy="dtc -@ -I dts -O dtb -o tpm-slb9670.dtbo tpm-slb9670-overlay.dts">copy</button></div>
+          <pre class="codeblock"><code><span class="m">/dts-v1/;</span>
+<span class="m">/plugin/;</span>
+
+/ {
+    <span class="c">fragment@0</span> {
+        target = <span class="s">&lt;&amp;spi0&gt;</span>;
+        <span class="c">__overlay__</span> {
+            #address-cells = <span class="s">&lt;1&gt;</span>;
+            #size-cells = <span class="s">&lt;0&gt;</span>;
+            status = <span class="s">"okay"</span>;
+
+            <span class="c">spidev@0</span> { status = <span class="s">"disabled"</span>; };
+
+            <span class="c">tpm_enclave: slb9670@0</span> {
+                compatible = <span class="s">"infineon,slb9670"</span>, <span class="s">"tcg,tpm_tis-spi"</span>;
+                reg = <span class="s">&lt;0&gt;</span>;
+                spi-max-frequency = <span class="s">&lt;32000000&gt;</span>;
+                status = <span class="s">"okay"</span>;
+                gpios = <span class="s">&lt;&amp;gpio 25 1&gt;</span>;
+                interrupt-parent = <span class="s">&lt;&amp;gpio&gt;</span>;
+                interrupts = <span class="s">&lt;24 1&gt;</span>;
+            };
+        };
+    };
+};</code></pre>
+        </details>
+
+        <div class="devmore mt-2xl">
+          <div>
+            <h2 class="h-sub">Where it fits in Arisma.</h2>
+            <p>The X1 is the root of trust for machines that cannot run an enclave of their own. Its signed telemetry is what the attest and verify steps check before anything settles.</p>
+            <a class="textlink" href="/whitepaper#ch4">Read about attestation</a>
+          </div>
+          <div>
+            <h2 class="h-sub">See it on a site.</h2>
+            <p>Each use case shows which ingest driver and enclave routine the gateway runs for that industry.</p>
+            <a class="textlink" href="/use-cases">Browse use cases</a>
+          </div>
+          <div>
+            <h2 class="h-sub">Evaluate the X1.</h2>
+            <p>Tell us about your site, your machines, and the protocols they speak.</p>
+            <a class="textlink" href="/contact">Talk to the hardware team</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="foot__top">
+        <div>
+          <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
+          <div class="foot__mast">arisma<i>.</i>network</div>
+          <p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p>
+        </div>
+        <nav aria-label="Footer">
+          <ul class="foot__nav">
+            <li><a href="/use-cases">Use cases</a></li>
+            <li><a href="/hardware">Hardware</a></li>
+            <li><a href="/architecture">Architecture</a></li>
+            <li><a href="/developers">Developers</a></li>
+            <li><a href="/whitepaper">Whitepaper</a></li>
+            <li><a href="/security">Security</a></li>
+            <li><a href="/status">Status</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="foot__meta">
+        <span>&copy; 2026 Arisma Network</span>
+        <span class="foot__legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

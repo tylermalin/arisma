@@ -7,27 +7,48 @@
   <meta name="description" content="A live status page for clearinghouse validators and enclave endpoints is coming. Sign up to be notified of incidents and updates.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
-  <link rel="stylesheet" href="page.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"></noscript>
+  <link rel="stylesheet" href="/page.css">
+  <link rel="canonical" href="https://arisma.network/status">
+  <link rel="icon" type="image/png" href="/assets/arisma-mark.png">
+  <link rel="apple-touch-icon" href="/assets/arisma-mark.png">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Arisma Network">
+  <meta property="og:title" content="Status: subscribe for updates | Arisma Network">
+  <meta property="og:description" content="A live status page for clearinghouse validators and enclave endpoints is coming. Sign up to be notified of incidents and updates.">
+  <meta property="og:url" content="https://arisma.network/status">
+  <meta property="og:image" content="https://arisma.network/assets/arisma-hero.jpg">
+  <meta property="og:image:width" content="1800">
+  <meta property="og:image:height" content="1324">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Status: subscribe for updates | Arisma Network">
+  <meta name="twitter:description" content="A live status page for clearinghouse validators and enclave endpoints is coming. Sign up to be notified of incidents and updates.">
+  <meta name="twitter:image" content="https://arisma.network/assets/arisma-hero.jpg">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},2500)</script>
+  <script src="/site.js" defer></script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="nav">
     <div class="nav__in">
       <a class="wordmark" href="/"><img class="wordmark__mark" src="/assets/arisma-mark.png" alt="" width="28" height="22"><span>arisma<i>.</i>network</span></a>
       <nav class="nav__links" aria-label="Primary">
+        <a href="/use-cases">Use cases</a>
+        <a href="/hardware">Hardware</a>
         <a href="/interactions">Interactions</a>
         <a href="/architecture">Architecture</a>
         <a href="/primitives">Primitives</a>
         <a href="/developers">Developers</a>
       </nav>
       <div class="nav__cta">
-        <a class="linklike" href="/whitepaper" style="font-size:var(--text-sm);color:var(--color-ink-2)">Whitepaper</a>
+        <a class="linklike" href="/whitepaper">Whitepaper</a>
         <a class="btn btn--primary" href="/access">Request access</a>
       </div>
     </div>
   </header>
-  <main>
+  <main id="main">
     <section class="subhero">
       <div class="container">
         <h1>Status.</h1>
@@ -35,19 +56,20 @@
         <span class="subhero__tag">company / status</span>
       </div>
     </section>
-    <section class="section request" style="border-top:none">
+    <section class="section request request--plain">
       <div class="container">
         <div class="request__grid">
           <div class="request__aside">
             <h2>A live status page is on the way.</h2>
-            <p>Real-time uptime for clearinghouse validators and enclave endpoints is being wired up. Subscribe to be notified of incidents, maintenance, and launch.</p>
-            <p style="margin-top:var(--space-md)"><span class="chip chip--live">Coming soon</span></p>
+            <p>Realtime uptime for clearinghouse validators and enclave endpoints is in progress. Subscribe to be notified of incidents, maintenance, and launch.</p>
+            <p class="mt-lg"><span class="chip chip--live">Coming soon</span></p>
           </div>
-          <form class="access" data-interest novalidate>
-            <div class="field"><label for="s-email">Work email</label><input id="s-email" name="email" type="email" autocomplete="email" required placeholder="ada@company.com"></div>
+          <form class="access" data-form="status" data-ok="Subscribed. Status alerts will go to {email}." novalidate>
+            <div class="field"><label for="s-email">Work email</label><input id="s-email" name="email" type="email" autocomplete="email" required placeholder="maya@yourcompany.com"></div>
             <div class="field"><label for="s-scope">Notify me about</label><select id="s-scope" name="scope"><option>Incidents and uptime</option><option>Maintenance windows</option><option>Everything</option></select></div>
-            <button class="btn btn--primary" type="submit">Notify me</button>
-            <p class="form-status" role="status" aria-live="polite" data-endpoint="POST /v1/status-subscribe">Not yet wired: point this form at <b>POST /v1/status-subscribe</b> to subscribe.</p>
+            <div class="hp" aria-hidden="true"><label for="hp-s">Company site</label><input id="hp-s" name="company_site" type="text" tabindex="-1" autocomplete="off"></div>
+            <button class="btn btn--primary" type="submit">Get status alerts</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
       </div>
@@ -55,25 +77,30 @@
   </main>
   <footer class="site-footer">
     <div class="container">
-      <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
-      <div class="foot__mast">arisma<i>.</i>network</div>
-      <div class="foot__cols">
-        <div><p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p><a class="btn" href="/whitepaper" style="margin-top:var(--space-md)">Read the whitepaper (v1.0)</a></div>
-        <div><p class="foot__h">Platform</p><ul><li><a href="/interactions">Interactions</a></li><li><a href="/architecture">Architecture</a></li><li><a href="/primitives">Primitives</a></li></ul></div>
-        <div><p class="foot__h">Developers</p><ul><li><a href="/developers">Developers</a></li><li><a href="/developers/quickstart">Quickstart</a></li><li><a href="/developers/mcp">Agent-Escrow MCP</a></li><li><a href="/developers/sdk">Edge Enclave SDK</a></li></ul></div>
-        <div><p class="foot__h">Company</p><ul><li><a href="/whitepaper">Whitepaper</a></li><li><a href="/security">Security</a></li><li><a href="/status">Status</a></li><li><a href="/contact">Contact</a></li></ul></div>
+      <div class="foot__top">
+        <div>
+          <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
+          <div class="foot__mast">arisma<i>.</i>network</div>
+          <p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p>
+        </div>
+        <nav aria-label="Footer">
+          <ul class="foot__nav">
+            <li><a href="/use-cases">Use cases</a></li>
+            <li><a href="/hardware">Hardware</a></li>
+            <li><a href="/architecture">Architecture</a></li>
+            <li><a href="/developers">Developers</a></li>
+            <li><a href="/whitepaper">Whitepaper</a></li>
+            <li><a href="/security">Security</a></li>
+            <li><a href="/status">Status</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
       </div>
-      <div class="foot__meta"><span>&copy; 2026 Arisma Network</span><span>ERC-7702, TEE, zk-attestation, C2PA, USDC</span></div>
+      <div class="foot__meta">
+        <span>&copy; 2026 Arisma Network</span>
+        <span class="foot__legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></span>
+      </div>
     </div>
   </footer>
-  <script>
-    document.querySelectorAll('form[data-interest]').forEach((f) => f.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const status = f.querySelector('.form-status');
-      const email = f.querySelector('input[type=email]');
-      if (email && (!email.value || !email.checkValidity())) { email.focus(); return; }
-      status.innerHTML = 'Captured locally. Wire <b>' + (status.dataset.endpoint || 'your endpoint') + '</b> to deliver it.';
-    }));
-  </script>
 </body>
 </html>

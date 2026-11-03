@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Use cases: where machine settlement pays off | Arisma Network</title>
+  <meta name="description" content="Industry use cases for Arisma: AI agents and compute, logistics robots, EV charging, drone inspection, cold chain, environmental data, and industrial machinery.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"></noscript>
+  <link rel="stylesheet" href="/page.css">
+  <link rel="canonical" href="https://arisma.network/use-cases">
+  <link rel="icon" type="image/png" href="/assets/arisma-mark.png">
+  <link rel="apple-touch-icon" href="/assets/arisma-mark.png">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Arisma Network">
+  <meta property="og:title" content="Use cases: where machine settlement pays off | Arisma Network">
+  <meta property="og:description" content="Industry use cases for Arisma: AI agents and compute, logistics robots, EV charging, drone inspection, cold chain, environmental data, and industrial machinery.">
+  <meta property="og:url" content="https://arisma.network/use-cases">
+  <meta property="og:image" content="https://arisma.network/assets/arisma-hero.jpg">
+  <meta property="og:image:width" content="1800">
+  <meta property="og:image:height" content="1324">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Use cases: where machine settlement pays off | Arisma Network">
+  <meta name="twitter:description" content="Industry use cases for Arisma: AI agents and compute, logistics robots, EV charging, drone inspection, cold chain, environmental data, and industrial machinery.">
+  <meta name="twitter:image" content="https://arisma.network/assets/arisma-hero.jpg">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},2500)</script>
+  <script src="/site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <div class="nav__in">
+      <a class="wordmark" href="/"><img class="wordmark__mark" src="/assets/arisma-mark.png" alt="" width="28" height="22"><span>arisma<i>.</i>network</span></a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="/use-cases" aria-current="page">Use cases</a>
+        <a href="/hardware">Hardware</a>
+        <a href="/interactions">Interactions</a>
+        <a href="/architecture">Architecture</a>
+        <a href="/primitives">Primitives</a>
+        <a href="/developers">Developers</a>
+      </nav>
+      <div class="nav__cta">
+        <a class="linklike" href="/whitepaper">Whitepaper</a>
+        <a class="btn btn--primary" href="/access">Request access</a>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="subhero">
+      <div class="container">
+        <h1>Where machine settlement pays off first.</h1>
+        <p class="subhero__sub">Seven industries where machines and agents already do the work, and still wait on invoices, cards, and people to get paid.</p>
+        <span class="subhero__tag">platform / use cases</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>The pattern behind every strong fit.</h2>
+          <p>Arisma earns its place where four things are true at once. The more of them a workflow has, the more cost and delay it removes.</p>
+        </div>
+        <ol class="fit">
+          <li><span class="fit__n">01</span><h3>It happens constantly</h3><p>Thousands of events a day per fleet, too many to invoice one by one.</p></li>
+          <li><span class="fit__n">02</span><h3>Each event is worth little</h3><p>Fractions of a cent to a few dollars, below what card fees allow.</p></li>
+          <li><span class="fit__n">03</span><h3>No person is present</h3><p>The payer is a machine or an agent acting under someone else's authority.</p></li>
+          <li><span class="fit__n">04</span><h3>Something physical must be proven</h3><p>Payment should follow a verified event, not a claim that it happened.</p></li>
+        </ol>
+
+        <nav class="jump mt-2xl" aria-label="Industries">
+          <a href="#agents">AI agents &amp; compute</a>
+          <a href="#logistics">Logistics &amp; warehousing</a>
+          <a href="#energy">EV charging &amp; energy</a>
+          <a href="#inspection">Drone inspection</a>
+          <a href="#coldchain">Cold chain &amp; pharma</a>
+          <a href="#environment">Environmental data</a>
+          <a href="#industrial">Industrial machinery</a>
+        </nav>
+
+        <div class="cases mt-xl">
+          <article class="case" id="agents">
+            <header class="case__head">
+              <span class="case__n">01</span>
+              <p class="case__ind">AI agents &amp; compute</p>
+              <h3>Agents that pay for their own inference, data, and work.</h3>
+            </header>
+            <div class="case__body">
+              <p>An agent calls models, buys datasets, and hires other agents to finish a task. Today it borrows a shared API key billed to a corporate card, so no one can say what a single agent spent or stop it at a limit. With Arisma each agent gets its own budget bound session key, pays per request, and holds funds in escrow until a hired agent delivers.</p>
+              <dl class="case__facts">
+                <div><dt>Who pays whom</dt><dd>Agent to model, data, or agent provider</dd></div>
+                <div><dt>What settles</dt><dd>Per request, or escrow released on delivery</dd></div>
+                <div><dt>What it replaces</dt><dd>Shared keys, card billing, monthly reconciliation</dd></div>
+              </dl>
+              <ol class="case__flow" aria-label="Settlement flow">
+                <li><b>delegate</b> Owner grants a key: settle only, $25 cap, one hour.</li>
+                <li><b>settle</b> Each model call clears as it happens.</li>
+                <li><b>verify</b> Escrow for hired work releases when output checks pass.</li>
+              </ol>
+            </div>
+            <aside class="case__side">
+              <span class="case__tag">Agent Escrow MCP</span>
+              <p class="case__fig"><b>per call</b> metered</p>
+              <p class="case__why">Highest volume of the seven: software agents transact at machine speed with no person in the loop.</p>
+              <p class="case__x1"><a href="/hardware">On the X1</a>PCIe or shared memory ingest. The TPM signs each inference output with a hash of its input.</p>
+            </aside>
+          </article>
+
+          <article class="case" id="logistics">
+            <header class="case__head">
+              <span class="case__n">02</span>
+              <p class="case__ind">Logistics &amp; warehousing</p>
+              <h3>Robots billed per pick, settled per pick.</h3>
+            </header>
+            <div class="case__body">
+              <p>Robots as a service contracts charge per pick, per tote, or per hour, then reconcile a monthly invoice against the operator's own logs. Disputes come from two sets of numbers. With Arisma the robot fleet signs each completed pick in its enclave and the warehouse settles it in the same second, so both sides hold the same receipt.</p>
+              <dl class="case__facts">
+                <div><dt>Who pays whom</dt><dd>Warehouse operator to robot fleet owner</dd></div>
+                <div><dt>What settles</dt><dd>Each pick, streamed</dd></div>
+                <div><dt>What it replaces</dt><dd>Monthly invoices and log reconciliation</dd></div>
+              </dl>
+              <ol class="case__flow" aria-label="Settlement flow">
+                <li><b>attest</b> The arm's enclave signs the completed pick.</li>
+                <li><b>settle</b> $0.002 clears to the fleet owner.</li>
+                <li><b>anchor</b> Both parties keep one shared receipt.</li>
+              </ol>
+            </div>
+            <aside class="case__side">
+              <span class="case__tag">IX-02 robot handoff</span>
+              <p class="case__fig"><b>$0.002</b> per pick</p>
+              <p class="case__why">Very high frequency with tiny values, the exact shape card rails and invoices handle worst.</p>
+              <p class="case__x1"><a href="/hardware">On the X1</a>ROS2 node over DDS or CAN FD. Navigation strings carry a sequence counter, so replays fail.</p>
+            </aside>
+          </article>
+
+          <article class="case" id="energy">
+            <header class="case__head">
+              <span class="case__n">03</span>
+              <p class="case__ind">EV charging &amp; fleet energy</p>
+              <h3>Autonomous fleets that charge without an app or a card.</h3>
+            </header>
+            <div class="case__body">
+              <p>A robotaxi has no driver to tap a card or open an app, and fleets juggle charging networks, roaming fees, and settlements that land days later. With Arisma the vehicle presents a scoped key at the charger and pays per metered kWh while it charges. The same path pays a home battery or depot for a verified kWh delivered back to the grid during a demand response event.</p>
+              <dl class="case__facts">
+                <div><dt>Who pays whom</dt><dd>Vehicle to charger; grid operator to battery</dd></div>
+                <div><dt>What settles</dt><dd>Metered kWh, during the session</dd></div>
+                <div><dt>What it replaces</dt><dd>Charging cards, roaming hubs, delayed payouts</dd></div>
+              </dl>
+              <ol class="case__flow" aria-label="Settlement flow">
+                <li><b>delegate</b> The fleet issues the vehicle a charging only key.</li>
+                <li><b>settle</b> $0.31 clears for every kWh the meter signs.</li>
+                <li><b>anchor</b> The session receipt closes when the plug comes out.</li>
+              </ol>
+            </div>
+            <aside class="case__side">
+              <span class="case__tag">IX-03 vehicle energy</span>
+              <p class="case__fig"><b>$0.31</b> per kWh</p>
+              <p class="case__why">Larger tickets, no person at the pump, and a meter that can sign its own readings.</p>
+              <p class="case__x1"><a href="/hardware">On the X1</a>OCPP 2.0.1 and ISO 15118. Billing and state of charge tokens are signed before they leave the site.</p>
+            </aside>
+          </article>
+
+          <article class="case" id="inspection">
+            <header class="case__head">
+              <span class="case__n">04</span>
+              <p class="case__ind">Drone delivery &amp; inspection</p>
+              <h3>Pay for the inspection once the imagery proves it happened.</h3>
+            </header>
+            <div class="case__body">
+              <p>Utilities and insurers pay drone operators to inspect lines, towers, and roofs, then wait for a report before they trust the job was done. With Arisma the drone anchors each capture with a C2PA provenance hash, the gate checks that the frames match the flight, and payment releases on the verified capture. Between jobs the same drone pays for its own charge at the pad.</p>
+              <dl class="case__facts">
+                <div><dt>Who pays whom</dt><dd>Utility or insurer to drone operator; drone to pad</dd></div>
+                <div><dt>What settles</dt><dd>Each verified capture, each charge</dd></div>
+                <div><dt>What it replaces</dt><dd>Manual report review before invoicing</dd></div>
+              </dl>
+              <ol class="case__flow" aria-label="Settlement flow">
+                <li><b>attest</b> Each frame carries a C2PA hash at capture.</li>
+                <li><b>verify</b> The gate matches frames to the flight plan.</li>
+                <li><b>settle</b> Payment releases; the pad charge clears at $0.14.</li>
+              </ol>
+            </div>
+            <aside class="case__side">
+              <span class="case__tag">IX-01 drone charge</span>
+              <p class="case__fig"><b>1.4s</b> finality</p>
+              <p class="case__why">The value sits in proof of work done in the field, which C2PA anchoring makes checkable.</p>
+              <p class="case__x1"><a href="/hardware">On the X1</a>MAVLink and RTSP. Video is encrypted with ephemeral keys and GPS is signed at the dock.</p>
+            </aside>
+          </article>
+
+          <article class="case" id="coldchain">
+            <header class="case__head">
+              <span class="case__n">05</span>
+              <p class="case__ind">Cold chain &amp; pharmaceuticals</p>
+              <h3>Release payment only if the shipment stayed in range.</h3>
+            </header>
+            <div class="case__body">
+              <p>Vaccines and biologics must stay within a set temperature band, and a single excursion can void a shipment. Today that is proven after the fact from data loggers and paperwork. With Arisma the carrier proves in zero knowledge that every reading stayed between 2 and 8 &deg;C without handing over the full trace, and a quality lead holds the final release, as pharmaceutical batch release already requires.</p>
+              <dl class="case__facts">
+                <div><dt>Who pays whom</dt><dd>Shipper to carrier, on proven compliance</dd></div>
+                <div><dt>What settles</dt><dd>The shipment, at delivery</dd></div>
+                <div><dt>What it replaces</dt><dd>Logger downloads, paperwork, claims disputes</dd></div>
+              </dl>
+              <ol class="case__flow" aria-label="Settlement flow">
+                <li><b>attest</b> Sensors anchor readings with C2PA in transit.</li>
+                <li><b>verify</b> A zero knowledge proof shows the band held.</li>
+                <li><b>gate</b> A person approves release, then payment settles.</li>
+              </ol>
+            </div>
+            <aside class="case__side">
+              <span class="case__tag">Human in the loop gate</span>
+              <p class="case__fig"><b>2 to 8 &deg;C</b> proven privately</p>
+              <p class="case__why">High value per shipment and a regulated human sign off, which the gate is built to hold.</p>
+              <p class="case__x1"><a href="/hardware">On the X1</a>BLE 5.2 or 1-Wire sensors. Each reading is chained to a secure timestamp, so edits break the chain.</p>
+            </aside>
+          </article>
+
+          <article class="case" id="environment">
+            <header class="case__head">
+              <span class="case__n">06</span>
+              <p class="case__ind">Environmental monitoring &amp; MRV</p>
+              <h3>Sensors that sell verified readings, one at a time.</h3>
+            </header>
+            <div class="case__body">
+              <p>Carbon, water, and air quality programs depend on measurement, reporting, and verification, and buyers increasingly ask where each number came from. With Arisma a field sensor signs every reading at the source, anchors it with C2PA, and sells it per reading to whoever needs it: a registry, a buyer, an insurer, or a research team.</p>
+              <dl class="case__facts">
+                <div><dt>Who pays whom</dt><dd>Data buyer to sensor owner</dd></div>
+                <div><dt>What settles</dt><dd>Each verified reading</dd></div>
+                <div><dt>What it replaces</dt><dd>Bulk data licenses and manual audits</dd></div>
+              </dl>
+              <ol class="case__flow" aria-label="Settlement flow">
+                <li><b>attest</b> The sensor signs the reading in hardware.</li>
+                <li><b>anchor</b> A C2PA hash ties it to time and place.</li>
+                <li><b>settle</b> $0.0004 clears to the sensor owner.</li>
+              </ol>
+            </div>
+            <aside class="case__side">
+              <span class="case__tag">IX-04 sensor telemetry</span>
+              <p class="case__fig"><b>$0.0004</b> per reading</p>
+              <p class="case__why">The data is the product, so provenance at the source is worth more than the payment itself.</p>
+              <p class="case__x1"><a href="/hardware">On the X1</a>LoRaWAN or Modbus RTU. Readings are batched into one signed digest per interval.</p>
+            </aside>
+          </article>
+
+          <article class="case" id="industrial">
+            <header class="case__head">
+              <span class="case__n">07</span>
+              <p class="case__ind">Industrial machinery &amp; manufacturing</p>
+              <h3>Machines sold by the hour, cycle, or part, with a person on the switch.</h3>
+            </header>
+            <div class="case__body">
+              <p>Compressors, machine tools, and heavy equipment are moving to pay per use, billed from usage reports the customer has to trust. With Arisma the machine signs each cycle and settles it as it runs. Before a heavy machine starts, the gate waits for a named operator to approve, so automation never removes the person responsible for safety.</p>
+              <dl class="case__facts">
+                <div><dt>Who pays whom</dt><dd>Plant to equipment owner</dd></div>
+                <div><dt>What settles</dt><dd>Each cycle, hour, or finished part</dd></div>
+                <div><dt>What it replaces</dt><dd>Usage reports and quarterly true ups</dd></div>
+              </dl>
+              <ol class="case__flow" aria-label="Settlement flow">
+                <li><b>gate</b> An operator approves activation.</li>
+                <li><b>attest</b> The controller signs each completed cycle.</li>
+                <li><b>settle</b> Usage clears as the machine runs.</li>
+              </ol>
+            </div>
+            <aside class="case__side">
+              <span class="case__tag">Policy gate</span>
+              <p class="case__fig"><b>per cycle</b> metered</p>
+              <p class="case__why">Equipment as a service needs trusted usage data and a hard safety stop. Both are built in.</p>
+              <p class="case__x1"><a href="/hardware">On the X1</a>OPC UA, Modbus TCP, or EtherCAT. Legacy PLC links end inside the gateway and leave over mTLS.</p>
+            </aside>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>How each industry scores against the pattern.</h2>
+          <p>A filled mark means the property defines the workflow. An outline means it applies to part of it.</p>
+        </div>
+        <div class="tablewrap">
+          <table class="fitmatrix">
+            <thead>
+              <tr><th scope="col">Industry</th><th scope="col">Constant</th><th scope="col">Small value</th><th scope="col">No person</th><th scope="col">Physical proof</th><th scope="col">Human gate</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">AI agents &amp; compute</th><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><span class="sr">Not needed</span></td><td><i aria-hidden="true" class="m m--half"></i><span class="sr">Partial</span></td></tr>
+              <tr><th scope="row">Logistics &amp; warehousing</th><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><i aria-hidden="true" class="m m--half"></i><span class="sr">Partial</span></td><td><span class="sr">Not needed</span></td></tr>
+              <tr><th scope="row">EV charging &amp; energy</th><td><i aria-hidden="true" class="m m--half"></i><span class="sr">Partial</span></td><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><i aria-hidden="true" class="m m--half"></i><span class="sr">Partial</span></td><td><span class="sr">Not needed</span></td></tr>
+              <tr><th scope="row">Drone delivery &amp; inspection</th><td><i aria-hidden="true" class="m m--half"></i><span class="sr">Partial</span></td><td><i aria-hidden="true" class="m m--half"></i><span class="sr">Partial</span></td><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><i aria-hidden="true" class="m m--half"></i><span class="sr">Partial</span></td></tr>
+              <tr><th scope="row">Cold chain &amp; pharma</th><td><i aria-hidden="true" class="m m--half"></i><span class="sr">Partial</span></td><td><span class="sr">Not needed</span></td><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td></tr>
+              <tr><th scope="row">Environmental data</th><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><span class="sr">Not needed</span></td></tr>
+              <tr><th scope="row">Industrial machinery</th><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><i aria-hidden="true" class="m m--half"></i><span class="sr">Partial</span></td><td><i aria-hidden="true" class="m m--half"></i><span class="sr">Partial</span></td><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td><td><i aria-hidden="true" class="m m--full"></i><span class="sr">Strong</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Unit prices on this page match the interaction schematics and are illustrative. Your rates are set by your own contracts.</p>
+
+        <div class="docrow"><a class="btn btn--primary" href="/contact">Talk through your use case</a><a class="textlink" href="/access">Request access</a></div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="foot__top">
+        <div>
+          <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
+          <div class="foot__mast">arisma<i>.</i>network</div>
+          <p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p>
+        </div>
+        <nav aria-label="Footer">
+          <ul class="foot__nav">
+            <li><a href="/use-cases">Use cases</a></li>
+            <li><a href="/hardware">Hardware</a></li>
+            <li><a href="/architecture">Architecture</a></li>
+            <li><a href="/developers">Developers</a></li>
+            <li><a href="/whitepaper">Whitepaper</a></li>
+            <li><a href="/security">Security</a></li>
+            <li><a href="/status">Status</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="foot__meta">
+        <span>&copy; 2026 Arisma Network</span>
+        <span class="foot__legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

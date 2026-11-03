@@ -1,47 +1,75 @@
 :root {
   color-scheme: dark;
-  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
-  --text-xs: 0.8125rem; --text-sm: 0.875rem; --text-md: 1rem; --text-lg: 1.25rem; --text-xl: 1.5625rem; --text-2xl: 1.953rem; --text-3xl: 2.441rem;
-  --text-display-s: clamp(2.25rem, 4vw + 0.5rem, 3.75rem); --text-display: clamp(2.6rem, 4.6vw + 1rem, 4.85rem);
-  --text-section: clamp(2rem, 2.5vw + 1rem, 3.35rem); --text-title: clamp(1.25rem, 0.75vw + 0.875rem, 1.625rem); --text-lead: clamp(1.125rem, 0.35vw + 1rem, 1.375rem);
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in: cubic-bezier(0.7, 0, 0.84, 0); --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+
+  /* spacing: approved scale only (0 2 4 8 12 16 24 32 40 48 64 80 96) */
+  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px;
+  --space-32: 32px; --space-48: 48px; --space-80: 80px;
+
+  /* type: Tailwind default scale, sizes paired with their line heights */
+  --text-xs: 0.75rem;   --lh-xs: 1rem;        /* 12 / 16 */
+  --text-sm: 0.875rem;  --lh-sm: 1.25rem;     /* 14 / 20 */
+  --text-md: 1rem;      --lh-md: 1.5rem;      /* 16 / 24 */
+  --text-lg: 1.125rem;  --lh-lg: 1.75rem;     /* 18 / 28 */
+  --text-xl: 1.25rem;   --lh-xl: 1.75rem;     /* 20 / 28 */
+  --text-2xl: 1.5rem;   --lh-2xl: 2rem;       /* 24 / 32 */
+  --text-3xl: 1.875rem; --lh-3xl: 2.25rem;    /* 30 / 36 */
+  --text-4xl: 2.25rem;  --lh-4xl: 2.5rem;     /* 36 / 40 */
+  --text-5xl: 3rem;     /* 48 / 1 */
+  --text-6xl: 3.75rem;  /* 60 / 1 */
+  --text-7xl: 4.5rem;   /* 72 / 1 */
+  /* role sizes, stepped per breakpoint in base.css */
+  --text-display: var(--text-5xl); --text-display-s: var(--text-5xl);
+  --text-section: var(--text-4xl); --text-title: var(--text-xl); --text-lead: var(--text-lg);
+
+  /* motion: one base curve; 500ms movement, 300ms color and opacity */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1); --ease-in-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-color: 300ms; --dur-move: 500ms; --dur-reveal: 700ms;
+  --dur-micro: var(--dur-color); --dur-short: var(--dur-color); --dur-long: var(--dur-move);
+
   --color-error: oklch(64% 0.19 27); --color-success: oklch(72% 0.15 160);
-  --container: 1440px; --gutter: 64px; --gap-columns: 32px; --section-gap-s: 120px; --section-gap: 144px; --section-gap-l: 176px;
+  --container: 1440px; --gutter: 64px; --gap-columns: 32px; --section-gap-s: 96px; --section-gap: 96px; --section-gap-l: 96px;
   --z-base: 1; --z-raised: 10; --z-dropdown: 100; --z-sticky: 200; --z-sticky-nav: 300; --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
 
-  /* Arisma Network — Furrow's working-records SYSTEM on the Obsidian brand ground.
-     Brand kept per redesign rules: Obsidian paper, Pure Luminescence ink, Quantum Cyan where Furrow runs tangerine. */
-  --color-paper: #0B0F19; --color-paper-2: #10182a; --color-paper-3: #1E293B; --color-paper-hi: #0e1422;
-  --color-ink: #F8FAFC; --color-ink-2: #c3cedd; --color-muted: #7e8ca6;
-  --color-rule: color-mix(in oklab, var(--color-ink) 12%, transparent);
-  --color-accent: #00F2FE; --color-accent-ink: #04121b; --color-accent-hi: color-mix(in oklab, #00F2FE 86%, #ffffff);
-  --color-accent-soft: color-mix(in oklab, #00F2FE 15%, var(--color-paper)); --color-focus: #00F2FE;
-  --color-indigo: #4FACFE;
-  --color-green: #2fe0b0; --color-green-soft: color-mix(in oklab, #2fe0b0 15%, var(--color-paper));
-  --color-teal: color-mix(in oklab, var(--color-accent) 45%, var(--color-green));
+  /* surfaces: approved dark values only, one neutral gray family */
+  --color-paper: #000000; --color-paper-2: #181818; --color-paper-3: #272727; --color-paper-hi: #1F1F1F; --color-paper-4: #313131;
+  --color-ink: #FFFFFF;
+  --color-ink-2: color-mix(in oklab, #FFFFFF 78%, #9B9B9B);
+  --color-muted: #9B9B9B;
+  --color-rule: color-mix(in oklab, #FFFFFF 12%, transparent);
 
-  /* schematic linework — the survey map re-hued for a site/airspace plan */
-  --color-contour: color-mix(in oklab, var(--color-indigo) 40%, transparent);
-  --color-trace: color-mix(in oklab, var(--color-accent) 52%, transparent);
-  --color-grid: color-mix(in oklab, var(--color-ink) 7%, transparent);
-  --color-grid-strong: color-mix(in oklab, var(--color-ink) 13%, transparent);
-  --color-sheet: #111a2d;
-  --color-mark: color-mix(in oklab, var(--color-accent) 55%, transparent);
-  --grain: none;
-
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --font-outlier: var(--font-mono);
-  --radius-card: 10px; --radius-entry: 14px; --radius-pill: 8px; --rule-hair: 1px;
-  --shadow-card: 0 1px 2px #00000066, 0 16px 34px -18px #000000, 0 0 0 1px color-mix(in oklab, var(--color-ink) 8%, transparent);
-  --shadow-lift: 0 2px 6px #00000077, 0 28px 54px -22px #000000, 0 0 0 1px color-mix(in oklab, var(--color-accent) 18%, transparent);
-  /* moulded-key inset lighting (Furrow controls) */
-  --key-hi: color-mix(in oklab, #ffffff 8%, transparent);
-  --key-hi-strong: color-mix(in oklab, #ffffff 45%, transparent);
-  --key-lo: color-mix(in oklab, #000000 22%, transparent);
-  --key-cast: color-mix(in oklab, #000000 33%, transparent);
+  /* one accent: the Arisma cyan, desaturated under 80% so it sits with the neutrals */
+  --color-accent: hsl(182 78% 50%);
+  --color-accent-ink: #000000;
+  --color-accent-hi: color-mix(in oklab, var(--color-accent) 86%, #FFFFFF);
+  --color-accent-soft: color-mix(in oklab, var(--color-accent) 14%, var(--color-paper));
   --color-accent-edge: color-mix(in oklab, var(--color-accent) 70%, #000000);
-  --tracking-display: -0.02em; --display-weight: 600;
+  --color-focus: var(--color-accent);
+  /* legacy aliases, collapsed onto the single accent and the neutrals */
+  --color-indigo: var(--color-ink-2); --color-green: var(--color-accent); --color-green-soft: var(--color-accent-soft); --color-teal: var(--color-accent);
+
+  /* schematic linework */
+  --color-trace: color-mix(in oklab, var(--color-accent) 52%, transparent);
+  --color-grid: color-mix(in oklab, #FFFFFF 6%, transparent);
+  --color-mark: color-mix(in oklab, var(--color-accent) 55%, transparent);
+
+  /* hero heading text gradient, dark theme */
+  --hero-ink: linear-gradient(90deg, #FFFFFF, #9B9B9B);
+
+  /* fonts: Geist for everything, Geist Mono for code and data */
+  --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* radius: Tailwind values (sm 2, rounded 4, md 6, lg 8, xl 12, 2xl 16, full) */
+  --radius-sm: 4px; --radius-md: 6px; --radius-pill: 8px; --radius-card: 12px; --radius-entry: 16px; --radius-full: 9999px;
+  --rule-hair: 1px;
+
+  /* shadows: one light source from above, tinted to the black ground */
+  --shadow-card: 0 1px 2px color-mix(in oklab, var(--color-paper) 60%, transparent), 0 16px 32px -16px color-mix(in oklab, var(--color-paper) 90%, transparent);
+  --key-hi: color-mix(in oklab, #FFFFFF 8%, transparent);
+  --key-hi-strong: color-mix(in oklab, #FFFFFF 40%, transparent);
+  --key-lo: color-mix(in oklab, #000000 22%, transparent);
+  --key-cast: color-mix(in oklab, #000000 40%, transparent);
+
+  --tracking-display: -0.035em; --display-weight: 600;
 }
