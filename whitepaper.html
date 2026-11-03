@@ -3,76 +3,408 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Whitepaper: the Arisma protocol specification (v1.0) | Arisma Network</title>
-  <meta name="description" content="Economic security models for autonomous machine economies: hardware-secured enclaves, zero-knowledge attestation for physical telemetry, and deterministic stablecoin micro-clearing.">
+  <title>Whitepaper: the Arisma protocol, interactive edition | Arisma Network</title>
+  <meta name="description" content="Economic security models for autonomous machine economies: enclaves secured in hardware, zero knowledge attestation for physical telemetry, and deterministic stablecoin microclearing.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
-  <link rel="stylesheet" href="page.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"></noscript>
+  <link rel="stylesheet" href="/page.css">
+  <link rel="canonical" href="https://arisma.network/whitepaper">
+  <link rel="icon" type="image/png" href="/assets/arisma-mark.png">
+  <link rel="apple-touch-icon" href="/assets/arisma-mark.png">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Arisma Network">
+  <meta property="og:title" content="Whitepaper: the Arisma protocol, interactive edition | Arisma Network">
+  <meta property="og:description" content="Economic security models for autonomous machine economies: enclaves secured in hardware, zero knowledge attestation for physical telemetry, and deterministic stablecoin microclearing.">
+  <meta property="og:url" content="https://arisma.network/whitepaper">
+  <meta property="og:image" content="https://arisma.network/assets/arisma-hero.jpg">
+  <meta property="og:image:width" content="1800">
+  <meta property="og:image:height" content="1324">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Whitepaper: the Arisma protocol, interactive edition | Arisma Network">
+  <meta name="twitter:description" content="Economic security models for autonomous machine economies: enclaves secured in hardware, zero knowledge attestation for physical telemetry, and deterministic stablecoin microclearing.">
+  <meta name="twitter:image" content="https://arisma.network/assets/arisma-hero.jpg">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},2500)</script>
+  <script src="/site.js" defer></script>
+  <script src="/whitepaper.js" defer></script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="nav">
     <div class="nav__in">
       <a class="wordmark" href="/"><img class="wordmark__mark" src="/assets/arisma-mark.png" alt="" width="28" height="22"><span>arisma<i>.</i>network</span></a>
       <nav class="nav__links" aria-label="Primary">
+        <a href="/use-cases">Use cases</a>
+        <a href="/hardware">Hardware</a>
         <a href="/interactions">Interactions</a>
         <a href="/architecture">Architecture</a>
         <a href="/primitives">Primitives</a>
         <a href="/developers">Developers</a>
       </nav>
       <div class="nav__cta">
-        <a class="linklike" href="/whitepaper" style="font-size:var(--text-sm);color:var(--color-ink-2)">Whitepaper</a>
+        <a class="linklike" href="/whitepaper">Whitepaper</a>
         <a class="btn btn--primary" href="/access">Request access</a>
       </div>
     </div>
   </header>
-  <main>
+  <main id="main">
+    <div class="wp-progress" aria-hidden="true"></div>
     <section class="subhero">
       <div class="container">
-        <h1>The Arisma protocol specification (v1.0).</h1>
-        <p class="subhero__sub">Economic security models for autonomous machine economies.</p>
-        <span class="subhero__tag">resources / whitepaper</span>
+        <h1>The Arisma protocol, explained by running it.</h1>
+        <p class="subhero__sub">Five short chapters on economic security for autonomous machine economies. Each one gives you a working model to try and a question to check it landed.</p>
+        <span class="subhero__tag">resources / whitepaper v1.0</span>
       </div>
     </section>
+
     <section class="section">
-      <div class="container doc">
-        <div class="prose"><p>Read our comprehensive technical whitepaper detailing hardware-secured enclaves, zero-knowledge attestation mechanics for physical telemetry, and deterministic stablecoin micro-clearing topologies.</p></div>
-        <div class="docrow">
-          <a class="btn btn--primary" href="/whitepaper.pdf">Download PDF (v1.0 &middot; 34 pages)</a>
-          <a class="btn" href="#contents">Read the online edition</a>
+      <div class="container">
+        <div class="wp">
+          <nav class="wp-rail" aria-label="Chapters">
+            <p class="wp-rail__meta">5 chapters &middot; about 12 minutes</p>
+            <ol>
+              <li><a href="#ch1" data-ch="1"><span class="wp-rail__n">01</span><span>Why machines need new rails</span></a></li>
+              <li><a href="#ch2" data-ch="2"><span class="wp-rail__n">02</span><span>Trust model</span></a></li>
+              <li><a href="#ch3" data-ch="3"><span class="wp-rail__n">03</span><span>Settlement topology</span></a></li>
+              <li><a href="#ch4" data-ch="4"><span class="wp-rail__n">04</span><span>Attestation</span></a></li>
+              <li><a href="#ch5" data-ch="5"><span class="wp-rail__n">05</span><span>Economic security</span></a></li>
+              <li><a href="#glossary"><span class="wp-rail__n">&rsaquo;</span><span>Glossary</span></a></li>
+            </ol>
+            <p class="wp-rail__score" aria-live="polite"><span data-score>0</span> of 5 checks passed</p>
+            <button class="wp-reset" type="button" hidden>Reset progress</button>
+          </nav>
+
+          <div class="wp-body">
+            <div class="prose">
+              <p>Traditional payment rails assume a person in the loop and price credit risk accordingly. Autonomous agents and physical machinery need something else: provable authority, deterministic settlement, and bounded, verifiable behavior. This edition walks through how Arisma provides each one.</p>
+              <p>Underlined terms open a short definition. Your progress stays in this browser only.</p>
+            </div>
+            <div class="docrow">
+              <a class="btn btn--primary" href="#ch1">Start chapter 01</a>
+              <span class="textlink is-disabled" aria-disabled="true">PDF coming soon</span>
+            </div>
+
+            <!-- ============ 01 ============ -->
+            <section class="wp-ch" id="ch1" aria-labelledby="ch1-title">
+              <p class="wp-ch__n">Chapter 01</p>
+              <h2 id="ch1-title">Why machines need new rails.</h2>
+              <div class="prose">
+                <p>Card networks were designed around a person at a checkout. They price in credit risk, settle in batches, and charge a fixed fee per transaction that makes sense on a $40 purchase. A drone buying $0.14 of charge, a robot paid per pick, or a sensor selling a single reading breaks every one of those assumptions.</p>
+                <p>Machines need three things instead: authority they can prove with no person present, settlement that reaches <a class="term" href="#g-finality">finality</a> in seconds, and behavior that is bounded and checkable. The rest of this paper builds those three properties, one layer at a time.</p>
+              </div>
+
+              <div class="lab" data-lab="rails">
+                <div class="lab__head"><h3>Price a machine payment on card rails</h3><span class="lab__tag">try it</span></div>
+                <span class="lab__label" id="rails-l">Pick a payment</span>
+                <div class="opts" role="radiogroup" aria-labelledby="rails-l">
+                  <label class="opt"><input type="radio" name="rails-amt" value="0.0004"><span>Sensor reading $0.0004</span></label>
+                  <label class="opt"><input type="radio" name="rails-amt" value="0.002"><span>Robot pick $0.002</span></label>
+                  <label class="opt"><input type="radio" name="rails-amt" value="0.14" checked><span>Drone charge $0.14</span></label>
+                  <label class="opt"><input type="radio" name="rails-amt" value="12.40"><span>Vehicle charge $12.40</span></label>
+                </div>
+                <div class="lab__out mt-lg" aria-live="polite">
+                  <div class="meter"><span>Payment</span><span class="bar"><i data-bar="pay"></i></span><b data-out="pay">$0.14</b></div>
+                  <div class="meter"><span>Typical card fee</span><span class="bar bar--muted"><i data-bar="fee"></i></span><b data-out="fee">$0.304</b></div>
+                  <p class="verdict" data-out="verdict">The fee is 2.2&times; the payment.</p>
+                </div>
+                <div class="tablewrap mt-lg">
+                  <table class="wp-table">
+                    <thead><tr><th scope="col"></th><th scope="col">Card rails</th><th scope="col">Arisma</th></tr></thead>
+                    <tbody>
+                      <tr><th scope="row">Who authorizes</th><td>A cardholder</td><td>A scoped <a class="term" href="#g-session">session key</a></td></tr>
+                      <tr><th scope="row">When it settles</th><td>In batches, typically one to two business days</td><td>1.4s finality on the drone charge path</td></tr>
+                      <tr><th scope="row">Smallest practical payment</th><td>Dollars, because of the fixed fee</td><td>Fractions of a cent</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="note">Card pricing uses a commonly published online rate of 2.9% + $0.30. Illustrative, not a quote.</p>
+              </div>
+
+              <aside class="keyidea"><span class="keyidea__tag">Key idea</span><p>When the fixed cost of a payment is larger than the payment, the rail decides what machines can buy. Arisma removes the fixed cost and the person from the loop, not the accountability.</p></aside>
+
+              <form class="check" data-check="1" data-answer="b">
+                <fieldset>
+                  <legend><span class="check__tag">Check yourself</span>A sensor sells one reading for $0.0004. What breaks first on card rails?</legend>
+                  <label class="check__opt" data-fb="Sensors can sign. Chapter 02 shows how a key is bound to hardware."><input type="radio" name="q1" value="a"><span>The sensor cannot sign anything</span></label>
+                  <label class="check__opt" data-fb="Right. At $0.30 fixed, the fee is 750 times the payment before the percentage is added."><input type="radio" name="q1" value="b"><span>The fixed fee is hundreds of times the payment</span></label>
+                  <label class="check__opt" data-fb="That is not a network rule. The economics fail long before any rule would."><input type="radio" name="q1" value="c"><span>Card networks reject payments under one dollar</span></label>
+                </fieldset>
+                <p class="check__fb" aria-live="polite"></p>
+              </form>
+            </section>
+
+            <!-- ============ 02 ============ -->
+            <section class="wp-ch" id="ch2" aria-labelledby="ch2-title">
+              <p class="wp-ch__n">Chapter 02</p>
+              <h2 id="ch2-title">Trust model: authority without exposing keys.</h2>
+              <div class="prose">
+                <p>An agent needs to act on its owner's behalf without holding the owner's master key. Arisma issues it a <a class="term" href="#g-session">session key</a>: a narrow, expiring grant of authority, defined with <a class="term" href="#g-erc7702">ERC-7702</a> and signed inside a <a class="term" href="#g-enclave">hardware enclave</a> such as <a class="term" href="#g-sevsnp">AMD SEV-SNP</a> or <a class="term" href="#g-tdx">Intel TDX</a>.</p>
+                <p>The enclave proves what code it runs through <a class="term" href="#g-attestation">remote attestation</a> before any session is trusted. The master key never leaves it. What leaves is a key that can do a few named things, for a few minutes, and nothing else.</p>
+              </div>
+
+              <div class="lab" data-lab="session">
+                <div class="lab__head"><h3>Issue a session key, then attack it</h3><span class="lab__tag">try it</span></div>
+                <div class="lab__grid">
+                  <div>
+                    <span class="lab__label" id="scope-l">Scope</span>
+                    <div class="opts" role="group" aria-labelledby="scope-l">
+                      <label class="opt"><input type="checkbox" name="scope" value="settle" checked><span>settle</span></label>
+                      <label class="opt"><input type="checkbox" name="scope" value="attest" checked><span>attest</span></label>
+                      <label class="opt"><input type="checkbox" name="scope" value="withdraw"><span>withdraw</span></label>
+                    </div>
+                    <label class="lab__label mt-lg" for="ttl">Expires after <b class="lab__val" data-out="ttl">15 min</b></label>
+                    <input type="range" id="ttl" min="60" max="3600" step="60" value="900">
+                  </div>
+                  <pre class="codeblock lab__code" aria-label="Delegation envelope"><code data-out="envelope"></code></pre>
+                </div>
+                <span class="lab__label mt-lg" id="scn-l">Run a scenario</span>
+                <div class="opts" role="group" aria-labelledby="scn-l">
+                  <button class="opt-btn" type="button" data-scn="leak">The session key leaks</button>
+                  <button class="opt-btn" type="button" data-scn="withdraw">The agent tries to withdraw</button>
+                  <button class="opt-btn" type="button" data-scn="replay">Someone replays it after expiry</button>
+                  <button class="opt-btn" type="button" data-scn="binary">A modified agent asks for a key</button>
+                </div>
+                <p class="result" data-out="scenario" aria-live="polite">Pick a scenario to see what the protocol does.</p>
+                <p class="note">Illustrative envelope. Field names follow the primitives page.</p>
+              </div>
+
+              <aside class="keyidea"><span class="keyidea__tag">Key idea</span><p>Security comes from the shape of the grant. A narrow scope and a short expiry turn a stolen key from a disaster into a small, short incident.</p></aside>
+
+              <form class="check" data-check="2" data-answer="b">
+                <fieldset>
+                  <legend><span class="check__tag">Check yourself</span>A session key leaks from a compromised agent host. What limits the damage?</legend>
+                  <label class="check__opt" data-fb="Only a key issued with unlimited scope and no expiry would allow that, which is exactly what the protocol avoids."><input type="radio" name="q2" value="a"><span>Nothing. The attacker now controls the account</span></label>
+                  <label class="check__opt" data-fb="Right. It can only perform the named actions until it expires, and the master key stays in the enclave."><input type="radio" name="q2" value="b"><span>The key's scope and expiry</span></label>
+                  <label class="check__opt" data-fb="At machine speed there is no time to call anyone. The bound has to live in the key itself."><input type="radio" name="q2" value="c"><span>The owner noticing and calling support</span></label>
+                </fieldset>
+                <p class="check__fb" aria-live="polite"></p>
+              </form>
+            </section>
+
+            <!-- ============ 03 ============ -->
+            <section class="wp-ch" id="ch3" aria-labelledby="ch3-title">
+              <p class="wp-ch__n">Chapter 03</p>
+              <h2 id="ch3-title">Settlement topology: deterministic, subsecond, metered.</h2>
+              <div class="prose">
+                <p>Every interaction follows the same path: delegate, attest, settle, verify, anchor receipt. The actor changes, a drone, a robot arm, a vehicle, a sensor, but the path does not.</p>
+                <p>Microsettlements clear on <a class="term" href="#g-l2">Layer 2</a> stablecoin rails in <a class="term" href="#g-usdc">USDC</a> with subsecond finality, metered to the fraction of a cent so a single charge, pick, or reading can carry its own payment. Clearing is <a class="term" href="#g-determinism">deterministic</a>: the same inputs always produce the same receipt, so anyone can check a receipt later.</p>
+              </div>
+
+              <div class="lab" data-lab="path">
+                <div class="lab__head"><h3>Walk one settlement</h3><span class="lab__tag">try it</span></div>
+                <ol class="path">
+                  <li><button type="button" data-step="0"><span class="path__dot">1</span>delegate</button></li>
+                  <li><button type="button" data-step="1"><span class="path__dot">2</span>attest</button></li>
+                  <li><button type="button" data-step="2"><span class="path__dot">3</span>settle</button></li>
+                  <li><button type="button" data-step="3"><span class="path__dot">4</span>verify</button></li>
+                  <li><button type="button" data-step="4"><span class="path__dot">5</span>anchor</button></li>
+                </ol>
+                <p class="path__detail" data-out="step" aria-live="polite">Press play, or pick a step.</p>
+                <div class="docrow mt-lg"><button class="btn btn--primary" type="button" data-play>Play the settlement</button></div>
+              </div>
+
+              <div class="lab" data-lab="receipt">
+                <div class="lab__head"><h3>Same inputs, same receipt</h3><span class="lab__tag">try it</span></div>
+                <div class="fields">
+                  <label class="mini"><span>from</span><input name="from" value="agent:dispatch" autocomplete="off" spellcheck="false"></label>
+                  <label class="mini"><span>to</span><input name="to" value="drone:fleet-04" autocomplete="off" spellcheck="false"></label>
+                  <label class="mini"><span>asset</span><input name="asset" value="usdc" autocomplete="off" spellcheck="false"></label>
+                  <label class="mini"><span>amount</span><input name="amount" value="0.14" autocomplete="off" spellcheck="false"></label>
+                  <label class="mini"><span>nonce</span><input name="nonce" value="41" autocomplete="off" spellcheck="false"></label>
+                </div>
+                <div class="lab__out mt-lg">
+                  <span class="lab__label">Receipt (SHA-256 of the inputs)</span>
+                  <p class="hash" data-out="hash">computing</p>
+                </div>
+                <div class="docrow mt-lg"><button class="btn btn--primary" type="button" data-settle>Settle</button></div>
+                <p class="result" data-out="compare" aria-live="polite">Settle once, then settle again with the same inputs. Then change one character.</p>
+                <p class="note">Illustrative. Real receipts follow the encoding in the full specification.</p>
+              </div>
+
+              <aside class="keyidea"><span class="keyidea__tag">Key idea</span><p>Determinism turns a receipt into evidence. Anyone holding the inputs can recompute it and get the same answer.</p></aside>
+
+              <form class="check" data-check="3" data-answer="a">
+                <fieldset>
+                  <legend><span class="check__tag">Check yourself</span>Two settlements have identical inputs, nonce included. What do their receipts look like?</legend>
+                  <label class="check__opt" data-fb="Right. And because every real request carries its own nonce, two different payments never share all their inputs."><input type="radio" name="q3" value="a"><span>Identical</span></label>
+                  <label class="check__opt" data-fb="Time is not an input here. If it were, nobody could recompute a receipt later."><input type="radio" name="q3" value="b"><span>Different, because time has passed</span></label>
+                  <label class="check__opt" data-fb="Load can change how fast a settlement clears, never what it produces."><input type="radio" name="q3" value="c"><span>It depends on network load</span></label>
+                </fieldset>
+                <p class="check__fb" aria-live="polite"></p>
+              </form>
+            </section>
+
+            <!-- ============ 04 ============ -->
+            <section class="wp-ch" id="ch4" aria-labelledby="ch4-title">
+              <p class="wp-ch__n">Chapter 04</p>
+              <h2 id="ch4-title">Attestation: proving what happened in the physical world.</h2>
+              <div class="prose">
+                <p>Paying a machine is only safe if you can trust what it reports. Before value or machinery is released, Arisma checks three things: the enclave runs the expected code, the policy holds as shown by a <a class="term" href="#g-zk">zero knowledge proof</a>, and the physical telemetry matches its <a class="term" href="#g-c2pa">C2PA</a> provenance hash.</p>
+                <p>For high stakes actions, a person holds the final gate. Releasing a payload or starting heavy machinery waits for a human decision, however many automated checks have passed.</p>
+              </div>
+
+              <div class="lab" data-lab="gate">
+                <div class="lab__head"><h3>Run the verification gate</h3><span class="lab__tag">try it</span></div>
+                <div class="lab__grid">
+                  <div class="switches">
+                    <label class="sw"><span>Enclave attestation verifies</span><input type="checkbox" role="switch" name="enclave" checked></label>
+                    <label class="sw"><span>Zero knowledge policy proof verifies</span><input type="checkbox" role="switch" name="zk" checked></label>
+                    <label class="sw"><span>Telemetry matches its C2PA hash</span><input type="checkbox" role="switch" name="c2pa" checked></label>
+                    <label class="sw"><span>High stakes action</span><input type="checkbox" role="switch" name="stakes"></label>
+                    <div class="human" data-human hidden>
+                      <span class="lab__label" id="op-l">Operator decision</span>
+                      <div class="opts" role="radiogroup" aria-labelledby="op-l">
+                        <label class="opt"><input type="radio" name="op" value="pending" checked><span>Waiting</span></label>
+                        <label class="opt"><input type="radio" name="op" value="approve"><span>Approve</span></label>
+                        <label class="opt"><input type="radio" name="op" value="hold"><span>Hold</span></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lab__out">
+                    <ul class="lights">
+                      <li data-light="enclave"><i class="l"></i>Enclave</li>
+                      <li data-light="zk"><i class="l"></i>Policy proof</li>
+                      <li data-light="c2pa"><i class="l"></i>C2PA checkpoint</li>
+                      <li data-light="human"><i class="l"></i>Human gate</li>
+                    </ul>
+                    <p class="verdict" data-out="gate" aria-live="polite">Released.</p>
+                    <p class="gate__why" data-out="gate-why">All checks passed.</p>
+                  </div>
+                </div>
+                <div class="zk mt-lg">
+                  <div><span class="lab__label">Policy: cold chain stays between 2 and 8 &deg;C. The gate learns</span><ul><li>The policy holds: yes or no</li><li>Which policy was checked</li><li>That the proof is valid</li></ul></div>
+                  <div><span class="lab__label">What stays private</span><ul><li>Every individual temperature reading</li><li>The route and timing of the shipment</li><li>Anything else on the device</li></ul></div>
+                </div>
+              </div>
+
+              <aside class="keyidea"><span class="keyidea__tag">Key idea</span><p>Zero knowledge lets a gate enforce a rule without seeing the data behind it. C2PA ties the payment to a specific recorded event.</p></aside>
+
+              <form class="check" data-check="4" data-answer="b">
+                <fieldset>
+                  <legend><span class="check__tag">Check yourself</span>What does a zero knowledge policy proof give the gate?</legend>
+                  <label class="check__opt" data-fb="The gate never receives the readings, encrypted or not."><input type="radio" name="q4" value="a"><span>An encrypted copy of the readings</span></label>
+                  <label class="check__opt" data-fb="Right. The gate learns the policy holds and nothing about the inputs behind it."><input type="radio" name="q4" value="b"><span>Proof the policy holds, without the inputs</span></label>
+                  <label class="check__opt" data-fb="No proof skips the human gate on a high stakes action."><input type="radio" name="q4" value="c"><span>Permission to skip human review</span></label>
+                </fieldset>
+                <p class="check__fb" aria-live="polite"></p>
+              </form>
+            </section>
+
+            <!-- ============ 05 ============ -->
+            <section class="wp-ch" id="ch5" aria-labelledby="ch5-title">
+              <p class="wp-ch__n">Chapter 05</p>
+              <h2 id="ch5-title">Economic security: bounding the cost of misbehavior.</h2>
+              <div class="prose">
+                <p>No system can promise a key will never leak or a machine will never misreport. What it can do is make the worst case small and known in advance. A session key's worst case comes from numbers you choose when you issue it: what each action costs, how fast actions can happen, how long the key lives, and an optional spending cap.</p>
+                <p>The full specification adds incentive and penalty parameters for machine actors. This chapter covers the part you control directly: the bound.</p>
+              </div>
+
+              <div class="lab" data-lab="bound">
+                <div class="lab__head"><h3>Size the worst case</h3><span class="lab__tag">try it</span></div>
+                <div class="lab__grid">
+                  <div>
+                    <span class="lab__label" id="act-l">Each action</span>
+                    <div class="opts" role="radiogroup" aria-labelledby="act-l">
+                      <label class="opt"><input type="radio" name="price" value="0.14" checked><span>Drone charge $0.14</span></label>
+                      <label class="opt"><input type="radio" name="price" value="0.31"><span>Vehicle kWh $0.31</span></label>
+                      <label class="opt"><input type="radio" name="price" value="0.002"><span>Robot pick $0.002</span></label>
+                      <label class="opt"><input type="radio" name="price" value="0.0004"><span>Sensor reading $0.0004</span></label>
+                    </div>
+                    <label class="lab__label mt-lg" for="rate">Up to <b class="lab__val" data-out="rate">10</b> actions per minute</label>
+                    <input type="range" id="rate" min="1" max="600" step="1" value="10">
+                    <label class="lab__label mt-lg" for="life">Key lives <b class="lab__val" data-out="life">15</b> minutes</label>
+                    <input type="range" id="life" min="1" max="60" step="1" value="15">
+                    <label class="mini mt-lg"><span>Spending cap, USDC (optional)</span><input id="cap" inputmode="decimal" placeholder="none" autocomplete="off"></label>
+                  </div>
+                  <div class="lab__out">
+                    <span class="lab__label">Worst case if this key leaks</span>
+                    <p class="bignum" data-out="worst" aria-live="polite">$21.00</p>
+                    <p class="gate__why" data-out="formula">$0.14 &times; 10 per minute &times; 15 minutes</p>
+                    <p class="gate__why mt-lg">A leaked master key, by comparison: everything in the account.</p>
+                  </div>
+                </div>
+                <p class="note">The lifetime starts from the expiry you chose in chapter 02.</p>
+              </div>
+
+              <aside class="keyidea"><span class="keyidea__tag">Key idea</span><p>Choose the grant by working back from the worst case. If the number is uncomfortable, shorten the lifetime, lower the rate, or add a cap until it is not.</p></aside>
+
+              <form class="check" data-check="5" data-answer="b">
+                <fieldset>
+                  <legend><span class="check__tag">Check yourself</span>A key pays $0.14 per drone charge, up to 10 per minute, and lives 15 minutes. What is its worst case?</legend>
+                  <label class="check__opt" data-fb="That is one minute of spending. The key lives for 15."><input type="radio" name="q5" value="a"><span>$1.40</span></label>
+                  <label class="check__opt" data-fb="Right. $0.14 times 10 per minute times 15 minutes is $21.00, and a cap can bring it lower."><input type="radio" name="q5" value="b"><span>$21.00</span></label>
+                  <label class="check__opt" data-fb="Only a master key is unlimited. This one is bounded by its rate and lifetime."><input type="radio" name="q5" value="c"><span>Unlimited</span></label>
+                </fieldset>
+                <p class="check__fb" aria-live="polite"></p>
+              </form>
+            </section>
+
+            <!-- ============ summary ============ -->
+            <section class="wp-ch wp-sum" aria-labelledby="sum-title">
+              <p class="wp-ch__n">Summary</p>
+              <h2 id="sum-title">What you covered.</h2>
+              <ul class="feature">
+                <li><span class="tick">01</span><span><b>New rails.</b> Fixed fees and a cardholder make small machine payments impossible on card networks.</span></li>
+                <li><span class="tick">02</span><span><b>Trust.</b> Session keys bound to an enclave carry narrow, expiring authority. The master key never leaves.</span></li>
+                <li><span class="tick">03</span><span><b>Settlement.</b> One path for every actor, subsecond and deterministic, so receipts are evidence.</span></li>
+                <li><span class="tick">04</span><span><b>Attestation.</b> Enclave, zero knowledge policy, and C2PA checks run before release, with a person on high stakes actions.</span></li>
+                <li><span class="tick">05</span><span><b>Bounds.</b> Price, rate, lifetime, and cap set the worst case before a key ever leaves.</span></li>
+              </ul>
+              <p class="verdict" data-out="summary" aria-live="polite">You have passed 0 of 5 checks.</p>
+              <div class="docrow"><a class="btn btn--primary" href="/access">Request API &amp; enclave access</a><a class="textlink" href="/use-cases">See it in your industry</a></div>
+            </section>
+
+            <!-- ============ glossary ============ -->
+            <section class="wp-ch" id="glossary" aria-labelledby="gl-title">
+              <p class="wp-ch__n">Reference</p>
+              <h2 id="gl-title">Glossary.</h2>
+              <dl class="glossary">
+                <dt id="g-session">Session key</dt><dd>A narrow, expiring key an agent uses instead of its owner's master key. It can perform only the actions in its scope, until it expires.</dd>
+                <dt id="g-erc7702">ERC-7702</dt><dd>An Ethereum standard that lets an ordinary account delegate to contract code. Arisma uses it to define scoped session keys.</dd>
+                <dt id="g-enclave">Hardware enclave</dt><dd>An isolated region of a processor, also called a trusted execution environment, whose memory the host operating system cannot read. Keys created inside stay inside.</dd>
+                <dt id="g-sevsnp">AMD SEV-SNP</dt><dd>AMD's confidential computing technology. It encrypts a virtual machine's memory and protects it from the host.</dd>
+                <dt id="g-tdx">Intel TDX</dt><dd>Intel Trust Domain Extensions, which isolate a virtual machine from the host and the hypervisor.</dd>
+                <dt id="g-attestation">Remote attestation</dt><dd>A signed report from the hardware stating exactly what code is running, so a remote party can decide whether to trust it.</dd>
+                <dt id="g-zk">Zero knowledge proof</dt><dd>A proof that a statement is true which reveals nothing beyond the fact that it is true.</dd>
+                <dt id="g-c2pa">C2PA</dt><dd>An open standard from the Coalition for Content Provenance and Authenticity for attaching tamper evident provenance to media and data.</dd>
+                <dt id="g-finality">Finality</dt><dd>The point after which a settlement cannot be reversed.</dd>
+                <dt id="g-usdc">USDC</dt><dd>A dollar stablecoin issued by Circle, redeemable one for one in US dollars.</dd>
+                <dt id="g-l2">Layer 2</dt><dd>A network that executes transactions away from a base blockchain and settles them back to it, for lower cost and faster confirmation.</dd>
+                <dt id="g-determinism">Deterministic clearing</dt><dd>The same inputs always produce the same output, so anyone can recompute and check a receipt.</dd>
+              </dl>
+            </section>
+          </div>
         </div>
-        <p class="mono" style="font-size:var(--text-xs);color:var(--color-muted);margin-top:var(--space-md)">The PDF is published at /whitepaper.pdf once the specification is final.</p>
-
-        <h2 id="contents">Contents</h2>
-        <ul class="feature">
-          <li><span class="tick">01</span><span><b>Abstract.</b> Why autonomous actors need cryptographic determinism, not credit-based rails.</span></li>
-          <li><span class="tick">02</span><span><b>Trust model.</b> Hardware enclaves, delegated session keys, and the threat surface they close.</span></li>
-          <li><span class="tick">03</span><span><b>Settlement topology.</b> Deterministic stablecoin micro-clearing and sub-second finality.</span></li>
-          <li><span class="tick">04</span><span><b>Attestation.</b> Zero-knowledge policy proofs and C2PA anchoring for physical telemetry.</span></li>
-          <li><span class="tick">05</span><span><b>Economic security.</b> Incentives, bounds, and the cost of misbehavior for machine actors.</span></li>
-        </ul>
-
-        <h2>Abstract</h2>
-        <div class="prose"><p>Traditional payment rails assume a human in the loop and price credit risk accordingly. Autonomous agents and physical machinery instead need provable authority, deterministic settlement, and bounded, verifiable behavior. Arisma specifies a trust-and-settlement layer where every action is authorized by a hardware-bound session key, settled deterministically in stablecoin, and anchored to a verifiable event before value or machinery is released.</p></div>
-
-        <h2>Settlement topology</h2>
-        <div class="prose"><p>Micro-settlements clear on Layer-2 stablecoin rails with sub-second finality, metered to the fraction of a cent so that a single drone charge, robot pick, or sensor reading can carry its own payment. Clearing is deterministic: the same inputs always produce the same receipt, anchored for later audit.</p></div>
-        <div class="docrow"><a class="btn btn--primary" href="/access">Request API &amp; enclave access</a><a class="btn" href="/architecture">See the architecture</a></div>
       </div>
     </section>
   </main>
   <footer class="site-footer">
     <div class="container">
-      <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
-      <div class="foot__mast">arisma<i>.</i>network</div>
-      <div class="foot__cols">
-        <div><p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p><a class="btn" href="/whitepaper" style="margin-top:var(--space-md)">Read the whitepaper (v1.0)</a></div>
-        <div><p class="foot__h">Platform</p><ul><li><a href="/interactions">Interactions</a></li><li><a href="/architecture">Architecture</a></li><li><a href="/primitives">Primitives</a></li></ul></div>
-        <div><p class="foot__h">Developers</p><ul><li><a href="/developers">Developers</a></li><li><a href="/developers/quickstart">Quickstart</a></li><li><a href="/developers/mcp">Agent-Escrow MCP</a></li><li><a href="/developers/sdk">Edge Enclave SDK</a></li></ul></div>
-        <div><p class="foot__h">Company</p><ul><li><a href="/whitepaper">Whitepaper</a></li><li><a href="/security">Security</a></li><li><a href="/status">Status</a></li><li><a href="/contact">Contact</a></li></ul></div>
+      <div class="foot__top">
+        <div>
+          <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
+          <div class="foot__mast">arisma<i>.</i>network</div>
+          <p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p>
+        </div>
+        <nav aria-label="Footer">
+          <ul class="foot__nav">
+            <li><a href="/use-cases">Use cases</a></li>
+            <li><a href="/hardware">Hardware</a></li>
+            <li><a href="/architecture">Architecture</a></li>
+            <li><a href="/developers">Developers</a></li>
+            <li><a href="/whitepaper">Whitepaper</a></li>
+            <li><a href="/security">Security</a></li>
+            <li><a href="/status">Status</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
       </div>
-      <div class="foot__meta"><span>&copy; 2026 Arisma Network</span><span>ERC-7702, TEE, zk-attestation, C2PA, USDC</span></div>
+      <div class="foot__meta">
+        <span>&copy; 2026 Arisma Network</span>
+        <span class="foot__legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></span>
+      </div>
     </div>
   </footer>
 

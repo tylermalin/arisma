@@ -4,48 +4,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arisma Network: trust &amp; settlement for the agentic economy</title>
-  <meta name="description" content="Hardware-secured session delegation (ERC-7702 / TEEs), zero-knowledge policy attestation, and sub-second stablecoin settlement for autonomous AI agents, robots, and physical machines.">
+  <meta name="description" content="Session delegation secured in hardware (ERC-7702 / TEEs), zero knowledge policy attestation, and subsecond stablecoin settlement for autonomous AI agents, robots, and physical machines.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
-  <link rel="stylesheet" href="./page.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"></noscript>
+  <link rel="stylesheet" href="/page.css">
+  <link rel="canonical" href="https://arisma.network/">
+  <link rel="icon" type="image/png" href="/assets/arisma-mark.png">
+  <link rel="apple-touch-icon" href="/assets/arisma-mark.png">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Arisma Network">
+  <meta property="og:title" content="Arisma Network: trust &amp; settlement for the agentic economy">
+  <meta property="og:description" content="Session delegation secured in hardware (ERC-7702 / TEEs), zero knowledge policy attestation, and subsecond stablecoin settlement for autonomous AI agents, robots, and physical machines.">
+  <meta property="og:url" content="https://arisma.network/">
+  <meta property="og:image" content="https://arisma.network/assets/arisma-hero.jpg">
+  <meta property="og:image:width" content="1800">
+  <meta property="og:image:height" content="1324">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Arisma Network: trust &amp; settlement for the agentic economy">
+  <meta name="twitter:description" content="Session delegation secured in hardware (ERC-7702 / TEEs), zero knowledge policy attestation, and subsecond stablecoin settlement for autonomous AI agents, robots, and physical machines.">
+  <meta name="twitter:image" content="https://arisma.network/assets/arisma-hero.jpg">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},2500)</script>
+  <script src="/site.js" defer></script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
 
   <!-- ============ NAV — floating pill ============ -->
   <header class="nav">
     <div class="nav__in">
       <a class="wordmark" href="/"><img class="wordmark__mark" src="/assets/arisma-mark.png" alt="" width="28" height="22"><span>arisma<i>.</i>network</span></a>
       <nav class="nav__links" aria-label="Primary">
+        <a href="/use-cases">Use cases</a>
+        <a href="/hardware">Hardware</a>
         <a href="/interactions">Interactions</a>
         <a href="/architecture">Architecture</a>
         <a href="/primitives">Primitives</a>
         <a href="/developers">Developers</a>
       </nav>
       <div class="nav__cta">
-        <a class="linklike" href="/whitepaper" style="font-size:var(--text-sm);color:var(--color-ink-2)">Whitepaper</a>
+        <a class="linklike" href="/whitepaper">Whitepaper</a>
         <a class="btn btn--primary" href="#access">Request access</a>
       </div>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <!-- ============ HERO — Stage with the settlement schematic ============ -->
     <section class="hero" id="top">
       <div class="container hero__grid">
         <div class="hero__copy">
           <h1>The settlement layer for autonomous agents.</h1>
-          <p class="lead">Programmable clearing and hardware-secured verification for AI agents, robots, and machines.</p>
+          <p class="lead">Programmable clearing and verification secured in hardware for AI agents, robots, and machines.</p>
           <div class="hero__actions">
             <a class="btn btn--primary" href="#access">Request API &amp; enclave access</a>
-            <a class="btn" href="/whitepaper">Read the technical whitepaper</a>
+            <a class="textlink" href="/whitepaper">Read the whitepaper</a>
           </div>
-          <p class="hero__credit">Approved requests provision a <b>$100</b> testnet credit.</p>
+          <p class="hero__credit">Approved requests get a <b>$100</b> testnet credit. No payment details needed.</p>
         </div>
 
         <div class="hero__stage">
-          <video class="hero__shot hero__video" autoplay muted loop playsinline preload="metadata" poster="/assets/arisma-hero.jpg" aria-label="Arisma site schematic over a live logistics yard: a drone settling a charge at a glowing pad, cleared in 1.4 seconds for $0.14 in USDC with a zk-TEE proof, alongside robot-cell and dock settlement events.">
+          <video class="hero__shot hero__video" autoplay muted loop playsinline preload="metadata" poster="/assets/arisma-hero.jpg" aria-label="Arisma site schematic over a live logistics yard: a drone settling a charge at a glowing pad, cleared in 1.4 seconds for $0.14 in USDC with a zk-TEE proof, alongside robot cell and dock settlement events.">
             <source src="/assets/arisma-hero.mp4" type="video/mp4">
           </video>
           <img class="hero__shot hero__fallback" src="/assets/arisma-hero.jpg" alt="Arisma site schematic over a logistics yard: a drone settling a charge at a pad, cleared in 1.4 seconds for $0.14 in USDC with a zk-TEE proof." width="1800" height="1324">
@@ -63,10 +84,10 @@
         <h2>Settlement for every intelligent actor that transacts.</h2>
         <p class="moonshot__lead">Not just AI agents, but robots, machines, and the software that speaks for them, settling value with no human in the loop.</p>
         <ul class="actors">
-          <li style="--i:0"><span class="actors__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 4v3M14 4v3M10 17v3M14 17v3M4 10h3M4 14h3M17 10h3M17 14h3"/><circle cx="12" cy="12" r="1.6"/></svg></span><span class="actors__n">01</span> AI agents</li>
-          <li style="--i:1"><span class="actors__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 4.3v3.7"/><circle cx="12" cy="3.2" r="1.1"/><circle cx="9.5" cy="13" r="1.1"/><circle cx="14.5" cy="13" r="1.1"/><path d="M3 12v3M21 12v3"/></svg></span><span class="actors__n">02</span> Robots</li>
-          <li style="--i:2"><span class="actors__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span><span class="actors__n">03</span> Autonomous machines</li>
-          <li style="--i:3"><span class="actors__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="5" cy="6" r="1.8"/><circle cx="19" cy="6" r="1.8"/><circle cx="12" cy="18" r="1.8"/><circle cx="12" cy="11" r="2.2"/><path d="M6.6 7 9.8 9.4M17.4 7 14.2 9.4M12 13.2V16"/></svg></span><span class="actors__n">04</span> Intelligent actors</li>
+          <li><span class="actors__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 4v3M14 4v3M10 17v3M14 17v3M4 10h3M4 14h3M17 10h3M17 14h3"/><circle cx="12" cy="12" r="1.6"/></svg></span><span class="actors__n">01</span> AI agents</li>
+          <li><span class="actors__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 4.3v3.7"/><circle cx="12" cy="3.2" r="1.1"/><circle cx="9.5" cy="13" r="1.1"/><circle cx="14.5" cy="13" r="1.1"/><path d="M3 12v3M21 12v3"/></svg></span><span class="actors__n">02</span> Robots</li>
+          <li><span class="actors__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span><span class="actors__n">03</span> Autonomous machines</li>
+          <li><span class="actors__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="5" cy="6" r="1.8"/><circle cx="19" cy="6" r="1.8"/><circle cx="12" cy="18" r="1.8"/><circle cx="12" cy="11" r="2.2"/><path d="M6.6 7 9.8 9.4M17.4 7 14.2 9.4M12 13.2V16"/></svg></span><span class="actors__n">04</span> Intelligent actors</li>
         </ul>
       </div>
     </section>
@@ -82,65 +103,82 @@
 
         <div class="schems">
           <!-- Drone -->
-          <article class="schem">
+          <article class="schem schem--drone">
             <div class="schem__top"><h3>Drone charge</h3><span class="schem__id">IX-01</span></div>
             <svg class="schem__svg" viewBox="0 0 380 150" role="img" aria-label="A drone presents an ERC-7702 session at a charging pad and settles the charge.">
-              <g class="sc-stroke"><circle cx="66" cy="66" r="7"/><line x1="48" y1="48" x2="84" y2="84"/><line x1="84" y1="48" x2="48" y2="84"/><circle cx="46" cy="46" r="6"/><circle cx="86" cy="46" r="6"/><circle cx="46" cy="86" r="6"/><circle cx="86" cy="86" r="6"/></g>
+              <g class="sc-stroke sc-drone"><circle cx="66" cy="66" r="7"/><line x1="48" y1="48" x2="84" y2="84"/><line x1="84" y1="48" x2="48" y2="84"/><circle class="sc-rotor" cx="46" cy="46" r="6"/><circle class="sc-rotor" cx="86" cy="46" r="6"/><circle class="sc-rotor" cx="46" cy="86" r="6"/><circle class="sc-rotor" cx="86" cy="86" r="6"/></g>
               <text class="sc-label" x="48" y="112">Drone</text>
               <path class="sc-route" d="M100 66 H250"/>
               <text class="sc-acc" x="128" y="56">ERC-7702 session</text>
+              <circle class="sc-packet" cx="100" cy="66" r="3.5"/>
+              <circle class="sc-ring" cx="300" cy="66" r="24"/>
               <circle class="sc-node sc-node--acc" cx="300" cy="66" r="24"/>
-              <line class="sc-cross" x1="300" y1="50" x2="300" y2="82"/><line class="sc-cross" x1="284" y1="66" x2="316" y2="66"/>
+              <g class="sc-hub"><line class="sc-cross" x1="300" y1="50" x2="300" y2="82"/><line class="sc-cross" x1="284" y1="66" x2="316" y2="66"/></g>
               <text class="sc-label" x="276" y="112">Settle</text>
+              <text class="sc-receipt" x="300" y="134" text-anchor="middle">receipt anchored</text>
             </svg>
             <div class="schem__foot"><span class="schem__metric">fee <b>$0.14</b></span><span class="schem__metric">finality <b>1.4s</b></span><span class="schem__metric">USDC</span></div>
           </article>
 
           <!-- Robot -->
-          <article class="schem">
+          <article class="schem schem--robot">
             <div class="schem__top"><h3>Robot handoff</h3><span class="schem__id">IX-02</span></div>
-            <svg class="schem__svg" viewBox="0 0 380 150" role="img" aria-label="A robot arm completes a per-pick handoff and settles each pick.">
-              <g class="sc-stroke"><line x1="52" y1="96" x2="52" y2="60"/><line x1="52" y1="60" x2="82" y2="44"/><line x1="82" y1="44" x2="92" y2="66"/><circle cx="52" cy="60" r="4"/><circle cx="82" cy="44" r="4"/><rect x="42" y="96" width="20" height="8" rx="2"/></g>
+            <svg class="schem__svg" viewBox="0 0 380 150" role="img" aria-label="A robot arm completes a handoff paid per pick and settles each pick.">
+              <g class="sc-stroke"><rect x="42" y="96" width="20" height="8" rx="2"/><g class="sc-arm"><line x1="52" y1="96" x2="52" y2="60"/><circle cx="52" cy="60" r="4"/><g class="sc-fore"><line x1="52" y1="60" x2="82" y2="44"/><line x1="82" y1="44" x2="92" y2="66"/><circle cx="82" cy="44" r="4"/></g></g></g>
               <text class="sc-label" x="44" y="124">Robot arm</text>
               <path class="sc-route" d="M108 66 H250"/>
-              <text class="sc-acc" x="136" y="56">per-pick key</text>
+              <text class="sc-acc" x="136" y="56">key per pick</text>
+              <circle class="sc-packet" cx="108" cy="66" r="3.5"/>
+              <circle class="sc-ring" cx="300" cy="66" r="24"/>
               <circle class="sc-node sc-node--acc" cx="300" cy="66" r="24"/>
-              <line class="sc-cross" x1="300" y1="50" x2="300" y2="82"/><line class="sc-cross" x1="284" y1="66" x2="316" y2="66"/>
+              <g class="sc-hub"><line class="sc-cross" x1="300" y1="50" x2="300" y2="82"/><line class="sc-cross" x1="284" y1="66" x2="316" y2="66"/></g>
               <text class="sc-label" x="276" y="112">Settle</text>
+              <text class="sc-receipt" x="300" y="134" text-anchor="middle">pick settled</text>
             </svg>
             <div class="schem__foot"><span class="schem__metric">fee <b>$0.002</b></span><span class="schem__metric">per pick</span><span class="schem__metric">streamed</span></div>
           </article>
 
           <!-- Vehicle -->
-          <article class="schem">
+          <article class="schem schem--av">
             <div class="schem__top"><h3>Vehicle energy</h3><span class="schem__id">IX-03</span></div>
             <svg class="schem__svg" viewBox="0 0 380 150" role="img" aria-label="An autonomous vehicle settles a metered charging session.">
-              <g class="sc-stroke"><path d="M38 76 h56 l10 -16 h14 l8 16 h6"/><circle cx="54" cy="84" r="8"/><circle cx="104" cy="84" r="8"/><rect x="100" y="50" width="12" height="7" rx="2"/></g>
+              <g class="sc-stroke"><path d="M38 76 h56 l10 -16 h14 l8 16 h6"/><circle cx="54" cy="84" r="8"/><circle cx="104" cy="84" r="8"/><rect x="100" y="50" width="12" height="7" rx="2"/><rect x="40" y="34" width="26" height="12" rx="2"/><rect x="66" y="37" width="3" height="6" rx="1"/></g>
+              <rect class="sc-fill" x="42" y="36" width="22" height="8" rx="1"/>
               <text class="sc-label" x="46" y="118">AV</text>
               <path class="sc-route" d="M128 66 H250"/>
               <text class="sc-acc" x="150" y="56">metered kWh</text>
+              <circle class="sc-packet" cx="128" cy="66" r="3"/>
+              <circle class="sc-packet sc-packet--2" cx="128" cy="66" r="3"/>
+              <circle class="sc-packet sc-packet--3" cx="128" cy="66" r="3"/>
+              <circle class="sc-ring" cx="300" cy="66" r="24"/>
               <circle class="sc-node sc-node--acc" cx="300" cy="66" r="24"/>
-              <line class="sc-cross" x1="300" y1="50" x2="300" y2="82"/><line class="sc-cross" x1="284" y1="66" x2="316" y2="66"/>
+              <g class="sc-hub"><line class="sc-cross" x1="300" y1="50" x2="300" y2="82"/><line class="sc-cross" x1="284" y1="66" x2="316" y2="66"/></g>
               <text class="sc-label" x="276" y="112">Settle</text>
+              <text class="sc-receipt" x="300" y="134" text-anchor="middle">kWh settled</text>
             </svg>
             <div class="schem__foot"><span class="schem__metric">rate <b>$0.31/kWh</b></span><span class="schem__metric">metered</span><span class="schem__metric">USDC</span></div>
           </article>
 
           <!-- Sensor -->
-          <article class="schem">
+          <article class="schem schem--sensor">
             <div class="schem__top"><h3>Sensor telemetry</h3><span class="schem__id">IX-04</span></div>
             <svg class="schem__svg" viewBox="0 0 380 150" role="img" aria-label="A field sensor sells verified readings and settles per reading.">
-              <g class="sc-stroke"><circle cx="64" cy="66" r="9"/><path d="M80 50 a22 22 0 0 1 0 32"/><path d="M90 42 a34 34 0 0 1 0 48"/><line x1="64" y1="75" x2="64" y2="98"/><rect x="54" y="98" width="20" height="6" rx="2"/></g>
+              <g class="sc-stroke"><circle class="sc-core" cx="64" cy="66" r="9"/><path class="sc-wave" d="M80 50 a22 22 0 0 1 0 32"/><path class="sc-wave sc-wave--2" d="M90 42 a34 34 0 0 1 0 48"/><line x1="64" y1="75" x2="64" y2="98"/><rect x="54" y="98" width="20" height="6" rx="2"/></g>
               <text class="sc-label" x="44" y="124">Sensor</text>
               <path class="sc-route" d="M108 66 H250"/>
               <text class="sc-acc" x="130" y="56">C2PA reading</text>
+              <circle class="sc-packet" cx="108" cy="66" r="3"/>
+              <circle class="sc-packet sc-packet--2" cx="108" cy="66" r="3"/>
+              <circle class="sc-ring" cx="300" cy="66" r="24"/>
               <circle class="sc-node sc-node--acc" cx="300" cy="66" r="24"/>
-              <line class="sc-cross" x1="300" y1="50" x2="300" y2="82"/><line class="sc-cross" x1="284" y1="66" x2="316" y2="66"/>
+              <g class="sc-hub"><line class="sc-cross" x1="300" y1="50" x2="300" y2="82"/><line class="sc-cross" x1="284" y1="66" x2="316" y2="66"/></g>
               <text class="sc-label" x="276" y="112">Settle</text>
+              <text class="sc-receipt" x="300" y="134" text-anchor="middle">reading verified</text>
             </svg>
             <div class="schem__foot"><span class="schem__metric">fee <b>$0.0004</b></span><span class="schem__metric">per reading</span><span class="schem__metric">C2PA</span></div>
           </article>
         </div>
+        <div class="docrow"><a class="textlink" href="/use-cases">See the industry use cases</a></div>
       </div>
     </section>
 
@@ -161,12 +199,12 @@
           </article>
           <article class="arch__node" role="listitem">
             <h3>Autonomous M2M clearinghouse</h3>
-            <p>Deterministic stablecoin settlement, sub-second, metered to the fraction of a cent.</p>
-            <div class="prims"><span class="prim">USDC</span><span class="prim">sub-second</span><span class="prim">deterministic</span></div>
+            <p>Deterministic stablecoin settlement, subsecond, metered to the fraction of a cent.</p>
+            <div class="prims"><span class="prim">USDC</span><span class="prim">subsecond</span><span class="prim">deterministic</span></div>
             <span class="arch__n" aria-hidden="true">2</span>
           </article>
           <article class="arch__node" role="listitem">
-            <h3>Hybrid human-in-the-loop verification</h3>
+            <h3>Hybrid verification with a human in the loop</h3>
             <p>Policy attested in zero knowledge; a C2PA checkpoint a person can hold before release.</p>
             <div class="prims"><span class="prim">zk-attestation</span><span class="prim">C2PA</span><span class="prim">policy gate</span></div>
             <span class="arch__n" aria-hidden="true">3</span>
@@ -236,7 +274,7 @@
           </article>
 
           <article class="pillar">
-            <h3>Human-in-the-loop</h3>
+            <h3>Human in the loop</h3>
             <p>A zk policy proof with a C2PA checkpoint a reviewer can hold.</p>
             <div class="pillar__spec">
               <div class="toggle" role="group" aria-label="Verification payload format">
@@ -265,7 +303,7 @@
       <div class="container section">
         <div class="eco__grid">
           <div>
-            <h2 style="font-size:var(--text-xl);margin-bottom:var(--space-lg)">Start from your terminal.</h2>
+            <h2 class="h-sub mb-lg">Start from your terminal.</h2>
             <div class="cmd">
               <code><span class="p">npx</span> @arisma-network/agent-escrow-mcp</code>
               <button class="copy" type="button" aria-live="polite" data-copy="npx @arisma-network/agent-escrow-mcp">copy</button>
@@ -276,13 +314,13 @@
             </div>
           </div>
           <div>
-            <p class="foot__h" style="margin-bottom:var(--space-sm)">Published to</p>
+            <p class="label">Publishing to these registries soon</p>
             <div class="registries" aria-label="Package registries">
-              <a class="reg" href="/registries/npm">npm</a>
-              <a class="reg" href="/registries/pypi">PyPI</a>
-              <a class="reg" href="/registries/crates">crates.io</a>
-              <a class="reg" href="/registries/github">GitHub</a>
-              <a class="reg" href="/registries/langchain">LangChain</a>
+              <span class="reg" aria-disabled="true">npm</span>
+              <span class="reg" aria-disabled="true">PyPI</span>
+              <span class="reg" aria-disabled="true">crates.io</span>
+              <span class="reg" aria-disabled="true">GitHub</span>
+              <span class="reg" aria-disabled="true">LangChain</span>
             </div>
           </div>
         </div>
@@ -299,20 +337,20 @@
             <p>Approval provisions your testnet credit and a scoped enclave key within a business day.</p>
             <ul class="request__points">
               <li><span class="tick">01</span> $100 testnet credit</li>
-              <li><span class="tick">02</span> A hardware-scoped enclave key</li>
-              <li><span class="tick">03</span> The agent-escrow MCP and edge-enclave SDK</li>
+              <li><span class="tick">02</span> An enclave key scoped to hardware</li>
+              <li><span class="tick">03</span> The Agent Escrow MCP and Edge Enclave SDK</li>
             </ul>
           </div>
 
-          <form class="access" id="request-form" novalidate>
+          <form class="access" id="request-form" novalidate data-form="access" data-ok="Request sent. We will reply to {email} within one business day.">
             <div class="field-row">
               <div class="field">
                 <label for="f-name">Name</label>
-                <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Ada Lovelace">
+                <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Maya Okafor">
               </div>
               <div class="field">
                 <label for="f-email">Work email</label>
-                <input id="f-email" name="email" type="email" autocomplete="email" required placeholder="ada@company.com">
+                <input id="f-email" name="email" type="email" autocomplete="email" required placeholder="maya@yourcompany.com">
               </div>
             </div>
             <div class="field">
@@ -324,103 +362,46 @@
               <select id="f-use" name="use">
                 <option>Autonomous AI agents</option>
                 <option>Robotics &amp; drone fleets</option>
-                <option>Machine-to-machine payments</option>
+                <option>Machine to machine payments</option>
                 <option>Research or evaluation</option>
               </select>
             </div>
+            <div class="hp" aria-hidden="true"><label for="hp-a">Company site</label><input id="hp-a" name="company_site" type="text" tabindex="-1" autocomplete="off"></div>
             <button class="btn btn--primary" type="submit">Request API &amp; enclave access</button>
-            <p class="form-note" style="font-size:var(--text-xs);color:var(--color-muted);margin-top:var(--space-sm)">An instant testnet sandbox is provisioned on validation.</p>
-            <p class="form-status" id="form-status" role="status" aria-live="polite" data-endpoint="POST /v1/access-requests">Not yet wired: point this form at <b>POST /v1/access-requests</b> to provision.</p>
+            <p class="note">We reply within one business day. No payment details needed.</p>
+            <p class="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ============ FOOTER — colophon ============ -->
   <footer class="site-footer">
     <div class="container">
-      <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
-      <div class="foot__mast">arisma<i>.</i>network</div>
-      <div class="foot__cols">
+      <div class="foot__top">
         <div>
+          <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
+          <div class="foot__mast">arisma<i>.</i>network</div>
           <p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p>
-          <a class="btn" href="/whitepaper" style="margin-top:var(--space-md)">Read the whitepaper (v1.0)</a>
         </div>
-        <div>
-          <p class="foot__h">Platform</p>
-          <ul>
-            <li><a href="/interactions">Interactions</a></li>
+        <nav aria-label="Footer">
+          <ul class="foot__nav">
+            <li><a href="/use-cases">Use cases</a></li>
+            <li><a href="/hardware">Hardware</a></li>
             <li><a href="/architecture">Architecture</a></li>
-            <li><a href="/primitives">Primitives</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="foot__h">Developers</p>
-          <ul>
             <li><a href="/developers">Developers</a></li>
-            <li><a href="/developers/quickstart">Quickstart</a></li>
-            <li><a href="/developers/mcp">Agent-Escrow MCP</a></li>
-            <li><a href="/developers/sdk">Edge Enclave SDK</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="foot__h">Company</p>
-          <ul>
             <li><a href="/whitepaper">Whitepaper</a></li>
             <li><a href="/security">Security</a></li>
             <li><a href="/status">Status</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
-        </div>
+        </nav>
       </div>
       <div class="foot__meta">
         <span>&copy; 2026 Arisma Network</span>
-        <span>ERC-7702, TEE, zk-attestation, C2PA, USDC</span>
+        <span class="foot__legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></span>
       </div>
     </div>
   </footer>
-
-  <script>
-    // slow the hero loop so it reads as ambient motion
-    document.querySelectorAll('.hero__video').forEach((v) => {
-      const slow = () => { v.playbackRate = 0.5; };
-      slow();
-      v.addEventListener('loadedmetadata', slow);
-      v.addEventListener('play', slow);
-    });
-
-    // copy-to-clipboard; no-JS leaves the command selectable
-    document.querySelectorAll('.copy').forEach((b) => {
-      b.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(b.dataset.copy);
-          const prev = b.textContent; b.textContent = 'copied';
-          setTimeout(() => { b.textContent = prev; }, 1400);
-        } catch (e) { /* clipboard unavailable; command stays selectable */ }
-      });
-    });
-
-    // access request: no backend yet, so report honestly rather than fake a success
-    const form = document.getElementById('request-form');
-    if (form) form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const status = document.getElementById('form-status');
-      const email = document.getElementById('f-email');
-      if (!email.value || !email.checkValidity()) { email.focus(); return; }
-      status.innerHTML = 'Captured locally. Wire <b>' + status.dataset.endpoint + '</b> to deliver this request.';
-    });
-
-    // :has() fallback for the JSON/Rust toggle on older engines
-    if (!CSS.supports || !CSS.supports('selector(:has(*))')) {
-      document.querySelectorAll('.pillar').forEach((card) => {
-        card.querySelectorAll('.toggle input').forEach((r) => r.addEventListener('change', () => {
-          const rust = card.querySelector('.t-rust').checked;
-          card.querySelector('.pay-json').style.display = rust ? 'none' : 'block';
-          card.querySelector('.pay-rust').style.display = rust ? 'block' : 'none';
-        }));
-      });
-    }
-  </script>
 </body>
 </html>

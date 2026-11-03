@@ -4,83 +4,211 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Developers: documentation, SDKs & MCP | Arisma Network</title>
-  <meta name="description" content="Equip your autonomous agents to hold funds, negotiate rates, and settle tasks. Quickstart, the agent-escrow MCP, and the edge-enclave SDK.">
+  <meta name="description" content="Equip your autonomous agents to hold funds, negotiate rates, and settle tasks. Quickstart, the Agent Escrow MCP, and the Edge Enclave SDK.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
-  <link rel="stylesheet" href="page.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"></noscript>
+  <link rel="stylesheet" href="/page.css">
+  <link rel="canonical" href="https://arisma.network/developers">
+  <link rel="icon" type="image/png" href="/assets/arisma-mark.png">
+  <link rel="apple-touch-icon" href="/assets/arisma-mark.png">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Arisma Network">
+  <meta property="og:title" content="Developers: documentation, SDKs &amp; MCP | Arisma Network">
+  <meta property="og:description" content="Equip your autonomous agents to hold funds, negotiate rates, and settle tasks. Quickstart, the Agent Escrow MCP, and the Edge Enclave SDK.">
+  <meta property="og:url" content="https://arisma.network/developers">
+  <meta property="og:image" content="https://arisma.network/assets/arisma-hero.jpg">
+  <meta property="og:image:width" content="1800">
+  <meta property="og:image:height" content="1324">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Developers: documentation, SDKs &amp; MCP | Arisma Network">
+  <meta name="twitter:description" content="Equip your autonomous agents to hold funds, negotiate rates, and settle tasks. Quickstart, the Agent Escrow MCP, and the Edge Enclave SDK.">
+  <meta name="twitter:image" content="https://arisma.network/assets/arisma-hero.jpg">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},2500)</script>
+  <script src="/site.js" defer></script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="nav">
     <div class="nav__in">
       <a class="wordmark" href="/"><img class="wordmark__mark" src="/assets/arisma-mark.png" alt="" width="28" height="22"><span>arisma<i>.</i>network</span></a>
       <nav class="nav__links" aria-label="Primary">
+        <a href="/use-cases">Use cases</a>
+        <a href="/hardware">Hardware</a>
         <a href="/interactions">Interactions</a>
         <a href="/architecture">Architecture</a>
         <a href="/primitives">Primitives</a>
-        <a href="/developers">Developers</a>
+        <a href="/developers" aria-current="page">Developers</a>
       </nav>
       <div class="nav__cta">
-        <a class="linklike" href="/whitepaper" style="font-size:var(--text-sm);color:var(--color-ink-2)">Whitepaper</a>
+        <a class="linklike" href="/whitepaper">Whitepaper</a>
         <a class="btn btn--primary" href="/access">Request access</a>
       </div>
     </div>
   </header>
-  <main>
+  <main id="main">
     <section class="subhero">
       <div class="container">
-        <h1>Developer documentation.</h1>
-        <p class="subhero__sub">Equip your autonomous agents to hold funds, negotiate rates, and settle tasks.</p>
+        <h1>Build agents and machines that pay their own way.</h1>
+        <p class="subhero__sub">Give an agent or a device a scoped key, let it settle in USDC, and get a receipt you can verify. Three integration paths, one protocol.</p>
         <span class="subhero__tag">developers</span>
       </div>
     </section>
+
     <section class="section">
       <div class="container">
-        <div class="prose"><p>Build applications where AI agents and physical machines operate as economic actors. Whether you are deploying LLM agents that need to pay for compute or managing automated drone docks, Arisma provides the primitives to make transactions atomic and secure.</p></div>
+        <div class="devhero">
+          <div class="devhero__copy">
+            <p class="statusline"><span class="statusline__dot" aria-hidden="true"></span>Testnet. Access by request, with $100 in testnet credit.</p>
+            <h2 class="h-sub">Your first settlement in four steps.</h2>
+            <ol class="steps">
+              <li><span class="steps__n">01</span><div><h3>Request access</h3><p>Approved requests get an enclave key scoped to hardware, usually within a business day.</p></div></li>
+              <li><span class="steps__n">02</span><div><h3>Install a client</h3><p>The MCP server for agent runtimes, or the Rust SDK for devices and edge services.</p></div></li>
+              <li><span class="steps__n">03</span><div><h3>Delegate and settle</h3><p>Mint a session key with a scope and expiry, then clear a payment with it.</p></div></li>
+              <li><span class="steps__n">04</span><div><h3>Verify the receipt</h3><p>Check the attestation and, for physical actions, the C2PA checkpoint before release.</p></div></li>
+            </ol>
+            <div class="docrow"><a class="btn btn--primary" href="/access">Request access</a><a class="textlink" href="/developers/quickstart">Read the quickstart</a></div>
+          </div>
 
-        <div id="quickstart" style="margin-top:var(--space-2xl)">
-          <h2 style="font-size:var(--text-xl);margin-bottom:var(--space-lg)">Quickstart</h2>
-          <div class="cmd"><code><span class="p">npx</span> @arisma-network/agent-escrow-mcp</code><button class="copy" type="button" aria-live="polite" data-copy="npx @arisma-network/agent-escrow-mcp">copy</button></div>
-          <div class="cmd"><code><span class="p">cargo</span> add arisma-edge-enclave</code><button class="copy" type="button" aria-live="polite" data-copy="cargo add arisma-edge-enclave">copy</button></div>
-          <p class="foot__h" style="margin:var(--space-lg) 0 var(--space-sm)">Published to</p>
-          <div class="registries" aria-label="Package registries">
-            <a class="reg" href="/registries/npm">npm</a>
-            <a class="reg" href="/registries/pypi">PyPI</a>
-            <a class="reg" href="/registries/crates">crates.io</a>
-            <a class="reg" href="/registries/github">GitHub</a>
-            <a class="reg" href="/registries/langchain">LangChain</a>
+          <div class="codetabs" data-tabs>
+            <div class="codetabs__bar" role="tablist" aria-label="Code sample language">
+              <button role="tab" type="button" id="tab-ts" aria-controls="panel-ts" aria-selected="true">TypeScript</button>
+              <button role="tab" type="button" id="tab-rs" aria-controls="panel-rs" aria-selected="false" tabindex="-1">Rust</button>
+              <button role="tab" type="button" id="tab-mcp" aria-controls="panel-mcp" aria-selected="false" tabindex="-1">MCP config</button>
+            </div>
+            <pre class="codeblock codetabs__panel" role="tabpanel" id="panel-ts" aria-labelledby="tab-ts" tabindex="0"><code><span class="c">import</span> { AgentEscrow } <span class="c">from</span> <span class="s">"@arisma-network/agent-escrow-mcp"</span>;
+
+<span class="c">const</span> escrow = <span class="c">await</span> AgentEscrow.connect({ enclave: <span class="s">"tee:sev-snp"</span> });
+<span class="c">const</span> session = <span class="c">await</span> escrow.delegate({ scope: [<span class="s">"settle"</span>], ttl: <span class="s">900</span> });
+
+<span class="c">const</span> receipt = <span class="c">await</span> session.settle({
+  to: <span class="s">"drone:fleet-04"</span>, asset: <span class="s">"usdc"</span>, amount: <span class="s">"0.14"</span>,
+});
+<span class="m">// receipt.finalityMs -&gt; 1400</span></code></pre>
+            <pre class="codeblock codetabs__panel" role="tabpanel" id="panel-rs" aria-labelledby="tab-rs" tabindex="0" hidden><code><span class="c">use</span> arisma_edge_enclave::{Enclave, Erc7702Session, Scope, Asset};
+
+<span class="c">let</span> enclave = Enclave::attach(<span class="s">"tee:sev-snp"</span>)?;
+<span class="c">let</span> session = enclave.delegate(Erc7702Session {
+    scope: Scope::Settle, ttl: <span class="s">900</span>,
+})?.attest()?;
+
+<span class="c">let</span> receipt = session
+    .settle(<span class="s">"drone:fleet-04"</span>, Asset::Usdc, cents(<span class="s">14</span>))
+    .<span class="c">await</span>?;</code></pre>
+            <pre class="codeblock codetabs__panel" role="tabpanel" id="panel-mcp" aria-labelledby="tab-mcp" tabindex="0" hidden><code>{
+  <span class="c">"mcpServers"</span>: {
+    <span class="c">"arisma-escrow"</span>: {
+      <span class="c">"command"</span>: <span class="s">"npx"</span>,
+      <span class="c">"args"</span>: [<span class="s">"@arisma-network/agent-escrow-mcp"</span>],
+      <span class="c">"env"</span>: { <span class="c">"ARISMA_ENCLAVE"</span>: <span class="s">"tee:sev-snp"</span> }
+    }
+  }
+}</code></pre>
+            <p class="codetabs__note">Packages are not on public registries yet. They publish to npm and crates.io soon.</p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="devgrid" style="margin-top:var(--space-3xl)">
-          <div class="devcard"><h3>Quickstart</h3><p>Install the MCP server and the Rust edge enclave, then clear your first testnet settlement.</p><a href="/developers/quickstart">Start building</a></div>
-          <div class="devcard"><h3>Agent-Escrow MCP</h3><p>Model Context Protocol integration so LLM agents can hold funds, negotiate rates, and settle tasks.</p><a href="/developers/mcp">MCP docs</a></div>
-          <div class="devcard"><h3>Edge Enclave SDK</h3><p>Hardware-scoped enclave keys and the Rust integration for identity, delegation, and attestation.</p><a href="/developers/sdk">SDK reference</a></div>
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Pick the path that matches what you are building.</h2>
+          <p>Every path speaks the same protocol, so an agent built on MCP can settle with a device running the Rust SDK.</p>
         </div>
-        <div class="docrow"><a class="btn btn--primary" href="/access">Request API &amp; enclave access</a><a class="btn" href="/primitives">See the primitives</a></div>
+        <div class="devgrid">
+          <div class="devcard">
+            <span class="devcard__tag">For LLM agents</span>
+            <h3>Agent Escrow MCP</h3>
+            <p>A Model Context Protocol server that gives any MCP client four tools: delegate, settle, attest, and verify. Agents hold funds in escrow, negotiate rates, and pay for finished tasks without custom plumbing.</p>
+            <a href="/developers/mcp">MCP docs</a>
+          </div>
+          <div class="devcard">
+            <span class="devcard__tag">For devices and edge services</span>
+            <h3>Edge Enclave SDK</h3>
+            <p>The Rust foundation under everything else. Keys stay inside SEV-SNP or TDX, and every session is attested before it is trusted.</p>
+            <a href="/developers/sdk">SDK reference</a>
+          </div>
+          <div class="devcard">
+            <span class="devcard__tag">New here</span>
+            <h3>Quickstart</h3>
+            <p>Install, delegate a session key, and clear your first testnet settlement end to end.</p>
+            <a href="/developers/quickstart">Start building</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Four calls cover the whole protocol.</h2>
+          <p>The same operations exist as MCP tools and as SDK methods. Each one maps to a step on the settlement path.</p>
+        </div>
+        <div class="tablewrap">
+          <table class="apitable">
+            <thead><tr><th scope="col">Call</th><th scope="col">What it does</th><th scope="col">You get back</th><th scope="col">Learn it</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>delegate</code></th><td>Mints a scoped ERC-7702 session key inside the enclave, with an expiry.</td><td>A session handle bound to hardware</td><td><a href="/whitepaper#ch2">Trust model</a></td></tr>
+              <tr><th scope="row"><code>settle</code></th><td>Clears a stablecoin microsettlement between two actors.</td><td>A deterministic receipt with finality time</td><td><a href="/whitepaper#ch3">Settlement</a></td></tr>
+              <tr><th scope="row"><code>attest</code></th><td>Produces a zero knowledge proof that a policy holds.</td><td>A proof a gate can check without the inputs</td><td><a href="/whitepaper#ch4">Attestation</a></td></tr>
+              <tr><th scope="row"><code>verify</code></th><td>Checks a C2PA checkpoint and any human gate before release.</td><td>Release, or a hold with the reason</td><td><a href="/whitepaper#ch4">Attestation</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="devmore">
+          <div>
+            <h2 class="h-sub">Learn the protocol by running it.</h2>
+            <p>The interactive whitepaper lets you issue a session key, attack it, settle a payment, and run the verification gate in your browser.</p>
+            <a class="textlink" href="/whitepaper">Open the interactive whitepaper</a>
+          </div>
+          <div>
+            <h2 class="h-sub">See it in an industry.</h2>
+            <p>Concrete flows for agents, warehouses, fleets, drones, cold chain, environmental data, and industrial machinery.</p>
+            <a class="textlink" href="/use-cases">Browse use cases</a>
+          </div>
+          <div>
+            <h2 class="h-sub">Get help.</h2>
+            <p>Check network status, report a vulnerability privately, or talk to the team about your integration.</p>
+            <span class="devmore__links"><a class="textlink" href="/status">Status</a><a class="textlink" href="/security">Security</a><a class="textlink" href="/contact">Contact</a></span>
+          </div>
+        </div>
       </div>
     </section>
   </main>
   <footer class="site-footer">
     <div class="container">
-      <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
-      <div class="foot__mast">arisma<i>.</i>network</div>
-      <div class="foot__cols">
-        <div><p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p><a class="btn" href="/whitepaper" style="margin-top:var(--space-md)">Read the whitepaper (v1.0)</a></div>
-        <div><p class="foot__h">Platform</p><ul><li><a href="/interactions">Interactions</a></li><li><a href="/architecture">Architecture</a></li><li><a href="/primitives">Primitives</a></li></ul></div>
-        <div><p class="foot__h">Developers</p><ul><li><a href="/developers">Developers</a></li><li><a href="/developers/quickstart">Quickstart</a></li><li><a href="/developers/mcp">Agent-Escrow MCP</a></li><li><a href="/developers/sdk">Edge Enclave SDK</a></li></ul></div>
-        <div><p class="foot__h">Company</p><ul><li><a href="/whitepaper">Whitepaper</a></li><li><a href="/security">Security</a></li><li><a href="/status">Status</a></li><li><a href="/contact">Contact</a></li></ul></div>
+      <div class="foot__top">
+        <div>
+          <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
+          <div class="foot__mast">arisma<i>.</i>network</div>
+          <p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p>
+        </div>
+        <nav aria-label="Footer">
+          <ul class="foot__nav">
+            <li><a href="/use-cases">Use cases</a></li>
+            <li><a href="/hardware">Hardware</a></li>
+            <li><a href="/architecture">Architecture</a></li>
+            <li><a href="/developers">Developers</a></li>
+            <li><a href="/whitepaper">Whitepaper</a></li>
+            <li><a href="/security">Security</a></li>
+            <li><a href="/status">Status</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
       </div>
-      <div class="foot__meta"><span>&copy; 2026 Arisma Network</span><span>ERC-7702, TEE, zk-attestation, C2PA, USDC</span></div>
+      <div class="foot__meta">
+        <span>&copy; 2026 Arisma Network</span>
+        <span class="foot__legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></span>
+      </div>
     </div>
   </footer>
-  <script>
-    document.querySelectorAll('.copy').forEach((b) => {
-      b.addEventListener('click', async () => {
-        try { await navigator.clipboard.writeText(b.dataset.copy); const p = b.textContent; b.textContent = 'copied'; setTimeout(() => { b.textContent = p; }, 1400); } catch (e) {}
-      });
-    });
-  </script>
 </body>
 </html>

@@ -4,30 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Primitives: protocol primitives & payloads | Arisma Network</title>
-  <meta name="description" content="Readable, composable building blocks for agentic infrastructure: identity and delegation, the M2M clearinghouse, and the human-in-the-loop gate, as JSON and Rust.">
+  <meta name="description" content="Readable, composable building blocks for agentic infrastructure: identity and delegation, the M2M clearinghouse, and the human in the loop gate, as JSON and Rust.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
-  <link rel="stylesheet" href="page.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"></noscript>
+  <link rel="stylesheet" href="/page.css">
+  <link rel="canonical" href="https://arisma.network/primitives">
+  <link rel="icon" type="image/png" href="/assets/arisma-mark.png">
+  <link rel="apple-touch-icon" href="/assets/arisma-mark.png">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Arisma Network">
+  <meta property="og:title" content="Primitives: protocol primitives &amp; payloads | Arisma Network">
+  <meta property="og:description" content="Readable, composable building blocks for agentic infrastructure: identity and delegation, the M2M clearinghouse, and the human in the loop gate, as JSON and Rust.">
+  <meta property="og:url" content="https://arisma.network/primitives">
+  <meta property="og:image" content="https://arisma.network/assets/arisma-hero.jpg">
+  <meta property="og:image:width" content="1800">
+  <meta property="og:image:height" content="1324">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Primitives: protocol primitives &amp; payloads | Arisma Network">
+  <meta name="twitter:description" content="Readable, composable building blocks for agentic infrastructure: identity and delegation, the M2M clearinghouse, and the human in the loop gate, as JSON and Rust.">
+  <meta name="twitter:image" content="https://arisma.network/assets/arisma-hero.jpg">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},2500)</script>
+  <script src="/site.js" defer></script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="nav">
     <div class="nav__in">
       <a class="wordmark" href="/"><img class="wordmark__mark" src="/assets/arisma-mark.png" alt="" width="28" height="22"><span>arisma<i>.</i>network</span></a>
       <nav class="nav__links" aria-label="Primary">
+        <a href="/use-cases">Use cases</a>
+        <a href="/hardware">Hardware</a>
         <a href="/interactions">Interactions</a>
         <a href="/architecture">Architecture</a>
-        <a href="/primitives">Primitives</a>
+        <a href="/primitives" aria-current="page">Primitives</a>
         <a href="/developers">Developers</a>
       </nav>
       <div class="nav__cta">
-        <a class="linklike" href="/whitepaper" style="font-size:var(--text-sm);color:var(--color-ink-2)">Whitepaper</a>
+        <a class="linklike" href="/whitepaper">Whitepaper</a>
         <a class="btn btn--primary" href="/access">Request access</a>
       </div>
     </div>
   </header>
-  <main>
+  <main id="main">
     <section class="subhero">
       <div class="container">
         <h1>Protocol primitives &amp; payloads.</h1>
@@ -38,8 +59,8 @@
     <section class="section">
       <div class="container">
         <div class="prose"><p>Every layer of Arisma is expressed as a clean, verifiable payload. Toggle between JSON protocol envelopes and Rust enclave calls to integrate directly into your agent runtime.</p></div>
-        <h2 style="font-size:var(--text-xl);margin-top:var(--space-2xl)">Three primitives.</h2>
-        <div class="pillars" style="margin-top:var(--space-lg)">
+        <h2 class="h-sub mt-2xl">Three primitives.</h2>
+        <div class="pillars mt-lg">
           <article class="pillar">
             <h3>Identity &amp; delegation</h3>
             <p>A scoped session key, signed in the enclave, bounded by policy.</p>
@@ -89,10 +110,10 @@
             </div>
           </article>
           <article class="pillar">
-            <h3>Human-in-the-loop gate</h3>
+            <h3>Human in the loop gate</h3>
             <p>A zk:field-inspect policy with a C2PA verification checkpoint.</p>
             <div class="pillar__spec">
-              <div class="toggle" role="group" aria-label="Human-in-the-loop gate payload format">
+              <div class="toggle" role="group" aria-label="Human in the loop gate payload format">
                 <input class="t-json" type="radio" name="p3" id="p3json" checked><label for="p3json">JSON</label>
                 <input class="t-rust" type="radio" name="p3" id="p3rust"><label for="p3rust">Rust</label>
               </div>
@@ -110,33 +131,36 @@
             </div>
           </article>
         </div>
-        <div class="docrow"><a class="btn btn--primary" href="/developers">Read the developer docs</a><a class="btn" href="/access">Request access</a></div>
+        <div class="docrow"><a class="btn btn--primary" href="/developers">Read the developer docs</a><a class="textlink" href="/access">Request access</a></div>
       </div>
     </section>
   </main>
   <footer class="site-footer">
     <div class="container">
-      <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
-      <div class="foot__mast">arisma<i>.</i>network</div>
-      <div class="foot__cols">
-        <div><p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p><a class="btn" href="/whitepaper" style="margin-top:var(--space-md)">Read the whitepaper (v1.0)</a></div>
-        <div><p class="foot__h">Platform</p><ul><li><a href="/interactions">Interactions</a></li><li><a href="/architecture">Architecture</a></li><li><a href="/primitives">Primitives</a></li></ul></div>
-        <div><p class="foot__h">Developers</p><ul><li><a href="/developers">Developers</a></li><li><a href="/developers/quickstart">Quickstart</a></li><li><a href="/developers/mcp">Agent-Escrow MCP</a></li><li><a href="/developers/sdk">Edge Enclave SDK</a></li></ul></div>
-        <div><p class="foot__h">Company</p><ul><li><a href="/whitepaper">Whitepaper</a></li><li><a href="/security">Security</a></li><li><a href="/status">Status</a></li><li><a href="/contact">Contact</a></li></ul></div>
+      <div class="foot__top">
+        <div>
+          <img class="foot__mark" src="/assets/arisma-mark.png" alt="" width="55" height="44">
+          <div class="foot__mast">arisma<i>.</i>network</div>
+          <p class="foot__tag">Settlement for AI agents, robots, and physical machines.</p>
+        </div>
+        <nav aria-label="Footer">
+          <ul class="foot__nav">
+            <li><a href="/use-cases">Use cases</a></li>
+            <li><a href="/hardware">Hardware</a></li>
+            <li><a href="/architecture">Architecture</a></li>
+            <li><a href="/developers">Developers</a></li>
+            <li><a href="/whitepaper">Whitepaper</a></li>
+            <li><a href="/security">Security</a></li>
+            <li><a href="/status">Status</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
       </div>
-      <div class="foot__meta"><span>&copy; 2026 Arisma Network</span><span>ERC-7702, TEE, zk-attestation, C2PA, USDC</span></div>
+      <div class="foot__meta">
+        <span>&copy; 2026 Arisma Network</span>
+        <span class="foot__legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></span>
+      </div>
     </div>
   </footer>
-  <script>
-    if (!CSS.supports || !CSS.supports('selector(:has(*))')) {
-      document.querySelectorAll('.pillar').forEach((card) => {
-        card.querySelectorAll('.toggle input').forEach((r) => r.addEventListener('change', () => {
-          const rust = card.querySelector('.t-rust').checked;
-          card.querySelector('.pay-json').style.display = rust ? 'none' : 'block';
-          card.querySelector('.pay-rust').style.display = rust ? 'block' : 'none';
-        }));
-      });
-    }
-  </script>
 </body>
 </html>
